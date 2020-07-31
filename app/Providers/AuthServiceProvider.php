@@ -25,9 +25,16 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
+        // Главный провайдер отвечающий за досуп ко всему!
+
+        // Access for only admin & director
+        Gate::define('manage-users', function($user){
+            return $user->hasAnyRoles(['admin', 'director']);
+        });
+
         // UserController ->
         Gate::define('edit-users', function($user){
-            return $user->hasRole('admin');
+            return $user->hasAnyRoles(['admin', 'director']);
         });
 
         Gate::define('delete-users', function($user){
