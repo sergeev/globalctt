@@ -8,6 +8,11 @@ use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
+    public function __construct()
+    {
+        // Проверка на авторизацию к странице admin/users
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -15,7 +20,8 @@ class UserController extends Controller
      */
     public function index()
     {
-        return view('admin.users.index');
+        $users = User::all();
+        return view('admin.users.index')->with('users', $users);
     }
 
     /**
