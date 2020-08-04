@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Student;
 
+use App\User;
+use App\Role;
 use App\Student;
 use Gate;
 
@@ -22,8 +24,9 @@ class StudentController extends Controller
      */
     public function index()
     {
-        $studnets = Student::all();
-        return view('student.index')->with('students', $studnets);
+        $students = Student::all();
+        
+        return view('students.index')->with('students', $students);
     }
 
     /**

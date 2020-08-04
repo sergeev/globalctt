@@ -24,3 +24,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::namespace('Admin')->prefix('admin')->name('admin.')->middleware('can:manage-users')->group(function(){
 	Route::resource('/users', 'UserController', ['except' => ['show', 'create', 'store']]);
 });
+
+Route::namespace('Student')->prefix('admin')->name('students.')->middleware('can:manage-students')->group(function(){
+	Route::resource('/students', 'StudentController', ['except' => ['show', 'create', 'store']]);
+});

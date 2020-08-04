@@ -63,5 +63,5 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
 ## globalctt ДОКУМЕНТАЦИЯ
 
 - Система разграничения прав пользователей в системе
-Входи происходит через [App\Http\Auth\LoginController](https://github.com/sergeev/globalctt/blob/master/app/Http/Controllers/Auth/LoginController.php) он же пределяет куда будет попадать пользователь после входа в систему
+-- Входи происходит через [App\Http\Auth\LoginController](https://github.com/sergeev/globalctt/blob/master/app/Http/Controllers/Auth/LoginController.php) он же пределяет куда будет попадать пользователь после входа в систему
 - Далее проверяеться 

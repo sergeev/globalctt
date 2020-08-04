@@ -14,6 +14,8 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
+        DB::statement('SET FOREIGN_KEY_CHECKS=0;');
+
     	User::truncate();
     	DB::table('role_user')->truncate();
 
@@ -74,5 +76,7 @@ class UsersTableSeeder extends Seeder
         $student->roles()->attach($studentRole);
     	$redactor->roles()->attach($redactorRole);
     	$user->roles()->attach($userRole);
+
+        DB::statement('SET FOREIGN_KEY_CHECKS=1;');
     }
 }
