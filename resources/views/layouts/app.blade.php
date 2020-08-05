@@ -62,7 +62,7 @@
                                     @endcan
 
                                     @can('manage-students')
-                                    <a class="dropdown-item" href="{{ route('students.index') }}">
+                                    <a class="dropdown-item" href="{{ route('students.students.index') }}">
                                         Student Managment
                                     </a>
                                     @endcan
