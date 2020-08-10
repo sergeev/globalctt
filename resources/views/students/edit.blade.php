@@ -8,319 +8,168 @@
                 <div class="card-header">Edit Student {{ $student->name_1_ot }}</div>
 
                 <div class="card-body">
-                    <form action="{{ route('students.students.update', $student) }}" method="POST">
-                        @csrf
-                        <div class="form-group row">
-                            <label for="organization" class="col-md-3 col-form-label text-md-right">Organization</label>
 
-                            <div class="col-md-5">
-                                <input id="organization" type="text" class="form-control @error('organization') is-invalid @enderror" name="organization" value="{{ $student->organization }}">
+                    @if ($errors->any())
+                    <div class="alert alert-danger">
+                        <strong>ВНИМАНИЕ!</strong> Возникли проблемы в заполнении формы.<br><br>
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                    @endif
+                    
 
-                                @error('organization')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                                @enderror
-                            </div>
-                        </div>
+{!! Form::model($student, ['method' => 'PATCH','route' => ['students.students.update', $student->id]]) !!}
+         <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="form-group">
+                    <strong>*Организация: </strong>
+                     {{ Form::select('organization', array('0' => 'Меридиан', '1' => 'Кванториум', '2' => 'ИТКуб'), null, ['class' => 'form-control']) }}
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="form-group">
+                    <strong>*Номер сертификата ПФДО:</strong>
+                    {!! Form::text('inputsCertificate', null, array('placeholder' => '0000000000','class' => 'form-control', 'maxlength' => '10')) !!}
+                </div>
+            </div>
 
-                        <div class="form-group row">
-                            <label for="inputsCertificate" class="col-md-3 col-form-label text-md-right">InputsCertificate</label>
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="form-group">
+                    <strong>*Имя Отчество (ребенка):</strong>
+                    {!! Form::text('name_1_ot', null, array('placeholder' => 'Имя Отчество (ребенка)','class' => 'form-control')) !!}
+                </div>
+            </div>
 
-                            <div class="col-md-5">
-                                <input id="inputsCertificate" type="text" class="form-control @error('inputsCertificate') is-invalid @enderror" name="inputsCertificate" value="{{ $student->inputsCertificate }}">
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="form-group">
+                    <strong>*Фамилия (ребенка):</strong>
+                    {!! Form::text('surname_1_fam', null, array('placeholder' => 'Фамилия (ребенка)','class' => 'form-control')) !!}
+                </div>
+            </div>
 
-                                @error('inputsCertificate')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                                @enderror
-                            </div>
-                        </div>
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="form-group">
+                    <strong>*Эл.почта:</strong>
+                    {!! Form::email('inputEmail', null, array('placeholder' => 'Эл.почта','class' => 'form-control')) !!}
+                </div>
+            </div>
 
-                        <div class="form-group row">
-                            <label for="name_1_ot" class="col-md-3 col-form-label text-md-right">name_1_ot</label>
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="form-group">
+                    <strong>*Дата рождения:</strong>
+                    {!! Form::date('childDateInput', null, array('placeholder' => 'Дата рождения','class' => 'form-control')) !!}
+                </div>
+            </div>
 
-                            <div class="col-md-5">
-                                <input id="name_1_ot" type="text" class="form-control @error('name_1_ot') is-invalid @enderror" name="name_1_ot" value="{{ $student->name_1_ot }}">
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="form-group">
+                    <strong>*Пол:</strong>
+                     {{ Form::select('gender', ['0' => 'Девочка', '1' => 'Мальчик'], null, ['class' => 'form-control']) }}
+                </div>
+            </div>
+            
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="form-group">
+                    <strong>*Учебное заведение:</strong>
+                    {!! Form::text('inputsSchool', null, array('placeholder' => 'МАОУ СОШ № 81','class' => 'form-control')) !!}
+                </div>
+            </div>
 
-                                @error('name_1_ot')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                                @enderror
-                            </div>
-                        </div>
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="form-group">
+                    <strong>*Класс:</strong>
+                   {!! Form::text('inputsClass', null, array('placeholder' => '6A','class' => 'form-control')) !!}
+                </div>
+            </div>
+
+            {{-- <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="form-group">
+                    <strong>*Выбор направления обучения:</strong>
+                     {{ Form::select('inputsKvantum', $kvantums, [], array('class' => 'form-control')) }}
+                </div>
+            </div>
+
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="form-group">
+                    <strong>*Выбор педагога:</strong>
+                     {{ Form::select('teacherName', $teachers, [], array('class' => 'form-control')) }}
+                </div>
+            </div>
 
 
-                        <div class="form-group row">
-                            <label for="name_1_ot" class="col-md-3 col-form-label text-md-right">surname_1_fam</label>
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="form-group">
+                    <strong>*Группа:</strong>
+                     {{ Form::select('groupTime', $timetables, [], array('class' => 'form-control')) }}
+                </div>
+            </div> --}}
 
-                            <div class="col-md-5">
-                                <input id="surname_1_fam" type="text" class="form-control @error('surname_1_fam') is-invalid @enderror" name="surname_1_fam" value="{{ $student->surname_1_fam }}">
-
-                                @error('surname_1_fam')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                                @enderror
-                            </div>
-                        </div>
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="form-group">
+                    <strong>*ФИО родителя (законного представителя):</strong>
+                     {{ Form::text('inputsNameLegalRepresentative', null, ['class' => 'form-control', 'placeholder' => 'ФИО родителя (законного представителя):']) }}
+                </div>
+            </div>
 
 
-                        <div class="form-group row">
-                            <label for="inputEmail" class="col-md-3 col-form-label text-md-right">inputEmail</label>
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="form-group">
+                    <strong>*Телефон родителя (законного представителя):</strong>
+                     {{ Form::text('NameLegalRepresentativeTelephone', null, ['class' => 'form-control', 'placeholder' => '*+7-000-000-00-00', 'maxlength' => '16']) }}
+                </div>
+            </div>
 
-                            <div class="col-md-5">
-                                <input id="inputEmail" type="email" class="form-control @error('surname_1_fam') is-invalid @enderror" name="inputEmail" value="{{ $student->inputEmail }}">
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="form-group">
+                    <strong>Ранг:</strong>
+                     {{ Form::select('student_rang', ['0' => 'Нет ранга', '1' => 'Резидент', '2' => 'MVP'], null, ['class' => 'form-control']) }}
+                </div>
+            </div>
 
-                                @error('inputEmail')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                                @enderror
-                            </div>
-                        </div>
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="form-group">
+                    <strong>Проверен в ручную:</strong>
+                     {{ Form::select('student_checked', ['0' => 'Не проверен', '1' => 'Проверен'], null, ['class' => 'form-control']) }}
+                </div>
+            </div>
 
-                        <div class="form-group row">
-                            <label for="childDateInput" class="col-md-3 col-form-label text-md-right">inputEmail</label>
 
-                            <div class="col-md-5">
-                                <input id="childDateInput" type="date" class="form-control @error('childDateInput') is-invalid @enderror" name="childDateInput" value="{{ $student->childDateInput }}">
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="form-group">
+                    <strong>Комментарий:</strong>
+                    {{ Form::textarea('inputsComments', null, ['class' => 'form-control' ]) }}
+                </div>
+            </div>
 
-                                @error('inputEmail')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        {{ method_field('PUT') }}
-                        <div class="form-group row">
-                            <label for="gender" class="col-md-3 col-form-label text-md-right">gender</label>
-                            <div class="input-group col-md-5">
-                              <select class="custom-select" id="gender" class="form-control @error('gender') is-invalid @enderror" name="gender" value="{{ $student->gender }}">
-                                @foreach($genders as $gender)
-                                <option value="{{ $student->gender == NULL}}">gender</option>
-                                <option value="{{ $student->gender == 0 }}">Male</option>
-                                <option value="{{ $student->gender == 1 }}">Famale</option>
-                                @endforeach
-                                
-                                @error('gender')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                                @enderror
-
-                            </select>
-                        </div>
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="form-row">
+                    <div class="form-group col-md-4">
+                        <strong>student_exp:</strong>
+                        {{ Form::text('student_exp', null, ['class' => 'form-control' ]) }}
                     </div>
 
-                    <div class="form-group row">
-                            <label for="inputsSchool" class="col-md-3 col-form-label text-md-right">inputsSchool</label>
+                    <div class="form-group col-md-4">
+                        <strong>student_coin:</strong>
+                        {{ Form::text('student_coin', null, ['class' => 'form-control' ]) }}
+                    </div>
 
-                            <div class="col-md-5">
-                                <input id="inputsSchool" type="text" class="form-control @error('inputsSchool') is-invalid @enderror" name="inputsSchool" value="{{ $student->inputsSchool }}">
-
-                                @error('inputsSchool')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                                @enderror
-                            </div>
-                        </div>
-
-
-                        <div class="form-group row">
-                            <label for="inputsClass" class="col-md-3 col-form-label text-md-right">inputsClass</label>
-
-                            <div class="col-md-5">
-                                <input id="inputsClass" type="text" class="form-control @error('inputsClass') is-invalid @enderror" name="inputsClass" value="{{ $student->inputsClass }}">
-
-                                @error('inputsClass')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                                @enderror
-                            </div>
-                        </div>
-
-
-                        <div class="form-group row">
-                            <label for="inputsKvantum" class="col-md-3 col-form-label text-md-right">inputsKvantum</label>
-
-                            <div class="col-md-5">
-                                <input id="inputsKvantum" type="text" class="form-control @error('inputsKvantum') is-invalid @enderror" name="inputsKvantum" value="{{ $student->inputsKvantum }}">
-
-                                @error('inputsKvantum')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="teacherName" class="col-md-3 col-form-label text-md-right">teacherName</label>
-
-                            <div class="col-md-5">
-                                <input id="teacherName" type="text" class="form-control @error('teacherName') is-invalid @enderror" name="teacherName" value="{{ $student->teacherName }}">
-
-                                @error('teacherName')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="groupTime" class="col-md-3 col-form-label text-md-right">groupTime</label>
-
-                            <div class="col-md-5">
-                                <input id="groupTime" type="text" class="form-control @error('groupTime') is-invalid @enderror" name="groupTime" value="{{ $student->groupTime }}">
-
-                                @error('groupTime')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="inputsNameLegalRepresentative" class="col-md-3 col-form-label text-md-right">inputsNameLegalRepresentative</label>
-
-                            <div class="col-md-5">
-                                <input id="inputsNameLegalRepresentative" type="text" class="form-control @error('inputsNameLegalRepresentative') is-invalid @enderror" name="inputsNameLegalRepresentative" value="{{ $student->inputsNameLegalRepresentative }}">
-
-                                @error('inputsNameLegalRepresentative')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="NameLegalRepresentativeTelephone" class="col-md-3 col-form-label text-md-right">NameLegalRepresentativeTelephone</label>
-
-                            <div class="col-md-5">
-                                <input id="NameLegalRepresentativeTelephone" type="text" class="form-control @error('NameLegalRepresentativeTelephone') is-invalid @enderror" name="NameLegalRepresentativeTelephone" value="{{ $student->NameLegalRepresentativeTelephone }}">
-
-                                @error('NameLegalRepresentativeTelephone')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="NameLegalRepresentativeTelephone" class="col-md-3 col-form-label text-md-right">NameLegalRepresentativeTelephone</label>
-
-                            <div class="col-md-5">
-                                <input id="NameLegalRepresentativeTelephone" type="text" class="form-control @error('NameLegalRepresentativeTelephone') is-invalid @enderror" name="NameLegalRepresentativeTelephone" value="{{ $student->NameLegalRepresentativeTelephone }}">
-
-                                @error('NameLegalRepresentativeTelephone')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="inputsComments" class="col-md-3 col-form-label text-md-right">inputsComments</label>
-
-                            <div class="col-md-5">
-                            <textarea rows="10" cols="100" name="inputsComments" class="form-control @error('inputsComments') is-invalid @enderror" id="inputsComments">{{ $student->inputsComments }}</textarea>
-                                
-                            @error('inputsComments')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="student_rang" class="col-md-3 col-form-label text-md-right">student_rang</label>
-
-                            <div class="col-md-5">
-                                <input id="student_rang" type="text" class="form-control @error('student_rang') is-invalid @enderror" name="student_rang" value="{{ $student->student_rang }}">
-
-                                @error('student_rang')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="student_exp" class="col-md-3 col-form-label text-md-right">student_exp</label>
-
-                            <div class="col-md-5">
-                                <input id="student_exp" type="text" class="form-control @error('student_exp') is-invalid @enderror" name="student_exp" value="{{ $student->student_exp }}">
-
-                                @error('student_exp')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="student_coin" class="col-md-3 col-form-label text-md-right">student_coin</label>
-
-                            <div class="col-md-5">
-                                <input id="student_coin" type="text" class="form-control @error('student_coin') is-invalid @enderror" name="student_coin" value="{{ $student->student_coin }}">
-
-                                @error('student_coin')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="student_checked" class="col-md-3 col-form-label text-md-right">student_checked</label>
-
-                            <div class="col-md-5">
-                                <input id="student_checked" type="text" class="form-control @error('student_checked') is-invalid @enderror" name="student_checked" value="{{ $student->student_checked }}">
-
-                                @error('student_checked')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="student_deleted" class="col-md-3 col-form-label text-md-right">student_deleted</label>
-
-                            <div class="col-md-5">
-                                <input id="student_deleted" type="text" class="form-control @error('student_deleted') is-invalid @enderror" name="student_deleted" value="{{ $student->student_deleted }}">
-
-                                @error('student_deleted')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                    <button type="submit" class="btn btn-primary">
-                        Update
-                    </button>
-
-                </form>
+                    <div class="form-group col-md-4">
+                        <strong>student_deleted:</strong>
+                        {{ Form::select('student_deleted', ['0' => 'Действующий', '1' => 'Удален'], null, ['class' => 'form-control']) }}
+                    </div>
+                </div>
             </div>
+
+
+            <div class="col-xs-12 col-sm-12 col-md-12 text-center">
+                    <button type="submit" class="btn btn-primary">Отправить</button>
+            </div>
+        </div>
+{!! Form::close() !!}
+</div>
         </div>
     </div>
 </div>

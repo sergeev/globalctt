@@ -10,6 +10,8 @@ use Gate;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Input;
 
 class StudentController extends Controller
 {
@@ -40,7 +42,8 @@ class StudentController extends Controller
      */
     public function create()
     {
-        //
+        //return view('students.create' ,compact('teachers', 'kvantums', 'timetables'));
+        return view('students.create');
     }
 
     /**
@@ -49,9 +52,76 @@ class StudentController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, Student $student)
     {
-        //
+        $rules = [
+            'inputsCertificate' => 'required|regex:/^([0-9\s\-\+\(\)]*)$/|min:10',
+            'name_1_ot' => 'regex:/^[\w\- \p{Cyrillic}]*$/u',
+            'surname_1_fam' => 'regex:/^[\w\- \p{Cyrillic}]*$/u',
+            'inputEmail' => 'required|string|email|max:255|unique:students|nullable',
+            'childDateInput' => '',
+            'gender' => '',
+            'inputsSchool' => 'regex:/^[\w\- \p{Cyrillic}]*$/ui',
+            'inputsClass' => 'regex:/^[\w\- \p{Cyrillic}]*$/ui',
+            'inputsKvantum' => '',
+            'teacherName' => '',
+            'groupTime' => '',
+            'inputsNameLegalRepresentative' => 'regex:/^[\w\- \p{Cyrillic}]*$/u',
+            'NameLegalRepresentativeTelephone' => 'required|regex:/^([0-9\s\-\+\(\)]*)$/|min:10',
+            //'inputsComments' => 'regex:/^[\w\- \p{Cyrillic}]*$/u|min:5|max:500'
+        ];
+
+        $messages = [
+            'inputsCertificate.required' => 'Необходимо указать все 10 символов сертификата ПФДО, Пример: 0025011990',
+            'name_1_ot.regex' => 'Необходимо указать Имя Отчество (ребенка)',
+            'surname_1_fam.regex' => 'Необходимо указать Фамилию (ребенка) ',
+            'inputEmail.required' => 'Необходимо указать правельный email адрес ',
+            'childDateInput.required' => 'Необходимо указать Дату рождения',
+            'inputsSchool.regex' => 'Необходимо указать Учебное заведение',
+            'inputsClass.regex' => 'Необходимо указать Класс',
+            'inputsKvantum.required' => 'Необходимо указать Выбор направления обучения',
+            'teacherName.required' => 'Необходимо указать Преподаватель',
+            'groupTime.required' => 'Необходимо указать Группа',
+            'inputsNameLegalRepresentative.regex' => 'Необходимо указать ФИО родителя (законного представителя)',
+            'NameLegalRepresentativeTelephone.required' => 'Необходимо указать Телефон родителя (законного представителя)',
+            'inputsComments.regex' => 'Необходимо указать Комментарий',
+            'inputsComments.min' => 'Необходимо ввести не менее 5 символов в комментариях',
+
+            //'min' => 'Необходимо указать все 10 символов сертификата ПФДО, Пример: 0025011990',
+            //'max' => 'Необходимо указать не более 10 символов сертификата ПФДО, Пример: 0025011990',
+        ];
+
+        //  Проверка на существующую запись в базе данных
+        // if (Student::where('inputsCertificate', '=', Input::get('inputsCertificate'))->exists()) {
+        //     return redirect()->route('students.index')
+        //                     ->with('success','Такой сертификат уже есть в базе данных!');        
+        // }
+
+        // if (Student::where('inputEmail', '=', Input::get('inputEmail'))->exists()) {
+        //     return redirect()->route('students.index')
+        //                     ->with('success','Такая почта уже есть в базе данных!');        
+        // }
+
+        $this->validate($request, $rules, $messages);
+
+        $student->inputsKvantum = '';
+        $student->teacherName = '';
+        $student->groupTime = '';
+
+        $student->student_rang = 0;
+        $student->student_exp = 0;
+        $student->student_coin = 0;
+        $student->student_checked = 0;
+        $student->student_deleted = 0;
+
+        dd($student);
+
+        // if($student->create()){
+        //     $request->session()->flash('success', $student->name_1_ot . ' has been create');
+        //     return redirect()->route('students.students.index');
+        // }else{
+        //     $request->session()->flash('error', 'Student not create, error message');
+        // }
     }
 
     /**
@@ -93,7 +163,42 @@ class StudentController extends Controller
      */
     public function update(Request $request, Student $student)
     {
-        //$student->roles()->sync($request->roles);
+        $rules = [
+            'inputsCertificate' => 'required|regex:/^([0-9\s\-\+\(\)]*)$/|min:10',
+            'name_1_ot' => 'regex:/^[\w\- \p{Cyrillic}]*$/u',
+            'surname_1_fam' => 'regex:/^[\w\- \p{Cyrillic}]*$/u',
+            //'inputEmail' => 'required|string|email|max:255|unique:students|nullable',
+            'childDateInput' => 'date',
+            'gender' => '',
+            'inputsSchool' => 'regex:/^[\w\- \p{Cyrillic}]*$/ui',
+            'inputsClass' => 'regex:/^[\w\- \p{Cyrillic}]*$/ui',
+            'inputsKvantum' => '',
+            'teacherName' => '',
+            'groupTime' => '',
+            'inputsNameLegalRepresentative' => 'regex:/^[\w\- \p{Cyrillic}]*$/u',
+            'NameLegalRepresentativeTelephone' => 'required|regex:/^([0-9\s\-\+\(\)]*)$/|min:10',
+            'inputsComments' => 'regex:/^[\w\- \p{Cyrillic}]*$/u|min:5|max:500'
+        ];
+
+        $messages = [
+            'inputsCertificate.required' => 'Необходимо указать все 10 символов сертификата ПФДО, Пример: 0025011990',
+            'name_1_ot.regex' => 'Необходимо указать Имя Отчество (ребенка)',
+            'surname_1_fam.regex' => 'Необходимо указать Фамилию (ребенка) ',
+            'inputEmail.required' => 'Необходимо указать правельный email адрес ',
+            'childDateInput.required' => 'Необходимо указать Дату рождения',
+            'inputsSchool.regex' => 'Необходимо указать Учебное заведение',
+            'inputsClass.regex' => 'Необходимо указать Класс',
+            'inputsKvantum.required' => 'Необходимо указать Выбор направления обучения',
+            'teacherName.required' => 'Необходимо указать Преподаватель',
+            'groupTime.required' => 'Необходимо указать Группа',
+            'inputsNameLegalRepresentative.regex' => 'Необходимо указать ФИО родителя (законного представителя)',
+            'NameLegalRepresentativeTelephone.required' => 'Необходимо указать Телефон родителя (законного представителя)',
+            'inputsComments.regex' => 'Необходимо указать Комментарий',
+            'inputsComments.min' => 'Необходимо ввести не менее 5 символов в комментариях',
+
+            //'min' => 'Необходимо указать все 10 символов сертификата ПФДО, Пример: 0025011990',
+            //'max' => 'Необходимо указать не более 10 символов сертификата ПФДО, Пример: 0025011990',
+        ];
 
         $student->organization = $request->organization;
         $student->inputsCertificate = $request->inputsCertificate;
@@ -104,9 +209,9 @@ class StudentController extends Controller
         $student->gender = $request->gender;
         $student->inputsSchool = $request->inputsSchool;
         $student->inputsClass = $request->inputsClass;
-        $student->inputsKvantum = $request->inputsKvantum;
-        $student->teacherName = $request->teacherName;
-        $student->groupTime = $request->groupTime;
+        //$student->inputsKvantum = $request->inputsKvantum;
+        //$student->teacherName = $request->teacherName;
+        //$student->groupTime = $request->groupTime;
         $student->inputsNameLegalRepresentative = $request->inputsNameLegalRepresentative;
         $student->NameLegalRepresentativeTelephone = $request->NameLegalRepresentativeTelephone;
         $student->inputsComments = $request->inputsComments;
@@ -116,12 +221,15 @@ class StudentController extends Controller
         $student->student_checked = $request->student_checked;
         $student->student_deleted = $request->student_deleted;
 
-        
-        if($student->save()){
-            $request->session()->flash('success', $student->name_1_ot . ' has been update');
-        }else{
-            $request->session()->flash('error', 'Student not update, error message');
-        }
+        $this->validate($request, $rules, $messages);
+
+        dd($student);
+
+        // if($student->save()){
+        //     $request->session()->flash('success', $student->name_1_ot . ' has been update');
+        // }else{
+        //     $request->session()->flash('error', 'Student not update, error message');
+        // }
 
         return redirect()->route('students.students.index');
     }
