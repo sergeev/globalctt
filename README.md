@@ -2,6 +2,13 @@
 
 * Laravel version: 7.22.2
 
+# Roadmap
+
+- [x] Role status
+- [x] Web admin
+
+- [x] Student CRUD
+
 # Installation 
 
 * git clone git@github.com:sergeev/globalctt.git
@@ -22,3 +29,8 @@ Route::get('/clear-cache', function() {
     return "Cache is cleared";
 });
 ```
+
+# Dev commands
+
+- Create CRUD
+	- php artisan make:migration create_[examples]_table --create=examples
