@@ -46,7 +46,6 @@ class AuthServiceProvider extends ServiceProvider
         });
 
         // Redactor
-
         Gate::define('manage-events', function($user){
             return $user->hasAnyRoles(['admin', 'redactor']);
         });

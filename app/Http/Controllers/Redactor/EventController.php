@@ -8,6 +8,7 @@ use App\Event;
 use Gate;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class EventController extends Controller
 {
@@ -23,8 +24,9 @@ class EventController extends Controller
      */
     public function index()
     {
-        $events = Event::latest()->paginate(3);
-        return view('admin.redactor.index',compact('events'))
+        $events = Event::latest()->paginate(5);
+        $events_all = Event::all();
+        return view('admin.redactor.index',compact('events', 'events_all'))
             ->with('i', (request()->input('page', 1) - 1) * 5);
     }
 
@@ -44,7 +46,7 @@ class EventController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, User $user)
+    public function store(Request $request)
     {
         request()->validate([
             'title' => 'required',
@@ -52,7 +54,14 @@ class EventController extends Controller
             // 'author' =>$user->this;
             ]);
 
-        Event::create($request->all());
+            $event = new Event([
+                'title' => $request->get('title'),
+                'content' => $request->get('content')
+            ]);
+
+            $event->save();
+
+        //Event::create($request->all()); // TODO
 
         return redirect()->route('events.events.index')->with('success', 'Событие было добавлено успешно.');
     }
@@ -74,21 +83,14 @@ class EventController extends Controller
      * @param  \App\Event  $event
      * @return \Illuminate\Http\Response
      */
-    public function edit(Event $event)
+    public function edit($id)
     {
         // AuthServiceProvider ->
         if(Gate::denies('manage-events')){
             return redirect(route('admin.redactor.index'));
         }
 
-        $event = Event::pluck('title', 'content', 'author')->all();
-
-        $roles = Role::all();
-
-        // return view('admin.redactor.edit')->with([
-        //     'title' => $title,
-        //     'content' => $content
-        // ]);
+        $event = Event::find($id);
         return view('admin.redactor.edit', compact('event'));
     }
 
@@ -99,11 +101,22 @@ class EventController extends Controller
      * @param  \App\Event  $event
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Event $event)
+    public function update(Request $request, $id)
     {
-        $title->title = $request->title;
-        $content->content = $request->content;
-        
+        $request->validate([
+            'title'=> 'required',
+            'content'=>'required'
+        ]);
+
+        $event = Event::find($id);
+        $event->title = $request->get('title');
+        $event->content = $request->get('content');
+        $event->slug = $request->get('slug');
+
+        //$event->author = $request->get($user->this);
+        $event->published = $request->get('published');
+        $event->published_slider_status = $request->get('published_slider_status');
+
         if($event->save()){
             $request->session()->flash('success', $event->title . ' has been update');
         }else{

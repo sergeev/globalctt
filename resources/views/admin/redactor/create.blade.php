@@ -17,13 +17,13 @@
                      <div class="row">
                       <div class="col-xs-12 col-sm-12 col-md-12">
                           <div class="form-group">
-                              <strong>Заголовок:</strong>
+                              <strong data-toggle="tooltip" data-placement="right" title="Максимальная длина заголовка 300 символов">Заголовок: [?]</strong>
                               <input type="text" name="title" class="form-control" placeholder="Заголовок">
                           </div>
                       </div>
                       <div class="col-xs-12 col-sm-12 col-md-12">
                           <div class="form-group">
-                              <strong>Контент:</strong>
+                              <strong data-toggle="tooltip" data-placement="right" title="Максимальная длина контента 5000 символов">Контент: [?]</strong>
                               <textarea class="form-control" style="height:150px" name="content" placeholder="Контент"></textarea>
                           </div>
                       </div>

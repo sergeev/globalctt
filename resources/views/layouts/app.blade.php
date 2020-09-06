@@ -18,6 +18,14 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
+    {{-- Add wysiwyg script --}}
+{{-- <script src="{!! asset('summernote/summernote.js') !!}"></script>
+
+<script src="{!! asset('summernote/lang/summernote-ru-RU.js') !!}"></script>
+
+
+<script src="{!! asset('js/summernote_editor_settings.js') !!}"></script> --}}
 </head>
 <body>
     <div id="app">

@@ -114,14 +114,14 @@ class StudentController extends Controller
         $student->student_checked = 0;
         $student->student_deleted = 0;
 
-        dd($student);
+        //dd($student);
 
-        // if($student->create()){
-        //     $request->session()->flash('success', $student->name_1_ot . ' has been create');
-        //     return redirect()->route('students.students.index');
-        // }else{
-        //     $request->session()->flash('error', 'Student not create, error message');
-        // }
+        if($student->create()){
+            $request->session()->flash('success', $student->name_1_ot . ' has been create');
+            return redirect()->route('students.students.index');
+        }else{
+            $request->session()->flash('error', 'Student not create, error message');
+        }
     }
 
     /**
@@ -151,7 +151,8 @@ class StudentController extends Controller
         if(Gate::denies('manage-students')){
             return redirect(route('admin.users.index'));
         }
-        return view('students.edit',compact('student', 'genders'));
+        //return view('students.edit',compact('student', 'genders'));
+        return view('students.edit',compact('student'));
     }
 
     /**
@@ -223,13 +224,13 @@ class StudentController extends Controller
 
         $this->validate($request, $rules, $messages);
 
-        dd($student);
+        //dd($student);
 
-        // if($student->save()){
-        //     $request->session()->flash('success', $student->name_1_ot . ' has been update');
-        // }else{
-        //     $request->session()->flash('error', 'Student not update, error message');
-        // }
+        if($student->save()){
+            $request->session()->flash('success', $student->name_1_ot . ' has been update');
+        }else{
+            $request->session()->flash('error', 'Student not update, error message');
+        }
 
         return redirect()->route('students.students.index');
     }

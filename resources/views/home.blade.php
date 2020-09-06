@@ -25,8 +25,18 @@
                     </div>
                 </div>
                 @endcan
+                @can('manage-students')
+                <div class="col-sm-6">
+                    <div class="card">
+                      <div class="card-body">
+                        <h5 class="card-title">Create student</h5>
+                        <p class="card-text">Add students</p>
+                        <a href="{{ route('students.students.index') }}" class="btn btn-primary">Add Students</a>
+                    </div>
+                </div>   
+                </div>
+                @endcan
             </div>
-
         </div>
     </div>
 </div>
