@@ -24,8 +24,10 @@ class EventController extends Controller
      */
     public function index()
     {
+        //$events = Event::where('id',$id)->first();
         $events = Event::latest()->paginate(5);
         $events_all = Event::all();
+
         return view('admin.redactor.index',compact('events', 'events_all'))
             ->with('i', (request()->input('page', 1) - 1) * 5);
     }
@@ -112,6 +114,7 @@ class EventController extends Controller
         $event->title = $request->get('title');
         $event->content = $request->get('content');
         $event->slug = $request->get('slug');
+        $event->author = $request->get('author');
 
         //$event->author = $request->get($user->this);
         $event->published = $request->get('published');

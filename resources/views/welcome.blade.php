@@ -78,23 +78,29 @@
                     @endauth
                 </div>
             @endif
-
-            <div class="content">
-                <div class="title m-b-md">
-                    Laravel
+            
+            <div class="container">
+      <header class="section-header">
+        <h3>Новости</h3>
+      </header>
+      <div class="row">
+        <div class="container">
+          <div class="card-deck">
+            @foreach ($events as $event)
+            <div class="col-md-6 col-lg-6 wow bounceInUp" data-wow-duration="1.4s">
+              <div class="box">
+                <img class="card-img-top" src="{{ $event->link_images_1 }}" alt="">
+                <div class="card-body">
+                  <h5 class="card-title">{{ $event->title }}</h5>
+                  <p class="card-text">{{ $event->content }}</p>
                 </div>
-
-                <div class="links">
-                    <a href="https://laravel.com/docs">Docs</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://blog.laravel.com">Blog</a>
-                    <a href="https://nova.laravel.com">Nova</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://vapor.laravel.com">Vapor</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
-                </div>
+              </div>
             </div>
+            @endforeach
+          </div>
+        </div>
+      </div>
+    </div>
         </div>
     </body>
 </html>
