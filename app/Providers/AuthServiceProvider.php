@@ -32,8 +32,20 @@ class AuthServiceProvider extends ServiceProvider
             return $user->hasAnyRoles(['admin', 'director']);
         });
 
-        Gate::define('manage-students', function($user){
+        Gate::define('manage-teachers', function($user){
             return $user->hasAnyRoles(['admin', 'director']);
+        });
+
+        Gate::define('manage-kvantums', function($user){
+            return $user->hasAnyRoles(['admin', 'redactor']);
+        });
+
+        Gate::define('manage-students', function($user){
+            return $user->hasAnyRoles(['admin', 'redactor']);
+        });
+
+        Gate::define('manage-timetables', function($user){
+            return $user->hasAnyRoles(['admin', 'redactor']);
         });
 
         // UserController ->

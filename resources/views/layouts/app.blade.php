@@ -63,9 +63,27 @@
                                     </a>
                                     @endcan
 
+                                    @can('manage-kvantums')
+                                    <a class="dropdown-item" href="{{ route('admin.kvantums.index') }}">
+                                        Kvantums Managment
+                                    </a>
+                                    @endcan
+
+                                    @can('manage-teachers')
+                                    <a class="dropdown-item" href="{{ route('admin.teachers.index') }}">
+                                        Teachers Managment
+                                    </a>
+                                    @endcan
+
                                     @can('manage-students')
                                     <a class="dropdown-item" href="{{ route('students.students.index') }}">
                                         Student Managment
+                                    </a>
+                                    @endcan
+
+                                    @can('manage-timetables')
+                                    <a class="dropdown-item" href="{{ route('admin.timetables.index') }}">
+                                        Timetable Managment
                                     </a>
                                     @endcan
 

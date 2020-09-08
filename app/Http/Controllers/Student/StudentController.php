@@ -5,6 +5,9 @@ namespace App\Http\Controllers\Student;
 use App\User;
 use App\Role;
 use App\Student;
+use App\Kvantum;
+use App\Teacher;
+use App\Timetable;
 use Gate;
 
 use Illuminate\Support\Facades\DB;
@@ -42,8 +45,12 @@ class StudentController extends Controller
      */
     public function create()
     {
-        //return view('students.create' ,compact('teachers', 'kvantums', 'timetables'));
-        return view('students.create');
+        $teachers = Teacher::pluck('teacher_full_name','teacher_full_name')->all();
+        $kvantums = Kvantum::pluck('kvantum_name','kvantum_name')->all();
+
+        $timetables = Timetable::pluck('week_group_id', 'week_group_id')->all();
+
+        return view('students.create' ,compact('teachers', 'kvantums', 'timetables'));
     }
 
     /**
@@ -104,15 +111,30 @@ class StudentController extends Controller
 
         $this->validate($request, $rules, $messages);
 
-        $student->inputsKvantum = '';
-        $student->teacherName = '';
-        $student->groupTime = '';
+
+         $student = new Student([
+             'inputsCertificate' => $request->get('inputsCertificate'),
+             'name_1_ot' => $request->get('name_1_ot'),
+             'surname_1_fam' => $request->get('surname_1_fam'),
+             'inputEmail' => $request->get('inputEmail'),
+             'childDateInput' => $request->get('childDateInput'),
+             'gender' => $request->get('gender'),
+             'inputsSchool' => $request->get('inputsSchool'),
+             'inputsClass' => $request->get('inputsClass'),
+             'inputsKvantum' => $request->get('inputsKvantum'),
+             'teacherName' => $request->get('teacherName'),
+             'groupTime' => $request->get('groupTime'),
+             'inputsNameLegalRepresentative' => $request->get('inputsNameLegalRepresentative'),
+             'NameLegalRepresentativeTelephone' => $request->get('NameLegalRepresentativeTelephone')
+         ]);
 
         $student->student_rang = 0;
         $student->student_exp = 0;
         $student->student_coin = 0;
         $student->student_checked = 0;
         $student->student_deleted = 0;
+
+        $student->save();
 
         //dd($student);
 
@@ -141,8 +163,12 @@ class StudentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Student $student)
+    public function edit(Student $student, Kvantum $kvantum)
     {
+        $teachers = Teacher::pluck('teacher_full_name','teacher_full_name')->all();
+        $kvantums = Kvantum::pluck('kvantum_name','kvantum_name')->all();
+
+        $timetables = Timetable::pluck('week_group_id', 'week_group_id')->all();
         $genders = array(
             'gender' =>  DB::table('students')->get()
           );
@@ -152,7 +178,7 @@ class StudentController extends Controller
             return redirect(route('admin.users.index'));
         }
         //return view('students.edit',compact('student', 'genders'));
-        return view('students.edit',compact('student'));
+        return view('students.edit',compact('student', 'kvantums', 'teachers', 'timetables'));
     }
 
     /**

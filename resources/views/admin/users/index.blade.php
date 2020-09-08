@@ -3,24 +3,33 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">Users Role status</div>
-                <div class="card-body">
-                    <p>Admin - Global role for all systems</p>
-                    <p>Director - Role for director this organisation</p>
-                    <p>Manager - Manager system (moderate)</p>
-                    <p>Redactor - Redactor create news blog and slider</p>
-                    <p>Redactor - Redactor create news blog and slider</p>
-                    <p>Teacher - Teacher role for all students and student group system</p>
-                    <p>Student - Student user</p>
-                    <p>User - User this default start system profile</p>
+        <div class="col-md-12">
+            <div class="card">             
+                <div class="accordion" id="accordionExample">
+                        <div class="card-header" id="headingOne">
+                            <h2 class="mb-0">
+                                <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse"
+                                    data-target="#userRole" aria-expanded="true" aria-controls="userRole">
+                                    Users Role status
+                                </button>
+                            </h2>
+                        </div>
+
+                        <div id="userRole" class="collapse" aria-labelledby="headingOne"
+                            data-parent="#userRole">
+                            <div class="card-body">
+                                <p>Admin - Global role for all systems</p>
+                                <p>Director - Role for director this organisation</p>
+                                <p>Manager - Manager system (moderate)</p>
+                                <p>Redactor - Redactor create news blog and slider</p>
+                                <p>Redactor - Redactor create news blog and slider</p>
+                                <p>Teacher - Teacher role for all students and student group system</p>
+                                <p>Student - Student user</p>
+                                <p>User - User this default start system profile</p>
+                            </div>
+                        </div>
                 </div>
-            </div>
-        </div>
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">Users</div>
+
                 <div class="card-body">
                     <table class="table">
                         <thead>
@@ -55,7 +64,8 @@
                                     <div class="modal-dialog modal-dialog-centered" role="document">
                                         <div class="modal-content">
                                             <div class="modal-header">
-                                                <h5 class="modal-title" id="exampleModalLongTitle">Подверждение действия
+                                                <h5 class="modal-title" id="exampleModalLongTitle">Подтерждение
+                                                    действия
                                                 </h5>
                                                 <button type="button" class="close" data-dismiss="modal"
                                                     aria-label="Close">
@@ -88,5 +98,4 @@
             </div>
         </div>
     </div>
-</div>
-@endsection
+    @endsection

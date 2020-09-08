@@ -33,6 +33,18 @@ Route::namespace('Admin')->prefix('admin')->name('admin.')->middleware('can:mana
 	Route::resource('/users', 'UserController', ['except' => ['show', 'create', 'store']]);
 });
 
+Route::namespace('Admin')->prefix('admin')->name('admin.')->middleware('can:manage-teachers')->group(function(){
+	Route::resource('/teachers', 'TeacherController');
+});
+
+Route::namespace('Admin')->prefix('admin')->name('admin.')->middleware('can:manage-timetables')->group(function(){
+	Route::resource('/timetables', 'TimetableController');
+});
+
+Route::namespace('Admin')->prefix('admin')->name('admin.')->middleware('can:manage-kvantums')->group(function(){
+	Route::resource('/kvantums', 'KvantumController');
+});
+
 Route::namespace('Student')->prefix('admin')->name('students.')->middleware('can:manage-students')->group(function(){
 	Route::resource('/students', 'StudentController');
 });

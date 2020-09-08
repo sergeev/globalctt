@@ -85,7 +85,7 @@
                 </div>
             </div>
 
-            {{-- <div class="col-xs-12 col-sm-12 col-md-12">
+            <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
                     <strong>*Выбор направления обучения:</strong>
                      {{ Form::select('inputsKvantum', $kvantums, [], array('class' => 'form-control')) }}
@@ -105,7 +105,7 @@
                     <strong>*Группа:</strong>
                      {{ Form::select('groupTime', $timetables, [], array('class' => 'form-control')) }}
                 </div>
-            </div> --}}
+            </div>
 
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
