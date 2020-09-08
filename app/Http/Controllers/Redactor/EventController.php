@@ -25,7 +25,7 @@ class EventController extends Controller
     public function index()
     {
         //$events = Event::where('id',$id)->first();
-        $events = Event::latest()->paginate(5);
+        $events = Event::latest()->paginate(20);
         $events_all = Event::all();
 
         return view('admin.redactor.index',compact('events', 'events_all'))

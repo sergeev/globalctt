@@ -10,7 +10,7 @@ class indexController extends Controller
 {
 	public function default()
 	{
-    $events = Event::latest()->paginate(3);
+    $events = Event::latest()->paginate(6);
         return view('kvant42.index', compact('events'))->with(['menu_color_' => '#385E9D',
                                       // Social Links
                                       'title_page' => 'Кванториум 42 - Новокузнецк',
@@ -28,5 +28,10 @@ class indexController extends Controller
                                       'vk_link' => 'https://vk.com/kvantorium42_novokuznetsk',
                                       'i', (request()->input('page', 1) - 1) * 5
                                   ]);
-	}
+    }
+    
+    public function loader()
+    {
+        return view('kvant42.loader');
+    }
 }

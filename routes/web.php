@@ -19,6 +19,12 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', 'indexController@default');
 
+//Route::get('/events', 'Redactor\EventGlobalController@index');
+
+Route::namespace('Redactor')->group(function(){
+	Route::resource('/events', 'EventGlobalController');
+});
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
