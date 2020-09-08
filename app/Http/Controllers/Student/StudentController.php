@@ -59,7 +59,7 @@ class StudentController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, Student $student)
+    public function store(Request $request)
     {
         $rules = [
             'inputsCertificate' => 'required|regex:/^([0-9\s\-\+\(\)]*)$/|min:10',
@@ -75,7 +75,7 @@ class StudentController extends Controller
             'groupTime' => '',
             'inputsNameLegalRepresentative' => 'regex:/^[\w\- \p{Cyrillic}]*$/u',
             'NameLegalRepresentativeTelephone' => 'required|regex:/^([0-9\s\-\+\(\)]*)$/|min:10',
-            //'inputsComments' => 'regex:/^[\w\- \p{Cyrillic}]*$/u|min:5|max:500'
+            'inputsComments' => 'regex:/^[\w\- \p{Cyrillic}]*$/u|min:5|max:500',
         ];
 
         $messages = [
@@ -92,7 +92,7 @@ class StudentController extends Controller
             'inputsNameLegalRepresentative.regex' => 'Необходимо указать ФИО родителя (законного представителя)',
             'NameLegalRepresentativeTelephone.required' => 'Необходимо указать Телефон родителя (законного представителя)',
             'inputsComments.regex' => 'Необходимо указать Комментарий',
-            'inputsComments.min' => 'Необходимо ввести не менее 5 символов в комментариях',
+            //'inputsComments.min' => 'Необходимо ввести не менее 5 символов в комментариях',
 
             //'min' => 'Необходимо указать все 10 символов сертификата ПФДО, Пример: 0025011990',
             //'max' => 'Необходимо указать не более 10 символов сертификата ПФДО, Пример: 0025011990',
@@ -125,7 +125,8 @@ class StudentController extends Controller
              'teacherName' => $request->get('teacherName'),
              'groupTime' => $request->get('groupTime'),
              'inputsNameLegalRepresentative' => $request->get('inputsNameLegalRepresentative'),
-             'NameLegalRepresentativeTelephone' => $request->get('NameLegalRepresentativeTelephone')
+             'NameLegalRepresentativeTelephone' => $request->get('NameLegalRepresentativeTelephone'),
+             'inputsComments' => $request->get('inputsComments')
          ]);
 
         $student->student_rang = 0;
@@ -134,9 +135,9 @@ class StudentController extends Controller
         $student->student_checked = 0;
         $student->student_deleted = 0;
 
-        $student->save();
+        //$student->save();
 
-        //dd($student);
+        dd($student);
 
         if($student->create()){
             $request->session()->flash('success', $student->name_1_ot . ' has been create');
