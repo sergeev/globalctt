@@ -18,10 +18,12 @@
 
 @include('kvant42.header')
 
+<br>
+<br>
 <section id="services" class="section-bg">
     <div class="container">
         <header class="section-header">
-            <h3>Новости</h3>
+            <h3><a href="{{ route('events.index') }}">Все Новости</a></h3>
         </header>
         <div class="row">
             <div class="container">
@@ -31,8 +33,8 @@
                         <div class="box">
                             <img class="card-img-top" src="{{ $event->link_images_1 }}" alt="">
                             <div class="card-body">
-                                <h5 class="card-title">{!! $event->title !!}</h5>
-                                <p class="card-text">{{ Str::limit($event->content, 200) }} </p>
+                                <h5 class="card-title"><a href="{{ route('events.show', $event->id) }}">{!! $event->title !!}</a></h5>
+                                <p class="card-text">{!! Str::limit($event->content, 300) !!} </p>
                             </div>
                         </div>
                     </div>
@@ -41,5 +43,10 @@
             </div>
         </div>
     </div>
+    <nav aria-label="Events navigation">
+        <ul class="pagination justify-content-center">
+            {!! $events->render() !!}
+        </ul>
+      </nav>
 
 </section>

@@ -52,6 +52,9 @@
 <script type="text/javascript">
 tinymce.init({
     selector: 'textarea.tinymce-editor',
+    init_instance_callback : function(editor) {
+      var freeTiny = document.querySelector('.mce-notification');
+      freeTiny.style.display = 'none';
     //language_url : 'js/ru.js',
     autosave_interval: '20s',
     height: 500,
