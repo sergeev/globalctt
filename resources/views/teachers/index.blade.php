@@ -8,8 +8,9 @@
             <div class="card">
                 <div class="card-header">Педагоги
                     @can('manage-teachers')
-                    <a href="{{ route('admin.teachers.create') }}"><button type="buttor"
-                            class="btn btn-primary float-right">Добавить</button></a>
+                    <a href="{{ route('admin.teachers.create') }}">
+                        <button type="buttor" class="btn btn-primary float-right">Добавить</button>
+                    </a>
                     @endcan
                 </div>
                 <div class="card-body">

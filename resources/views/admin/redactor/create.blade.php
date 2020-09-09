@@ -23,6 +23,17 @@
                                     <input type="text" name="title" class="form-control" placeholder="Заголовок">
                                 </div>
                             </div>
+
+                            <div class="col-xs-12 col-sm-12 col-md-12">
+                                <div class="form-group">
+                                    <strong data-toggle="tooltip" data-placement="right"
+                                        title="Максимальная длина контента 300 символов">Контент: [?]</strong>
+                                    <textarea class="form-control tinymce-editor" style="height:150px" name="content_main_page"
+                                        placeholder="Привью на главной"></textarea>
+                                </div>
+                            </div>
+
+
                             <div class="col-xs-12 col-sm-12 col-md-12">
                                 <div class="form-group">
                                     <strong data-toggle="tooltip" data-placement="right"
@@ -35,6 +46,34 @@
                                 <div class="form-group">
                                     <strong>Автор:</strong>
                                     <input type="text" name="author" class="form-control" placeholder="Автор">
+                                </div>
+                            </div>
+
+                            <div class="col-xs-12 col-sm-12 col-md-12">
+                                <div class="input-group mb-3">
+                                    <select class="custom-select" id="published">
+                                        <option selected>Выберите</option>
+                                        <option value="1">Опубликовать</option>
+                                        <option value="0">Нет</option>
+                                    </select>
+                                    <div class="input-group-append">
+                                        <label class="input-group-text"
+                                            for="published">{{ trans('event.publish') }}</label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-xs-12 col-sm-12 col-md-12">
+                                <div class="input-group mb-3">
+                                    <select class="custom-select" id="published_slider_status">
+                                        <option selected>Выберите</option>
+                                        <option value="1">Опубликовать</option>
+                                        <option value="0">Нет</option>
+                                    </select>
+                                    <div class="input-group-append">
+                                        <label class="input-group-text"
+                                            for="published_slider_status">{{ trans('event.slider') }}</label>
+                                    </div>
                                 </div>
                             </div>
                             <div class="col-xs-12 col-sm-12 col-md-12 text-center">
@@ -52,18 +91,12 @@
 <script type="text/javascript">
 tinymce.init({
     selector: 'textarea.tinymce-editor',
-    init_instance_callback : function(editor) {
-      var freeTiny = document.querySelector('.mce-notification');
-      freeTiny.style.display = 'none';
-    //language_url : 'js/ru.js',
-    autosave_interval: '20s',
     height: 500,
     menubar: true,
     plugins: [
         'advlist autolink lists link image charmap print preview anchor',
         'searchreplace visualblocks code fullscreen',
-        'insertdatetime media table paste code help wordcount',
-        'autosave'
+        'insertdatetime media table paste code help wordcount'
     ],
     toolbar: 'undo redo | formatselect | ' +
         'bold italic backcolor | alignleft aligncenter ' +
@@ -72,4 +105,5 @@ tinymce.init({
     content_css: '//www.tiny.cloud/css/codepen.min.css'
 });
 </script>
+
 @endsection
