@@ -19,6 +19,15 @@
                                         placeholder="Заголовок">
                                 </div>
                             </div>
+
+                            <div class="col-xs-12 col-sm-12 col-md-12">
+                                <div class="form-group">
+                                    <strong>{{ trans('event.content_main_page') }}</strong>
+                                    <textarea class="form-control" style="height:150px" name="content_main_page"
+                                        placeholder="Привью на главной ">{{ $event->content_main_page }}</textarea>
+                                </div>
+                            </div>
+
                             <div class="col-xs-12 col-sm-12 col-md-12">
                                 <div class="form-group">
                                     <strong>{{ trans('event.content') }}</strong>

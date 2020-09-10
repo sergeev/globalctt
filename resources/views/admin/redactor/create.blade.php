@@ -28,7 +28,7 @@
                                 <div class="form-group">
                                     <strong data-toggle="tooltip" data-placement="right"
                                         title="Максимальная длина контента 300 символов">Контент: [?]</strong>
-                                    <textarea class="form-control tinymce-editor" style="height:150px" name="content_main_page"
+                                    <textarea class="form-control" style="height:150px" name="content_main_page"
                                         placeholder="Привью на главной"></textarea>
                                 </div>
                             </div>

@@ -12,19 +12,16 @@
     <div class="carousel-item active">
      
       <div class="container">
-
-        <div class="intro-img">
-          <img src="img/slider/2.png" alt="" height="100" width="255" class="img-fluid">
-        </div>
-
+        @foreach($events as $key => $event)
         <div class="intro-info">
-          <h2>Добро пожаловать!</h2>
+          <h2>{{ $event->title }}</h2>
           <div>
+            <h5 style="color:#FFFFFF"; >{!! $event->content_main_page !!}</h5>
             <a href="" class="btn-get-started scrollto">Записаться</a>
             <a href="" class="btn-services scrollto">Расписание</a>
           </div>
         </div>
-
+        @endforeach
       </div>
 
     </div>
@@ -72,7 +69,6 @@
 </div>  
 
 </section><!-- #intro -->
-
 <!-- <div class="home-scrolldown">
             <a href="#about" class="scroll-icon smoothscroll">
                 <span>Прокрутите вниз</span>

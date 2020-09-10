@@ -52,12 +52,14 @@ class EventController extends Controller
     {
         request()->validate([
             'title' => 'required',
+            'content_main_page' => 'required',
             'content' => 'required'
             // 'author' =>$user->this;
             ]);
 
             $event = new Event([
                 'title' => $request->get('title'),
+                'content_main_page' => $request->get('content_main_page'),
                 'content' => $request->get('content')
             ]);
 
@@ -107,11 +109,13 @@ class EventController extends Controller
     {
         $request->validate([
             'title'=> 'required',
+            'content_main_page' => 'required',
             'content'=>'required'
         ]);
 
         $event = Event::find($id);
         $event->title = $request->get('title');
+        $event->content_main_page = $request->get('content_main_page');
         $event->content = $request->get('content');
         $event->slug = $request->get('slug');
         $event->author = $request->get('author');
@@ -127,6 +131,18 @@ class EventController extends Controller
         }
 
         return redirect()->route('events.events.index');
+    }
+
+    public function eventPublished($id){
+        Event::whereid($id)->update([
+            'published' => 1
+        ]);
+    }
+
+    public function eventUnPublished($id){
+        Event::whereid($id)->update([
+            'published' => 0
+        ]);
     }
 
     /**
