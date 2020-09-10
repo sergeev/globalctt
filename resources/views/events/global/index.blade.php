@@ -31,7 +31,7 @@
                     @foreach ($events as $event)
                     <div class="col-md-6 col-lg-6 wow bounceInUp" data-wow-duration="1.4s">
                         <div class="box">
-                            <img class="card-img-top" src="{{ $event->link_images_1 }}" alt="">
+                            <img class="img-fluid" src="{{ $event->link_images_1 }}" alt="">
                             <div class="card-body">
                                 <h5 class="card-title"><a href="{{ route('events.show', $event->id) }}">{!! $event->title !!}</a></h5>
                                 <p class="card-text">{!! Str::limit($event->content, 300) !!} </p>

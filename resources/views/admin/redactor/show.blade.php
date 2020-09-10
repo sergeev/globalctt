@@ -10,6 +10,7 @@
                         {{ $event->author }}</p>
                 </div>
                 <div class="card-body">
+                    <img class="card-img-top" src="{{ $event->link_images_1 }}" alt="" class="img-fluid">
                     {!! $event->content !!}
                 </div>
                 <div class="card-header">
@@ -21,7 +22,7 @@
                     @can('manage-events')
                     <a href="{{ route('events.events.edit', $event->id) }}"><button type="buttor"
                             class="btn btn-primary float-right">{{ trans('event.edit') }}</button></a>
-                            
+
                     @csrf
                     {{ method_field('DELETE') }}
                     <button type="submit" class="btn btn-warning" data-toggle="modal"

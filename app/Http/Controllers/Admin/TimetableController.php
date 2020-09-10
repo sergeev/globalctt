@@ -62,9 +62,25 @@ class TimetableController extends Controller
      */
     public function store(Request $request)
     {
-        // request()->validate([
-        //     'kvantum_name' => ''
-        // ]);
+        $rules = [
+            'topic' => 'required',
+            'teacher_full_name' => 'required',
+            'kvantum_name' => 'required',
+            'week_day' => 'required',
+            'week_time' => 'required',
+            'week_group_id' => 'required'
+        ];
+
+        $messages = [
+            'topic.required' => 'Введите название урока',
+            'teacher_full_name.required' => 'Выбирете название квантума',
+            'kvantum_name.required' => 'Выбирите педагога',
+            'week_day.required' => 'Выбирете день недели преподавания',
+            'week_time.required' => 'Введите время занятия',
+            'week_group_id.required' => 'Введите время занятия'
+        ];
+
+        $this->validate($request, $rules, $messages);
 
         Timetable::create($request->all());
 
@@ -97,6 +113,7 @@ class TimetableController extends Controller
      */
     public function edit(Timetable $timetable)
     {
+        // TODO validation
         $teachers = Teacher::pluck('teacher_full_name','teacher_full_name')->all();
         $kvantums = Kvantum::pluck('kvantum_name','kvantum_name')->all();
 

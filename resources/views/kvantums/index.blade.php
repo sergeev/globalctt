@@ -45,7 +45,8 @@
             <div class="card">
                 <div class="card-header">Kvantums
                     @can('manage-kvantums')
-                    <a href="{{ route('admin.kvantums.create') }}"><button type = "buttor" class= "btn btn-primary float-right">Добавить</button></a>
+                    <a href="{{ route('admin.kvantums.create') }}"><button type="buttor"
+                            class="btn btn-primary float-right">Добавить</button></a>
                     @endcan
                 </div>
 

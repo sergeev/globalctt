@@ -31,22 +31,22 @@
     </tr>
     @foreach ($events as $event)
     <tr>
-     <td>{{ $event->id }}</td>
-     <td>{{ $event->title }}</td>
-     <td>{{ $event->published }}</td>
-     <td>{{ $event->published_slider_status }}</td>
-     <td>
-        <form action="{{ route('events.destroy',$event->id) }}" method="POST">
-            <a class="btn btn-info" href="{{ route('events.show',$event->id) }}">Просм.</a>
-            <a class="btn btn-primary" href="{{ route('events.edit',$event->id) }}">Ред.</a>
+        <td>{{ $event->id }}</td>
+        <td>{{ $event->title }}</td>
+        <td>{{ $event->published }}</td>
+        <td>{{ $event->published_slider_status }}</td>
+        <td>
+            <form action="{{ route('events.destroy',$event->id) }}" method="POST">
+                <a class="btn btn-info" href="{{ route('events.show',$event->id) }}">Просм.</a>
+                <a class="btn btn-primary" href="{{ route('events.edit',$event->id) }}">Ред.</a>
 
-            @csrf
-            @method('DELETE')
-            <button type="submit" class="btn btn-danger">Удалить</button>
-        </form>
-    </td>
-</tr>
-@endforeach
+                @csrf
+                @method('DELETE')
+                <button type="submit" class="btn btn-danger">Удалить</button>
+            </form>
+        </td>
+    </tr>
+    @endforeach
 </table>
 {!! $events->links() !!}
 

@@ -51,4 +51,5 @@ Route::namespace('Student')->prefix('admin')->name('students.')->middleware('can
 
 Route::namespace('Redactor')->prefix('admin')->name('events.')->middleware('can:manage-events')->group(function(){
 	Route::resource('/events', 'EventController');
+	//Route::post('/events/eventPublished', 'EventController@eventPublished');
 });

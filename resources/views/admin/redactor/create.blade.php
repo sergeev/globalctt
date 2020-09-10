@@ -27,9 +27,18 @@
                             <div class="col-xs-12 col-sm-12 col-md-12">
                                 <div class="form-group">
                                     <strong data-toggle="tooltip" data-placement="right"
+                                        title="Ссылка на картинку вне сайта">Ссылка на картинку: [?]</strong><p>
+                                        <strong data-toggle="tooltip" data-placement="right">Пример: https://sun4-10.userapi.com/oZh9C3MMINcce-71h7kZOoX4ZdFwysPVQlCHhA/HxOM3b1WNQ0.jpg</strong>
+                                    <input type="text" name="link_images_1" class="form-control" placeholder="Ссылка на картинку вне сайта"></textarea>
+                                </div>
+                            </div>
+
+                            <div class="col-xs-12 col-sm-12 col-md-12">
+                                <div class="form-group">
+                                    <strong data-toggle="tooltip" data-placement="right"
                                         title="Максимальная длина контента 300 символов">Контент: [?]</strong>
                                     <textarea class="form-control" style="height:150px" name="content_main_page"
-                                        placeholder="Привью на главной"></textarea>
+                                        placeholder="Привью на главной и слайдере"></textarea>
                                 </div>
                             </div>
 

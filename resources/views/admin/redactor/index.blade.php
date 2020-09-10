@@ -21,6 +21,7 @@
                     @can('manage-events')
                     <a href="{{ route('events.events.show', $event->id) }}"><button type="buttor"
                             class="btn btn-primary float-right">{{ trans('event.show') }}</button></a>
+                    {{-- <a href="{{ action('EventController@eventPublished', $event->id )}}">Published</a> --}}
                     @endcan
                 </div>
 

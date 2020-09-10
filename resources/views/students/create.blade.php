@@ -5,7 +5,10 @@
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card">
-                <div class="card-header">Create Student </div>
+                <div class="card-header">Create Student
+                    <a href="{{ route('students.students.index') }}"><button type="buttor"
+                            class="btn btn-primary float-right">Назад</button></a>
+                </div>
 
                 <div class="card-body">
 
@@ -40,8 +43,7 @@
                         <div class="col-xs-12 col-sm-12 col-md-12">
                             <div class="form-group">
                                 <strong>*Имя Отчество (ребенка):</strong>
-                                {!! Form::text('name_1_ot', null, array('placeholder' => 'Имя Отчество
-                                (ребенка)','class' => 'form-control')) !!}
+                                {!! Form::text('name_1_ot', null, array('placeholder' => 'Имя Отчество (ребенка)','class' => 'form-control')) !!}
                             </div>
                         </div>
 

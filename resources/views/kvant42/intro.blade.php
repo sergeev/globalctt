@@ -9,54 +9,28 @@
     <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
   </ol> -->
   <div class="carousel-inner">
-    <div class="carousel-item active">
+    @foreach($events as $key => $event)
+    <div class="carousel-item {{ $loop->first ? 'active' : '' }}">
      
       <div class="container">
-        @foreach($events as $key => $event)
+        
+        <div class="intro-img">
+          <img src="{{ $event->link_images_1 }}" alt="" class="img-fluid">
+        </div>
+
         <div class="intro-info">
           <h2>{{ $event->title }}</h2>
           <div>
             <h5 style="color:#FFFFFF"; >{!! $event->content_main_page !!}</h5>
-            <a href="" class="btn-get-started scrollto">Записаться</a>
-            <a href="" class="btn-services scrollto">Расписание</a>
+            <!-- <a href="" class="btn-get-started scrollto">Записаться</a> -->
+            <a href="{{ route('events.show',$event->id) }}" class="btn-services scrollto">Подробнее</a>
           </div>
         </div>
-        @endforeach
+        
       </div>
 
     </div>
-<div class="carousel-item">
-      <div class="container">
-
-        <div class="intro-img">
-          <img src="img/kvantum/robo/promrobo.png" alt="" class="img-fluid">
-        </div>
-
-        <div class="intro-info">
-          <h2>ПРОМРОБО 2020</h2>
-          <div>
-            <h5 style="color:#FFFFFF"; >Друзья! Рады сообщить Вам что наконец-то 28.07.2020 мы пройдем завершающий этап соревнований по промышленной робототехнике "ПРОМРОБО 2020"! К сожалению формат очной встречи не возможен по известным всем причинам, но мы и так прошли все предыдущие этапы в дистанционном режиме поэтому и завершим мы наше мероприятие тоже в дистанте. Командам которые примут участие - удачи!</h5>
-          </div>
-        </div>
-
-      </div>
-    </div>
-<div class="carousel-item">
-      <div class="container">
-
-        <div class="intro-img">
-          <img src="img/slider/pngbarn.png" alt="" class="img-fluid">
-        </div>
-
-        <div class="intro-info">
-          <h2>Альтернативный элемент 2020</h2>
-          <div>
-            <h5 style="color:#FFFFFF"; >29 июля в детском технопарке "Кванториум 42" Новокузнецк направление Энерджиквантум (Энергетика) проводит уникальное мероприятие на котором юным изобретателям придется найти альтернативные источники электропитания и запустить на них электронную схему доступ к сожалению ограничен по понятным причинам, но проектные команды по расписанию могут выполнить все задания и провести он - лайн защиту своего проекта  до 1.08.2020 Ждём интересных решений</h5>
-          </div>
-        </div>
-
-      </div>
-    </div>
+@endforeach
   </div>
   <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
     <span class="carousel-control-prev-icon" aria-hidden="true"></span>

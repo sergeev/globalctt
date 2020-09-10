@@ -59,6 +59,7 @@ class EventController extends Controller
 
             $event = new Event([
                 'title' => $request->get('title'),
+                'link_images_1' => $request->get('link_images_1'),
                 'content_main_page' => $request->get('content_main_page'),
                 'content' => $request->get('content')
             ]);
