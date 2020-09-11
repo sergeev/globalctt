@@ -26,7 +26,7 @@ class EventGlobalController extends Controller
         return view('events.global.index',compact('events', 'events_all'))
            ->with(['menu_color_' => '#385E9D',
                                       // Social Links
-                                      'title_page' => 'Кванториум 42 - Новокузнецк',
+                                      'title_page' => 'Кванториум 42 - Новости',
                                       // fb link
                                       'fb_link' => '',
                                       // twitter

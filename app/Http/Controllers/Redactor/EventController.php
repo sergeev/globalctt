@@ -29,7 +29,8 @@ class EventController extends Controller
         $events_all = Event::all();
 
         return view('admin.redactor.index',compact('events', 'events_all'))
-            ->with('i', (request()->input('page', 1) - 1) * 5);
+            ->with('i', (request()->input('page', 1) - 1) * 5
+        );
     }
 
     /**
