@@ -25,6 +25,10 @@ Route::namespace('Redactor')->group(function(){
 	Route::resource('/events', 'EventGlobalController');
 });
 
+Route::namespace('Admin')->group(function(){
+	Route::resource('/timetables', 'TimetableGlobalController');
+});
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
