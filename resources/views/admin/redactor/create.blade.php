@@ -12,6 +12,7 @@
                     @endcan
                 </div>
                 <div class="card-body">
+                @include('admin.errorsForm')
                     <form action="{{ route('events.events.store') }}" method="POST">
                         @csrf
 
@@ -54,7 +55,7 @@
                             <div class="col-xs-12 col-sm-12 col-md-12">
                                 <div class="form-group">
                                     <strong>Автор:</strong>
-                                    <input type="text" name="author" class="form-control" placeholder="Автор">
+                                    {{ Form::select('author', $users, [], array('class' => 'form-control')) }}
                                 </div>
                             </div>
 

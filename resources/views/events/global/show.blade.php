@@ -31,6 +31,7 @@
                     <h3>{{ $event->title }}</h3>
                 </div>
                 <div class="card-body">
+                    <img class="card-img-top" src="{{ $event->link_images_1 }}" alt="" class="img-fluid">
                     {!! $event->content !!}
                 </div>
                 <div class="card-header">{{ trans('event.created_at') }} {{ $event->created_at }}

@@ -40,7 +40,9 @@ class EventController extends Controller
      */
     public function create()
     {
-        return view('admin.redactor.create');
+        $users = User::pluck('name','name')->all();
+
+        return view('admin.redactor.create', compact('users'));
     }
 
     /**
@@ -54,15 +56,20 @@ class EventController extends Controller
         request()->validate([
             'title' => 'required',
             'content_main_page' => 'required',
-            'content' => 'required'
-            // 'author' =>$user->this;
+            'content' => 'required',
+            'author' => 'required',
+            //'published' => 'required',
+            //'published_slider_status' => 'required'
             ]);
 
             $event = new Event([
                 'title' => $request->get('title'),
                 'link_images_1' => $request->get('link_images_1'),
                 'content_main_page' => $request->get('content_main_page'),
-                'content' => $request->get('content')
+                'content' => $request->get('content'),
+                'author' => $request->get('author'),
+                //'published' => $request->get('published'),
+                //'published_slider_status' => $request->get('published_slider_status')
             ]);
 
             $event->save();
@@ -95,9 +102,10 @@ class EventController extends Controller
         if(Gate::denies('manage-events')){
             return redirect(route('admin.redactor.index'));
         }
-
+        $users = User::pluck('name','name')->all();
         $event = Event::find($id);
-        return view('admin.redactor.edit', compact('event'));
+        
+        return view('admin.redactor.edit', compact('event', 'users'));
     }
 
     /**

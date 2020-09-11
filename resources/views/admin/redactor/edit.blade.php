@@ -47,8 +47,7 @@
                             <div class="col-xs-12 col-sm-12 col-md-12">
                                 <div class="form-group">
                                     <strong>{{ trans('event.author') }}</strong>
-                                    <input type="text" name="author" value="{{ $event->author }}" class="form-control"
-                                        placeholder="Автор">
+                                    {{ Form::select('author', $users, [], array('class' => 'form-control')) }}
                                 </div>
                             </div>
 
