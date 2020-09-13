@@ -102,6 +102,7 @@ class EventController extends Controller
         if(Gate::denies('manage-events')){
             return redirect(route('admin.redactor.index'));
         }
+
         $users = User::pluck('name','name')->all();
         $event = Event::find($id);
         
@@ -125,6 +126,7 @@ class EventController extends Controller
 
         $event = Event::find($id);
         $event->title = $request->get('title');
+        $event->link_images_1 = $request->get('link_images_1');
         $event->content_main_page = $request->get('content_main_page');
         $event->content = $request->get('content');
         $event->slug = $request->get('slug');

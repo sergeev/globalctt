@@ -22,6 +22,15 @@
 
                             <div class="col-xs-12 col-sm-12 col-md-12">
                                 <div class="form-group">
+                                    <strong>{{ trans('event.imagesLinkAdd') }}</strong><p>
+                                    <strong data-toggle="tooltip" data-placement="right">Пример: https://sun4-10.userapi.com/oZh9C3MMINcce-71h7kZOoX4ZdFwysPVQlCHhA/HxOM3b1WNQ0.jpg</strong>
+                                    <input type="text" name="link_images_1" value="{{ $event->link_images_1 }}" class="form-control"
+                                        placeholder="Ссылка на картинку вне сайта">
+                                </div>
+                            </div>
+
+                            <div class="col-xs-12 col-sm-12 col-md-12">
+                                <div class="form-group">
                                     <strong>{{ trans('event.content_main_page') }}</strong>
                                     <textarea class="form-control" style="height:150px" name="content_main_page"
                                         placeholder="Привью на главной ">{{ $event->content_main_page }}</textarea>
@@ -53,6 +62,12 @@
 
                             <div class="col-xs-12 col-sm-12 col-md-12">
                                 <div class="input-group mb-3">
+                                    {{-- <select name="published[]" id="published" class="form-control" multiple>
+                                        @foreach($event->includes->get('published') as $option)
+                                            <option value="{{ $option->id }}" {{ (collect(old('options'))->contains($option->id)) ? 'selected':'' }}>{{ $option->name }}</option>
+                                        @endforeach
+                                    </select> --}}
+                                    
                                     {{ Form::select('published', ['0' => 'Нет', '1' => 'Да'], null, ['class' => 'form-control']) }}
                                     <div class="input-group-append">
                                         <label class="input-group-text"
