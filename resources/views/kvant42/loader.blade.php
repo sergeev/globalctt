@@ -14,6 +14,7 @@
   <link href="{{ URL::asset('lib/ionicons/css/ionicons.min.css') }}" rel="stylesheet">
   <link href="{{ URL::asset('lib/owlcarousel/assets/owl.carousel.min.css') }}" rel="stylesheet">
   <link href="{{ URL::asset('lib/lightbox/css/lightbox.min.css') }}" rel="stylesheet">
+  <link href="{{ URL::asset('css/team.css') }}" rel="stylesheet">
 
   <!-- Main Stylesheet File -->
   <link href="{{ URL::asset('css/style.css') }}" rel="stylesheet">
@@ -23,7 +24,7 @@
       /* uncomment the following line to override default position*/
       /* position: '1', */
       /* uncomment the following line to override default size (values: small, large)*/
-      /* size: 'small', */
+      size: 'small',
       /* uncomment the following line to override default language (e.g., fr, de, es, he, nl, etc.)*/
       /* language: 'ru', */
       /* uncomment the following line to override color set via widget (e.g., #053f67)*/
@@ -34,7 +35,7 @@
       /* statement_text: "Our Accessibility Statement", */
       /* statement_url: "http://www.example.com/accessibility", */
       /* uncomment the following line to override support on mobile devices*/
-      /* mobile: true, */
+      mobile: true,
       account: 'G4bls11Hfp'
     };
   </script>

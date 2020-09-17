@@ -55,9 +55,12 @@ class TeacherController extends Controller
     public function store(Request $request)
     {
         request()->validate([
-            'teacher_full_name' => 'required',
-            'teacher_kvantum' => 'required',
-            'teacher_desc' => 'required',
+            //'teacher_full_id' => 'required', 
+            'teacher_full_name' => 'required', 
+            'link_images_1' => 'required', 
+            //'teacher_kvantum_id' => 'required', 
+            'teacher_kvantum' => 'required', 
+            'teacher_desc' => 'required'
         ]);
 
         //  Проверка на существующую запись в базе данных

@@ -15,11 +15,18 @@ class CreateTeachersTable extends Migration
     {
         Schema::create('teachers', function (Blueprint $table) {
             $table->bigIncrements('id');
-            //$table->integer('teacher_full_id')->unsigned();
+            $table->string('teacher_full_id', 100)->unsignedInteger()->default();
             $table->string('teacher_full_name');
+            $table->string('link_images_1', 100)->unsignedInteger()->default('./images/.');
+            $table->string('link_web_main', 100)->unsignedInteger()->default();
+            $table->string('link_web_facebook', 100)->unsignedInteger()->default();  
+            $table->string('link_web_twitter', 100)->unsignedInteger()->default();             
+            $table->string('link_web_skype', 100)->unsignedInteger()->default();  
+            $table->string('link_web_google', 100)->unsignedInteger()->default(); 
+            $table->string('link_web_vk', 100)->unsignedInteger()->default();  
             //$table->integer('teacher_kvantum_id')->unsigned();
             $table->string('teacher_kvantum');
-            $table->string('teacher_desc');
+            $table->string('teacher_desc', 300);
             $table->timestamps();
         });
     }

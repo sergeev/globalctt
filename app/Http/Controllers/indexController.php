@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Event;
 use App\Timetable;
 use App\Kvantum;
+use App\Teacher;
 use Illuminate\Support\Facades\DB;
 
 class indexController extends Controller
@@ -72,8 +73,10 @@ class indexController extends Controller
         ->selectRaw("count(case when student_rang = '1' then 1 end) as id")
         ->first();
 
+        $teachers = Teacher::all();
+
     $events = Event::latest()->paginate(6);
-        return view('kvant42.index', compact('events', 'timetables', 'totals', 'kvantums', 'promrobo', 'resident_evil', 'MVP'))->with(['menu_color_' => '#385E9D',
+        return view('kvant42.index', compact('events', 'timetables', 'totals', 'kvantums', 'promrobo', 'resident_evil', 'MVP', 'teachers'))->with(['menu_color_' => '#385E9D',
                                       // Social Links
                                       'title_page' => 'Кванториум 42 - Новокузнецк',
                                       // fb link

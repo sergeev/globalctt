@@ -12,12 +12,106 @@
                 <div class="card-body">
                     @include('admin.errorsForm')
                     {!! Form::open(array('route' => 'admin.teachers.store','method'=>'POST')) !!}
+
                     <div class="row">
+
+                        <div class="col-xs-12 col-sm-12 col-md-12">
+                            <div class="form-group">
+                                <strong data-toggle="tooltip" data-placement="right"
+                                    title="Ссылка на картинку вне сайта">Присвоить уникальный ID: если оставить пустым -
+                                    не назвачен(редактирование запрещено) [?]</strong>
+                                <p>
+                                    <strong data-toggle="tooltip" data-placement="right">Пример: Teacher900540</strong>
+                                    <input type="text" name="teacher_full_id" class="form-control"
+                                        placeholder="Присвоить уникальный ID, это будет ключь для проведения уникальных событий"></textarea>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-12 col-md-12">
+                            <div class="form-group">
+                                <strong data-toggle="tooltip" data-placement="right"
+                                    title="Ссылка на картинку вне сайта">Ссылка на картинку Профиля: [?]</strong>
+                                <p>
+                                    <strong data-toggle="tooltip" data-placement="right">Пример: VK - >
+                                        https://sun4-15.userapi.com/impf/c854528/v854528468/fc7b9/ZvCyKoYb2Cw.jpg?size=200x0&quality=90&crop=0,390,1536,1536&sign=4c5eab6404d6844c895c4613c38c743a&ava=1</strong>
+                                    <input type="text" name="link_images_1" class="form-control"
+                                        placeholder="Ссылка на картинку профиля"></textarea>
+                            </div>
+                        </div>
+
+                        <div class="col-xs-12 col-sm-12 col-md-12">
+                            <div class="form-group">
+                                <strong data-toggle="tooltip" data-placement="right"
+                                    title="Ссылка на картинку вне сайта">Ссылка на личный сайт: [?]</strong>
+                                <p>
+                                    <strong data-toggle="tooltip" data-placement="right">
+                                        http://kvantorium-nvkz.ru/</strong>
+                                    <input type="text" name="link_web_main" class="form-control"
+                                        placeholder="Ссылка на личный сайт"></textarea>
+                            </div>
+                        </div>
+
+                        <div class="col-xs-12 col-sm-12 col-md-12">
+                            <div class="form-group">
+                                <strong data-toggle="tooltip" data-placement="right"
+                                    title="Ссылка на картинку вне сайта">Ссылка на соцсеть в facebook: [?]</strong>
+                                <p>
+                                    <strong data-toggle="tooltip"
+                                        data-placement="right">https://www.facebook.com/</strong>
+                                    <input type="text" name="link_web_facebook" class="form-control"
+                                        placeholder="Ссылка на соцсеть в facebook"></textarea>
+                            </div>
+                        </div>
+
+                        <div class="col-xs-12 col-sm-12 col-md-12">
+                            <div class="form-group">
+                                <strong data-toggle="tooltip" data-placement="right"
+                                    title="Ссылка на картинку вне сайта">Ссылка на соцсеть в twitter: [?]</strong>
+                                <p>
+                                    <strong data-toggle="tooltip"
+                                        data-placement="right">https://www.twitter.com/</strong>
+                                    <input type="text" name="link_web_twitter" class="form-control"
+                                        placeholder="Ссылка на соцсеть в twitter"></textarea>
+                            </div>
+                        </div>
+
+                        <div class="col-xs-12 col-sm-12 col-md-12">
+                            <div class="form-group">
+                                <strong data-toggle="tooltip" data-placement="right"
+                                    title="Ссылка на картинку вне сайта">Ссылка на соцсеть в skype: [?]</strong>
+                                <p>
+                                    <strong data-toggle="tooltip" data-placement="right">https://www.skype.com/</strong>
+                                    <input type="text" name="link_web_skype" class="form-control"
+                                        placeholder="Ссылка на соцсеть в skype"></textarea>
+                            </div>
+                        </div>
+
+                        <div class="col-xs-12 col-sm-12 col-md-12">
+                            <div class="form-group">
+                                <strong data-toggle="tooltip" data-placement="right"
+                                    title="Ссылка на картинку вне сайта">Ссылка на соцсеть в google: [?]</strong>
+                                <p>
+                                    <strong data-toggle="tooltip"
+                                        data-placement="right">https://www.google.com/</strong>
+                                    <input type="text" name="link_web_google" class="form-control"
+                                        placeholder="Ссылка на соцсеть в google"></textarea>
+                            </div>
+                        </div>
+
+                        <div class="col-xs-12 col-sm-12 col-md-12">
+                            <div class="form-group">
+                                <strong data-toggle="tooltip" data-placement="right"
+                                    title="Ссылка на картинку вне сайта">Ссылка на соцсеть в vk: [?]</strong>
+                                <p>
+                                    <strong data-toggle="tooltip" data-placement="right">https://vk.ru/</strong>
+                                    <input type="text" name="link_web_vk" class="form-control"
+                                        placeholder="Ссылка на соцсеть в vk"></textarea>
+                            </div>
+                        </div>
+
                         <div class="col-xs-12 col-sm-12 col-md-12">
                             <div class="form-group">
                                 <strong>Ф.И.О:</strong>
-                                {!! Form::text('teacher_full_name', null, array('placeholder' => 'Сергеев Василий
-                                Александрович','class' => 'form-control')) !!}
+                                {!! Form::text('teacher_full_name', null, array('placeholder' => 'Сергеев Василий Александрович','class' => 'form-control')) !!}
                             </div>
                         </div>
 
