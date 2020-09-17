@@ -5,13 +5,75 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Event;
+use App\Timetable;
+use App\Kvantum;
+use Illuminate\Support\Facades\DB;
 
 class indexController extends Controller
 {
 	public function default()
 	{
+        $kvantums = Kvantum::all();
+        $totals = DB::table('students')->selectRaw('count(*) as total')->first();
+        $timetables = Timetable::all();
+
+        $itcube_stat = DB::table('students')
+        ->selectRaw('count(*) as total')
+        ->selectRaw("count(case when organization = '2' then 1 end) as id")
+        ->first();
+
+        $hitechs = DB::table('students')
+        ->selectRaw('count(*) as total')
+        ->selectRaw("count(case when inputsKvantum = 'Хай-Тек' then 1 end) as id")
+        ->first();
+
+        $promrobo = DB::table('students')
+        ->selectRaw('count(*) as total')
+        ->selectRaw("count(case when inputsKvantum = 'Робоквантум' then 1 end) as id")
+        ->first();
+
+        $it_k = DB::table('students')
+        ->selectRaw('count(*) as total')
+        ->selectRaw("count(case when inputsKvantum = 'IT-квантум' then 1 end) as id")
+        ->first();
+
+        $energy_k = DB::table('students')
+        ->selectRaw('count(*) as total')
+        ->selectRaw("count(case when inputsKvantum = 'Энерджиквантум' then 1 end) as id")
+        ->first();
+
+        $nano_k = DB::table('students')
+        ->selectRaw('count(*) as total')
+        ->selectRaw("count(case when inputsKvantum = 'Наноквантум' then 1 end) as id")
+        ->first();
+
+        $vr_ar_k = DB::table('students')
+        ->selectRaw('count(*) as total')
+        ->selectRaw("count(case when inputsKvantum = 'VR/AR-квантум' then 1 end) as id")
+        ->first();
+
+        $chess_k = DB::table('students')
+        ->selectRaw('count(*) as total')
+        ->selectRaw("count(case when inputsKvantum = 'Шахматная гостиная' then 1 end) as id")
+        ->first();
+
+        $maths_k = DB::table('students')
+        ->selectRaw('count(*) as total')
+        ->selectRaw("count(case when inputsKvantum = 'Математика' then 1 end) as id")
+        ->first();
+
+        $MVP = DB::table('students')
+        ->selectRaw('count(*) as total')
+        ->selectRaw("count(case when student_rang = '2' then 1 end) as id")
+        ->first();
+
+        $resident_evil = DB::table('students')
+        ->selectRaw('count(*) as total')
+        ->selectRaw("count(case when student_rang = '1' then 1 end) as id")
+        ->first();
+
     $events = Event::latest()->paginate(6);
-        return view('kvant42.index', compact('events'))->with(['menu_color_' => '#385E9D',
+        return view('kvant42.index', compact('events', 'timetables', 'totals', 'kvantums', 'promrobo', 'resident_evil', 'MVP'))->with(['menu_color_' => '#385E9D',
                                       // Social Links
                                       'title_page' => 'Кванториум 42 - Новокузнецк',
                                       // fb link

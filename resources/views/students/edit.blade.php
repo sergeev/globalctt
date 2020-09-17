@@ -114,7 +114,7 @@
                         <div class="col-xs-12 col-sm-12 col-md-12">
                             <div class="form-group">
                                 <strong>*Группа:</strong>
-                                {{ Form::select('groupTime', $timetables, [], array('class' => 'form-control')) }}
+                                {{ Form::select('groupTime', $timetables_table, [], array('class' => 'form-control')) }}
                             </div>
                         </div>
 

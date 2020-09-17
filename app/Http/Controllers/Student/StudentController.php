@@ -135,9 +135,9 @@ class StudentController extends Controller
         $student->student_checked = 0;
         $student->student_deleted = 0;
 
-        //$student->save();
+        $student->save();
 
-        dd($student);
+        //dd($student);
 
         if($student->create()){
             $request->session()->flash('success', $student->name_1_ot . ' has been create');
@@ -166,10 +166,15 @@ class StudentController extends Controller
      */
     public function edit(Student $student, Kvantum $kvantum)
     {
+        $id = Student::all();
         $teachers = Teacher::pluck('teacher_full_name','teacher_full_name')->all();
         $kvantums = Kvantum::pluck('kvantum_name','kvantum_name')->all();
 
-        $timetables = Timetable::pluck('week_group_id', 'week_group_id')->all();
+        $week_group_id = Timetable::pluck('week_group_id', 'week_group_id')->all();
+        $week_day = Timetable::pluck('week_day', 'week_day')->all();
+
+        $timetables_table = $week_group_id['week_group_id'].' '.$week_day['week_day'];
+
         $genders = array(
             'gender' =>  DB::table('students')->get()
           );
@@ -179,7 +184,7 @@ class StudentController extends Controller
             return redirect(route('admin.users.index'));
         }
         //return view('students.edit',compact('student', 'genders'));
-        return view('students.edit',compact('student', 'kvantums', 'teachers', 'timetables'));
+        return view('students.edit',compact('student', 'kvantums', 'teachers', 'timetables_table', 'id'));
     }
 
     /**
@@ -237,9 +242,9 @@ class StudentController extends Controller
         $student->gender = $request->gender;
         $student->inputsSchool = $request->inputsSchool;
         $student->inputsClass = $request->inputsClass;
-        //$student->inputsKvantum = $request->inputsKvantum;
-        //$student->teacherName = $request->teacherName;
-        //$student->groupTime = $request->groupTime;
+        $student->inputsKvantum = $request->inputsKvantum;
+        $student->teacherName = $request->teacherName;
+        $student->groupTime = $request->groupTime;
         $student->inputsNameLegalRepresentative = $request->inputsNameLegalRepresentative;
         $student->NameLegalRepresentativeTelephone = $request->NameLegalRepresentativeTelephone;
         $student->inputsComments = $request->inputsComments;

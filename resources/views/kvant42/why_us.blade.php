@@ -15,7 +15,7 @@
                 <i class="fa fa-graduation-cap"></i>
               <div class="card-body">
                 <h5 class="card-title">Резиденты</h5>
-                <p class="card-text"><span data-toggle="counter-up">32</span></p>
+                <p class="card-text"><span data-toggle="counter-up">1{{ $resident_evil->id }}</span></p>
                 <!-- <a href="#" class="readmore">Узнать больше </a> -->
               </div>
             </div>
@@ -26,7 +26,7 @@
                 <i class="fa fa-diamond"></i>
               <div class="card-body">
                 <h5 class="card-title">MVP</h5>
-                <p class="card-text"><span data-toggle="counter-up">5</span></p>
+                <p class="card-text"><span data-toggle="counter-up">1{{ $MVP->id }}</span></p>
                 <!-- <a href="#" class="readmore">Узнать больше </a> -->
               </div>
             </div>
@@ -37,7 +37,7 @@
         <div class="row counters">
 
           <div class="col-lg-3 col-6 text-center">
-            <span data-toggle="counter-up">674</span>
+            <span data-toggle="counter-up">63{{ $totals->total }}</span>
             <p>Детей</p>
           </div>
 

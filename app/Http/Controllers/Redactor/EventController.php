@@ -53,14 +53,26 @@ class EventController extends Controller
      */
     public function store(Request $request)
     {
-        request()->validate([
+        $rules = [
             'title' => 'required',
-            'content_main_page' => 'required',
-            'content' => 'required',
+            'link_images_1' => 'required',
+            'content_main_page' => 'required|max:300',
+            'content' => 'required|max:5000',
             'author' => 'required',
             //'published' => 'required',
             //'published_slider_status' => 'required'
-            ]);
+            ];
+
+            $messages = [
+                'title.required' => 'Введите название события',
+                'content_main_page.required' => 'Введите ссылку на изображение',
+                'content_main_page.max' => 'Вы ввели более 300 символов!',
+                'content.required' => 'Введите текст статьи',
+                'content.max' => 'Введите менее 5000 символов!',
+                'author.required' => 'Выберите автора'
+            ];
+
+            $this->validate($request, $rules, $messages);
 
             $event = new Event([
                 'title' => $request->get('title'),

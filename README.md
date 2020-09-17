@@ -25,6 +25,10 @@
 * php artisan config:clear
 * php artisan view:clear
 
+# Fix errors create new file in project (Example - Target class [ExamplesSeeder] does not exist.)
+
+* composer dumpautoload
+
 ```
 Route::get('/clear-cache', function() {
     Artisan::call('cache:clear');

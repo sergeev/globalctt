@@ -33,7 +33,7 @@
                                 <div class="form-group">
                                     <strong>{{ trans('event.content_main_page') }}</strong>
                                     <textarea class="form-control" style="height:150px" name="content_main_page"
-                                        placeholder="Привью на главной ">{{ $event->content_main_page }}</textarea>
+                                        placeholder="Привью на главной " maxlength="300">{{ $event->content_main_page }}</textarea>
                                 </div>
                             </div>
 
