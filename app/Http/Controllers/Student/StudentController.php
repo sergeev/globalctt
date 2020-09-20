@@ -173,7 +173,7 @@ class StudentController extends Controller
         $week_group_id = Timetable::pluck('week_group_id', 'week_group_id')->all();
         $week_day = Timetable::pluck('week_day', 'week_day')->all();
 
-        $timetables_table = $week_group_id['week_group_id'].' '.$week_day['week_day'];
+        //$timetables_table = $week_group_id['week_group_id'].' '.$week_day['week_day'];
 
         $genders = array(
             'gender' =>  DB::table('students')->get()
@@ -184,7 +184,7 @@ class StudentController extends Controller
             return redirect(route('admin.users.index'));
         }
         //return view('students.edit',compact('student', 'genders'));
-        return view('students.edit',compact('student', 'kvantums', 'teachers', 'timetables_table', 'id'));
+        return view('students.edit',compact('student', 'kvantums', 'teachers', 'week_group_id', 'id'));
     }
 
     /**
