@@ -8,9 +8,11 @@
                 <!-- <p>Команда лучших педагогов готова всегда направлять и настравлять ваших детей в этих не легких науках.</p> -->
             </div>
 
-            <div class="row">
+            <div id="carouselTeamsShows" class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner">
                 <!-- Team member -->
                 @foreach ($teachers as $teacher)
+                <div class="carousel-item {{ $loop->first ? 'active' : '' }}">
                 <div class="col-xs-12 col-sm-6 col-md-4">
                     <div class="image-flip">
                         <div class="mainflip flip-0">
@@ -70,9 +72,19 @@
                         </div>
                     </div>
                 </div>
+                </div>
                 @endforeach
                 <!-- ./Team member -->
 
             </div>
+            <a class="carousel-control-prev" href="#carouselTeamsShows" role="button" data-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="sr-only">Предыдущий</span>
+          </a>
+          <a class="carousel-control-next" href="#carouselTeamsShows" role="button" data-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="sr-only">Следующий</span>
+          </a>
+        </div>
         </div>
     </section><!-- #team -->

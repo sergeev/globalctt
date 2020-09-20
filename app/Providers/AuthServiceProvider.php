@@ -29,28 +29,28 @@ class AuthServiceProvider extends ServiceProvider
 
         // Access for only admin & director
         Gate::define('manage-users', function($user){
-            return $user->hasAnyRoles(['admin', 'director']);
+            return $user->hasAnyRoles(['admin', 'manager']);
         });
 
         Gate::define('manage-teachers', function($user){
-            return $user->hasAnyRoles(['admin', 'director']);
+            return $user->hasAnyRoles(['admin', 'manager']);
         });
 
         Gate::define('manage-kvantums', function($user){
-            return $user->hasAnyRoles(['admin', 'redactor']);
+            return $user->hasAnyRoles(['admin', 'manager']);
         });
 
         Gate::define('manage-students', function($user){
-            return $user->hasAnyRoles(['admin', 'redactor']);
+            return $user->hasAnyRoles(['admin', 'manager']);
         });
 
         Gate::define('manage-timetables', function($user){
-            return $user->hasAnyRoles(['admin', 'redactor']);
+            return $user->hasAnyRoles(['admin', 'manager']);
         });
 
         // UserController ->
         Gate::define('edit-users', function($user){
-            return $user->hasAnyRoles(['admin', 'director']);
+            return $user->hasAnyRoles(['admin']);
         });
 
         Gate::define('delete-users', function($user){
@@ -59,7 +59,7 @@ class AuthServiceProvider extends ServiceProvider
 
         // Redactor
         Gate::define('manage-events', function($user){
-            return $user->hasAnyRoles(['admin', 'redactor']);
+            return $user->hasAnyRoles(['admin', 'redactor', 'manager']);
         });
     }
 }

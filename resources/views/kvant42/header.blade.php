@@ -5,8 +5,7 @@
     <div class="container">
 
       <a class="navbar-brand" href="/">
-        <img src="{{ URL::asset('img/favicon.jpg') }}" width="55" height="55" class="d-inline-block align-top" alt="Кванториум 42 Новокузнецк" loading="lazy">
-        Кванториум 42 Новокузнецк
+        <img src="{{ URL::asset('img/kvantLogo.png') }}" width="248" height="40" class="d-inline-block align-top" alt="Кванториум 42 Новокузнецк" loading="lazy">
       </a>
 
       <nav class="main-nav float-right d-none d-lg-block">

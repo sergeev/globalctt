@@ -32,13 +32,13 @@
                                     title="Ссылка на картинку вне сайта">Ссылка на картинку Профиля: [?]</strong>
                                 <p>
                                     <strong data-toggle="tooltip" data-placement="right">Пример: VK - >
-                                        https://sun4-15.userapi.com/impf/c854528/v854528468/fc7b9/ZvCyKoYb2Cw.jpg?size=200x0&quality=90&crop=0,390,1536,1536&sign=4c5eab6404d6844c895c4613c38c743a&ava=1</strong>
+                                    https://vk.com/images/deactivated_hid_200.gif</strong>
                                     <input type="text" name="link_images_1" class="form-control"
                                         placeholder="Ссылка на картинку профиля"></textarea>
                             </div>
                         </div>
 
-                        <div class="col-xs-12 col-sm-12 col-md-12">
+                        {{-- <div class="col-xs-12 col-sm-12 col-md-12">
                             <div class="form-group">
                                 <strong data-toggle="tooltip" data-placement="right"
                                     title="Ссылка на картинку вне сайта">Ссылка на личный сайт: [?]</strong>
@@ -106,7 +106,7 @@
                                     <input type="text" name="link_web_vk" class="form-control"
                                         placeholder="Ссылка на соцсеть в vk"></textarea>
                             </div>
-                        </div>
+                        </div> --}}
 
                         <div class="col-xs-12 col-sm-12 col-md-12">
                             <div class="form-group">

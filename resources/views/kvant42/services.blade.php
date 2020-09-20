@@ -195,65 +195,6 @@
                     </div>
                 </div>
 
-                <!-- Modal Calendar Promrobo -->
-                <div class="modal fade" id="calendarModalCenterPromrobo" tabindex="-1" role="dialog"
-                    aria-labelledby="calendarModalCenterPromrobo" aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-centered" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLongTitle">Расписание Промробо</h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            <div class="modal-body">
-                                @foreach ($timetables as $timetable)
-                                @if($timetable->kvantum_name == 'Робоквантум')
-                                <div class="col-md-10 col-lg-12">
-                                    <div class="box">
-                                        <div class="card-body">
-                                            <p class="text-primary">Педагог: {!! $timetable->teacher_full_name !!}</p>
-                                            <p class="card-text">
-                                                @if($timetable->week_day == 'Понедельник')
-                                            <p class="text-primary">Понедельник: {!! $timetable->week_time !!} Группа:
-                                                {!! $timetable->week_group_id !!}</p>
-                                            @elseif($timetable->week_day == 'Вторник')
-                                            <p class="text-primary">Вторинк: {!! $timetable->week_time !!} Группа: {!!
-                                                $timetable->week_group_id !!}</p>
-                                            @elseif($timetable->week_day == 'Среда')
-                                            <p class="text-primary">Среда: {!! $timetable->week_time !!} Группа: {!!
-                                                $timetable->week_group_id !!}</p>
-                                            @elseif($timetable->week_day == 'Четверг')
-                                            <p class="text-primary">Четверг: {!! $timetable->week_time !!} Группа: {!!
-                                                $timetable->week_group_id !!}</p>
-                                            @elseif($timetable->week_day == 'Пятница')
-                                            <p class="text-primary">Пятница: {!! $timetable->week_time !!} Группа: {!!
-                                                $timetable->week_group_id !!}</p>
-                                            @elseif($timetable->week_day == 'Суббота')
-                                            <p class="text-primary">Суббота: {!! $timetable->week_time !!} Группа: {!!
-                                                $timetable->week_group_id !!}</p>
-                                            @elseif($timetable->week_day == 'Воскресенье')
-                                            <p class="text-primary">Воскресенье: {!! $timetable->week_time !!} Группа:
-                                                {!! $timetable->week_group_id !!}</p>
-                                            @else
-                                            <p class="text-primary">Расписание ещё не опубликовано</p>
-                                            @endif
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                                @endif
-                                @endforeach
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрыть</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-
-
                 <!-- Modal it -->
                 <div class="modal fade" id="itModalCenter" tabindex="-1" role="dialog"
                     aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
@@ -296,13 +237,17 @@
                                     <div class="card-footer text-muted">
                                         {{-- Статистика заполняемости от максемальной, когда 100 квантум закрыт! --}}
                                         <h6>Наполняемость</h6>
+                                        @foreach($kvantums as $key => $kvantum)
+                                        @if($kvantum->kvantum_id == '3')
                                         <div class="progress">
                                             <div class="progress-bar progress-bar-striped progress-bar-animated"
                                                 data-toggle="tooltip" data-placement="top"
                                                 title="Если полоска достигнет 100% квантум будет закрыт"
-                                                role="progressbar" aria-valuenow="75" aria-valuemin="0"
-                                                aria-valuemax="100" style="width: 50%"></div>
+                                                role="progressbar" style="width:{{ $it_k->id }}%">
+                                                {{ $it_k->id }}</div>
                                         </div>
+                                        @endif
+                                        @endforeach
                                     </div>
                                 </div>
                             </div>
@@ -311,8 +256,8 @@
                                 <!-- button type="button" class="btn btn-success">Записаться</button> -->
                                 <button type="button" class="btn btn-success" data-toggle="modal"
                                     data-target="#joinModal" data-whatever="@getbootstrap">Записаться</button>
-                                <button type="button" class="btn btn-primary" data-toggle="modal"
-                                    data-target="#calendarModalCenter">Расписание</button>
+                                    <button type="button" class="btn btn-primary" data-toggle="modal"
+                                    data-target="#calendarModalCenterIt">Расписание</button>
                             </div>
                         </div>
                     </div>
@@ -695,6 +640,120 @@
                         </div>
                     </div>
                 </div>
+
+
+                               <!-- Modal Calendar Promrobo -->
+                               <div class="modal fade" id="calendarModalCenterPromrobo" tabindex="-1" role="dialog"
+                    aria-labelledby="calendarModalCenterPromrobo" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLongTitle">Расписание Промробо</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                            <div class="card-body">
+                    <table class="table ">
+                        <tr>
+                            <th>Педагог</th>
+                            <th>День недели</th>
+                            <th>Время</th>
+                            <th>Группа</th>
+                            </tr>
+                                @foreach ($timetables as $key => $timetable)
+                                <tr>@if($timetable->kvantum_name == 'Робоквантум')
+                                <td>{{ $timetable->teacher_full_name }}</td>
+                                <td>@if($timetable->week_day == 'Понедельник')
+                                    Понедельник
+                                            @elseif($timetable->week_day == 'Вторник')
+                                            Вторинк
+                                            @elseif($timetable->week_day == 'Среда')
+                                            Среда
+                                            @elseif($timetable->week_day == 'Четверг')
+                                            Четверг
+                                            @elseif($timetable->week_day == 'Пятница')
+                                            Пятница
+                                            @elseif($timetable->week_day == 'Суббота')
+                                            Суббота
+                                            @elseif($timetable->week_day == 'Воскресенье')
+                                            Воскресенье
+                                            @else
+                                            Расписание ещё не опубликовано
+                                            @endif
+                                        </td>
+                                        <td>{!! $timetable->week_time !!}</td>
+                                        <td>{!! $timetable->week_group_id !!}</td>
+                                        </tr>
+                                        @endif
+                                @endforeach
+                        </table>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрыть</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </div>
+
+                               <!-- Modal Calendar IT-квантум -->
+                               <div class="modal fade" id="calendarModalCenterIt" tabindex="-1" role="dialog"
+                    aria-labelledby="calendarModalCenterIt" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLongTitle">Расписание IT-квантум</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                            <div class="card-body">
+                    <table class="table ">
+                        <tr>
+                            <th>Педагог</th>
+                            <th>День недели</th>
+                            <th>Время</th>
+                            <th>Группа</th>
+                            </tr>
+                                @foreach ($timetables as $key => $timetable)
+                                <tr>@if($timetable->kvantum_name == 'IT-квантум')
+                                <td>{{ $timetable->teacher_full_name }}</td>
+                                <td>@if($timetable->week_day == 'Понедельник')
+                                    Понедельник
+                                            @elseif($timetable->week_day == 'Вторник')
+                                            Вторинк
+                                            @elseif($timetable->week_day == 'Среда')
+                                            Среда
+                                            @elseif($timetable->week_day == 'Четверг')
+                                            Четверг
+                                            @elseif($timetable->week_day == 'Пятница')
+                                            Пятница
+                                            @elseif($timetable->week_day == 'Суббота')
+                                            Суббота
+                                            @elseif($timetable->week_day == 'Воскресенье')
+                                            Воскресенье
+                                            @else
+                                            Расписание ещё не опубликовано
+                                            @endif
+                                        </td>
+                                        <td>{!! $timetable->week_time !!}</td>
+                                        <td>{!! $timetable->week_group_id !!}</td>
+                                        </tr>
+                                        @endif
+                                @endforeach
+                        </table>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрыть</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </div>
+
                 <!-- Form JOIN TO DO-->
                 <!--             <div class="modal fade" id="joinModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
               <div class="modal-dialog modal-dialog-centered" role="document">
