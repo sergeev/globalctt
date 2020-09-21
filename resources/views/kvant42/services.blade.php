@@ -256,7 +256,7 @@
                                 <!-- button type="button" class="btn btn-success">Записаться</button> -->
                                 <button type="button" class="btn btn-success" data-toggle="modal"
                                     data-target="#joinModal" data-whatever="@getbootstrap">Записаться</button>
-                                    <button type="button" class="btn btn-primary" data-toggle="modal"
+                                <button type="button" class="btn btn-primary" data-toggle="modal"
                                     data-target="#calendarModalCenterIt">Расписание</button>
                             </div>
                         </div>
@@ -641,9 +641,8 @@
                     </div>
                 </div>
 
-
-                               <!-- Modal Calendar Promrobo -->
-                               <div class="modal fade" id="calendarModalCenterPromrobo" tabindex="-1" role="dialog"
+                <!-- Modal Calendar Promrobo -->
+                <div class="modal fade" id="calendarModalCenterPromrobo" tabindex="-1" role="dialog"
                     aria-labelledby="calendarModalCenterPromrobo" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered" role="document">
                         <div class="modal-content">
@@ -654,52 +653,55 @@
                                 </button>
                             </div>
                             <div class="modal-body">
-                            <div class="card-body">
-                    <table class="table ">
-                        <tr>
-                            <th>Педагог</th>
-                            <th>День недели</th>
-                            <th>Время</th>
-                            <th>Группа</th>
-                            </tr>
-                                @foreach ($timetables as $key => $timetable)
-                                <tr>@if($timetable->kvantum_name == 'Робоквантум')
-                                <td>{{ $timetable->teacher_full_name }}</td>
-                                <td>@if($timetable->week_day == 'Понедельник')
-                                    Понедельник
-                                            @elseif($timetable->week_day == 'Вторник')
-                                            Вторинк
-                                            @elseif($timetable->week_day == 'Среда')
-                                            Среда
-                                            @elseif($timetable->week_day == 'Четверг')
-                                            Четверг
-                                            @elseif($timetable->week_day == 'Пятница')
-                                            Пятница
-                                            @elseif($timetable->week_day == 'Суббота')
-                                            Суббота
-                                            @elseif($timetable->week_day == 'Воскресенье')
-                                            Воскресенье
-                                            @else
-                                            Расписание ещё не опубликовано
-                                            @endif
-                                        </td>
-                                        <td>{!! $timetable->week_time !!}</td>
-                                        <td>{!! $timetable->week_group_id !!}</td>
+                                <div class="card-body">
+                                    <table class="table ">
+                                        <tr>
+                                            <th>Педагог</th>
+                                            <th>День недели</th>
+                                            <th>Время</th>
+                                            <th>Группа</th>
+                                            <th>Мест</th>
+                                        </tr>
+                                        @foreach ($timetables as $key => $timetable)
+                                        <tr>@if($timetable->kvantum_name == 'Робоквантум')
+                                            <td>{{ $timetable->teacher_full_name }}</td>
+                                            <td>@if($timetable->week_day == 'Понедельник')
+                                                Понедельник
+                                                @elseif($timetable->week_day == 'Вторник')
+                                                Вторинк
+                                                @elseif($timetable->week_day == 'Среда')
+                                                Среда
+                                                @elseif($timetable->week_day == 'Четверг')
+                                                Четверг
+                                                @elseif($timetable->week_day == 'Пятница')
+                                                Пятница
+                                                @elseif($timetable->week_day == 'Суббота')
+                                                Суббота
+                                                @elseif($timetable->week_day == 'Воскресенье')
+                                                Воскресенье
+                                                @else
+                                                Расписание ещё не опубликовано
+                                                @endif
+                                            </td>
+                                            <td>{!! $timetable->week_time !!}</td>
+                                            <td>{!! $timetable->week_group_id !!}</td>
+                                            <td>10</td>
                                         </tr>
                                         @endif
-                                @endforeach
-                        </table>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрыть</button>
+                                        @endforeach
+                                    </table>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary"
+                                        data-dismiss="modal">Закрыть</button>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                </div>
 
-                               <!-- Modal Calendar IT-квантум -->
-                               <div class="modal fade" id="calendarModalCenterIt" tabindex="-1" role="dialog"
+                <!-- Modal Calendar IT-квантум -->
+                <div class="modal fade" id="calendarModalCenterIt" tabindex="-1" role="dialog"
                     aria-labelledby="calendarModalCenterIt" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered" role="document">
                         <div class="modal-content">
@@ -710,48 +712,49 @@
                                 </button>
                             </div>
                             <div class="modal-body">
-                            <div class="card-body">
-                    <table class="table ">
-                        <tr>
-                            <th>Педагог</th>
-                            <th>День недели</th>
-                            <th>Время</th>
-                            <th>Группа</th>
-                            </tr>
-                                @foreach ($timetables as $key => $timetable)
-                                <tr>@if($timetable->kvantum_name == 'IT-квантум')
-                                <td>{{ $timetable->teacher_full_name }}</td>
-                                <td>@if($timetable->week_day == 'Понедельник')
-                                    Понедельник
-                                            @elseif($timetable->week_day == 'Вторник')
-                                            Вторинк
-                                            @elseif($timetable->week_day == 'Среда')
-                                            Среда
-                                            @elseif($timetable->week_day == 'Четверг')
-                                            Четверг
-                                            @elseif($timetable->week_day == 'Пятница')
-                                            Пятница
-                                            @elseif($timetable->week_day == 'Суббота')
-                                            Суббота
-                                            @elseif($timetable->week_day == 'Воскресенье')
-                                            Воскресенье
-                                            @else
-                                            Расписание ещё не опубликовано
-                                            @endif
-                                        </td>
-                                        <td>{!! $timetable->week_time !!}</td>
-                                        <td>{!! $timetable->week_group_id !!}</td>
+                                <div class="card-body">
+                                    <table class="table ">
+                                        <tr>
+                                            <th>Педагог</th>
+                                            <th>День недели</th>
+                                            <th>Время</th>
+                                            <th>Группа</th>
+                                        </tr>
+                                        @foreach ($timetables as $key => $timetable)
+                                        <tr>@if($timetable->kvantum_name == 'IT-квантум')
+                                            <td>{{ $timetable->teacher_full_name }}</td>
+                                            <td>@if($timetable->week_day == 'Понедельник')
+                                                Понедельник
+                                                @elseif($timetable->week_day == 'Вторник')
+                                                Вторинк
+                                                @elseif($timetable->week_day == 'Среда')
+                                                Среда
+                                                @elseif($timetable->week_day == 'Четверг')
+                                                Четверг
+                                                @elseif($timetable->week_day == 'Пятница')
+                                                Пятница
+                                                @elseif($timetable->week_day == 'Суббота')
+                                                Суббота
+                                                @elseif($timetable->week_day == 'Воскресенье')
+                                                Воскресенье
+                                                @else
+                                                Расписание ещё не опубликовано
+                                                @endif
+                                            </td>
+                                            <td>{!! $timetable->week_time !!}</td>
+                                            <td>{!! $timetable->week_group_id !!}</td>
                                         </tr>
                                         @endif
-                                @endforeach
-                        </table>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрыть</button>
+                                        @endforeach
+                                    </table>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary"
+                                        data-dismiss="modal">Закрыть</button>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
                 </div>
 
                 <!-- Form JOIN TO DO-->
