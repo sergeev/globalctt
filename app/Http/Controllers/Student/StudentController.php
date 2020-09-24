@@ -9,6 +9,10 @@ use App\Kvantum;
 use App\Teacher;
 use App\Timetable;
 use Gate;
+use Session;
+use Illuminate\Support\Facades\Redirect;
+use App\Extensions\MongoSessionStore;
+
 
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
@@ -94,7 +98,7 @@ class StudentController extends Controller
             'inputsComments.regex' => 'Необходимо указать Комментарий',
             //'inputsComments.min' => 'Необходимо ввести не менее 5 символов в комментариях',
 
-            //'min' => 'Необходимо указать все 10 символов сертификата ПФДО, Пример: 0025011990',
+            'min' => 'Необходимо указать все 10 символов сертификата ПФДО, Пример: 0025011990',
             //'max' => 'Необходимо указать не более 10 символов сертификата ПФДО, Пример: 0025011990',
         ];
 
@@ -138,13 +142,15 @@ class StudentController extends Controller
         $student->save();
 
         //dd($student);
+        $request->session()->flash('message', $student->name_1_ot . ' has been create');
+        return redirect()->route('students.students.index');
 
-        if($student->create()){
-            $request->session()->flash('success', $student->name_1_ot . ' has been create');
-            return redirect()->route('students.students.index');
-        }else{
-            $request->session()->flash('error', 'Student not create, error message');
-        }
+        // if($student->create()){
+        //     $request->session()->flash('success', $student->name_1_ot . ' has been create');
+        //     return redirect()->route('students.students.index');
+        // }else{
+        //     $request->session()->flash('error', 'Student not create, error message');
+        // }
     }
 
     /**

@@ -16,6 +16,7 @@ class CreateKvantumTable extends Migration
         Schema::create('kvanta', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->integer('kvantum_id');
+            $table->boolean('kvantum_status')->unsignedInteger()->default(1);
             $table->string('kvantum_name', 100);
             $table->integer('kvantum_teacher_id');
             //$table->foreign('teacher')->references('id')->on('teachers');

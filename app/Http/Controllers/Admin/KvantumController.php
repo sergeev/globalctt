@@ -30,6 +30,8 @@ class KvantumController extends Controller
         $totals = DB::table('students')->selectRaw('count(*) as total')->first();
         //$hitechs = DB::table('students')->where('inputsKvantum', '')->first();
 
+        $kvantum_status = Kvantum::All();
+
         $meridian_stat = DB::table('students')
         ->selectRaw('count(*) as total')
         ->selectRaw("count(case when organization = '0' then 1 end) as id")
@@ -118,7 +120,7 @@ class KvantumController extends Controller
 
         $kvantums = Kvantum::latest()->paginate(10);
 
-        return view('kvantums.index', compact('meridian_stat', 'kvantorium_stat', 'itcube_stat', 'totals', 'kvantums', 'hitechs', 'promrobo', 'it_k', 'energy_k', 'nano_k', 'vr_ar_k', 'chess_k', 'maths_k', 'MVP', 'resident_evil', 'student_checked_ok', 'student_checked_bad', 'gender_m', 'gender_f'))
+        return view('kvantums.index', compact('kvantum_status', 'meridian_stat', 'kvantorium_stat', 'itcube_stat', 'totals', 'kvantums', 'hitechs', 'promrobo', 'it_k', 'energy_k', 'nano_k', 'vr_ar_k', 'chess_k', 'maths_k', 'MVP', 'resident_evil', 'student_checked_ok', 'student_checked_bad', 'gender_m', 'gender_f'))
         ->with('i', (request()->input('page', 1) - 1) * 5);
     }
 
@@ -195,6 +197,7 @@ class KvantumController extends Controller
     public function update(Request $request, Kvantum $kvantum)
     {
         $rules = [
+            'kvantum_status' => 'required',
             'kvantum_name' => 'required',
             'kvantum_age' => 'required',
             'kvantum_number_of_people_in_the_group' => 'required',

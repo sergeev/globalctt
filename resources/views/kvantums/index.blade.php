@@ -1,47 +1,42 @@
 @extends('layouts.app')
 
-
 @section('content')
-<div class="row">
-    <div class="col-lg-12 margin-tb">
-        <div class="pull-left">
-            <h2>Квантумы - статистика</h2>
-            <h5 class="list-group-item col-lg-5 margin-tb d-flex justify-content-between align-items-center">Всего
-                детей: <span class="badge badge-primary badge-pill">{{ $totals->total }}</span> </h5>
-            <h5 class="list-group-item col-lg-5 margin-tb d-flex justify-content-between align-items-center">Мальчиков:
-                <span class="badge badge-primary badge-pill">{{ $gender_m->id}}</span> Девочек: <span
-                    class="badge badge-primary badge-pill">{{$gender_f->id }} <span>
-            </h5>
-            <h5 class="list-group-item col-lg-5 margin-tb d-flex justify-content-between align-items-center">Количество
-                групп: <span class="badge badge-primary badge-pill">0</span> MVP: <span
-                    class="badge badge-primary badge-pill">{{ $MVP->id }}</span> Резидентов: <span
-                    class="badge badge-primary badge-pill">{{ $resident_evil->id }}</span> </h5>
-            <h5 class="list-group-item col-lg-5 margin-tb d-flex justify-content-between align-items-center">Проверено:
-                <span class="badge badge-primary badge-pill">{{ $student_checked_ok->id }}</span> Не Проверено:<span
-                    class="badge badge-primary badge-pill">{{ $student_checked_bad->id }}</span>
-            </h5>
-        </div>
-        <!--             <div class="pull-right">
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">Квантумы - статистика
+                </div>
+                <div class="card-body">
+                    <h5 class="list-group-item col-lg-5 margin-tb d-flex justify-content-between align-items-center">
+                        Всего
+                        детей: <span class="badge badge-primary badge-pill">{{ $totals->total }}</span> </h5>
+                    <h5 class="list-group-item col-lg-5 margin-tb d-flex justify-content-between align-items-center">
+                        Мальчиков:
+                        <span class="badge badge-primary badge-pill">{{ $gender_m->id}}</span> Девочек: <span
+                            class="badge badge-primary badge-pill">{{$gender_f->id }} <span>
+                    </h5>
+                    <h5 class="list-group-item col-lg-5 margin-tb d-flex justify-content-between align-items-center">
+                        Количество
+                        групп: <span class="badge badge-primary badge-pill">0</span> MVP: <span
+                            class="badge badge-primary badge-pill">{{ $MVP->id }}</span> Резидентов: <span
+                            class="badge badge-primary badge-pill">{{ $resident_evil->id }}</span> </h5>
+                    <h5 class="list-group-item col-lg-5 margin-tb d-flex justify-content-between align-items-center">
+                        Проверено:
+                        <span class="badge badge-primary badge-pill">{{ $student_checked_ok->id }}</span> Не
+                        Проверено:<span class="badge badge-primary badge-pill">{{ $student_checked_bad->id }}</span>
+                    </h5>
+                </div>
+                <!--             <div class="pull-right">
                 <h5 class="list-group-item col-lg-5 margin-tb d-flex justify-content-between align-items-center">Меридиан: <span class="badge badge-primary badge-pill">{{ $meridian_stat->id }}</span> </h5>
 
                 <h5 class="list-group-item col-lg-5 margin-tb d-flex justify-content-between align-items-center">Кванториум: <span class="badge badge-primary badge-pill">{{ $kvantorium_stat->id }}</span> </h5>
 
                 <h5 class="list-group-item col-lg-5 margin-tb d-flex justify-content-between align-items-center">ИТКуб: <span class="badge badge-primary badge-pill">{{ $itcube_stat->id }}</span> </h5>
             </div> -->
-        <br>
-    </div>
-</div>
-
-
-@if ($message = Session::get('success'))
-<div class="alert alert-success">
-    <p>{{ $message }}</p>
-</div>
-@endif
-
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-12">
+                <br>
+            </div>
+            <br>
             <div class="card">
                 <div class="card-header">Kvantums
                     @can('manage-kvantums')
@@ -55,6 +50,7 @@
                         <tr>
                             <th>Id</th>
                             <th>Название</th>
+                            <th>Статус</th>
                             <th>Возраст</th>
                             <th>Количество человек</th>
                             <th>Детей:</th>
@@ -65,6 +61,12 @@
                         <tr>
                             <td>{{ $kvantum->kvantum_id }}</td>
                             <td>{{ $kvantum->kvantum_name }}</td>
+                            <td>@if($kvantum->kvantum_status == '1')
+                                <p class="text-success">Открыт</p>
+                                @elseif($kvantum->kvantum_status == '0')
+                                <p class="text-danger">Закрыт</p>
+                                @endif
+                            </td>
                             <td>{{ $kvantum->kvantum_age }}</td>
                             <td>{{ $kvantum->kvantum_number_of_people_in_the_group }}</td>
 
@@ -112,5 +114,6 @@
             </div>
         </div>
     </div>
-    {!! $kvantums->render() !!}
-    @endsection
+</div>
+{!! $kvantums->render() !!}
+@endsection
