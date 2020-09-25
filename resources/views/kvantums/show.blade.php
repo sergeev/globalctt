@@ -2,16 +2,15 @@
 
 
 @section('content')
-    <div class="row">
-        <div class="col-lg-12 margin-tb">
-            <div class="pull-left">
-                <h2> Квантум {{ $kvantum->kvantum_name }} </h2>
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">Квантум @if($kvantum->kvantum_status == '1')<p class="text-success">{{ $kvantum->kvantum_name }}</p>@elseif($kvantum->kvantum_status == '0')<p class="text-danger">{{ $kvantum->kvantum_name }}</p>@endif
+                <a class="btn btn-primary float-right" href="{{ route('admin.kvantums.index') }}"> Назад</a>
             </div>
-            <div class="pull-right">
-                <a class="btn btn-primary" href="{{ route('admin.kvantums.index') }}"> Назад</a>
-            </div>
-        </div>
-    </div>
+            <div class="card-body">
+                @include('admin.errorsForm')
          <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
@@ -61,7 +60,10 @@
                      {{ $kvantum->kvantum_desc_full_txt }}
                  </div>
              </div>
+         </div>
+            </div>
+            </div>
         </div>
-
-<p class="text-center text-primary"><small>+</small></p>
+    </div>
+</div>
 @endsection
