@@ -12,16 +12,7 @@
 
                 <div class="card-body">
 
-                    @if ($errors->any())
-                    <div class="alert alert-danger">
-                        <strong>ВНИМАНИЕ!</strong> Возникли проблемы в заполнении формы.<br><br>
-                        <ul>
-                            @foreach ($errors->all() as $error)
-                            <li>{{ $error }}</li>
-                            @endforeach
-                        </ul>
-                    </div>
-                    @endif
+                    @include('admin.errorsForm')
 
                     {!! Form::open(array('route' => 'students.students.store','method'=>'POST')) !!}
                     <div class="row">
@@ -98,7 +89,7 @@
                         <div class="col-xs-12 col-sm-12 col-md-12">
                             <div class="form-group">
                                 <strong>*Выбор направления обучения:</strong>
-                                {{ Form::select('inputsKvantum', $kvantums, [], array('class' => 'form-control')) }}
+                                {{ Form::select('inputsKvantum', $kvantums, null, array('class' => 'form-control')) }}
                             </div>
                         </div>
 

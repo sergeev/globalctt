@@ -19,6 +19,7 @@
                             <th>ID</th>
                             <th>Ф.И.О</th>
                             <th>Квантум</th>
+                            <th>Детей</th>
                             <th>Примечание</th>
                             <th width="280px">Действие</th>
                         </tr>
@@ -27,6 +28,7 @@
                             <td>{{ $teacher->id }}</td>
                             <td>{{ $teacher->teacher_full_name }}</td>
                             <td>{{ $teacher->teacher_kvantum }}</td>
+                            <td></td>
                             <td>{{ $teacher->teacher_desc }}</td>
                             <td>
                                 <form action="{{ route('admin.teachers.destroy', $teacher->id) }}" method="POST">

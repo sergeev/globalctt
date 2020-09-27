@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Kvantum;
 use App\Student;
+use App\Teacher;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
@@ -173,7 +174,8 @@ class KvantumController extends Controller
      */
     public function show(Kvantum $kvantum)
     {
-        return view('kvantums.show',compact('kvantum'));
+        $students = Student::all();
+        return view('kvantums.show',compact('kvantum', 'students'));
     }
 
     /**

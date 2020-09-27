@@ -66,11 +66,11 @@ class StudentController extends Controller
     public function store(Request $request)
     {
         $rules = [
-            'inputsCertificate' => 'required|regex:/^([0-9\s\-\+\(\)]*)$/|min:10',
+            'inputsCertificate' => 'required|regex:/^([0-9\s\-\+\(\)]*)$/|unique:students',
             'name_1_ot' => 'regex:/^[\w\- \p{Cyrillic}]*$/u',
             'surname_1_fam' => 'regex:/^[\w\- \p{Cyrillic}]*$/u',
             'inputEmail' => 'required|string|email|max:255|unique:students|nullable',
-            'childDateInput' => '',
+            'childDateInput' => 'required|date',
             'gender' => '',
             'inputsSchool' => 'regex:/^[\w\- \p{Cyrillic}]*$/ui',
             'inputsClass' => 'regex:/^[\w\- \p{Cyrillic}]*$/ui',
@@ -84,10 +84,13 @@ class StudentController extends Controller
 
         $messages = [
             'inputsCertificate.required' => 'Необходимо указать все 10 символов сертификата ПФДО, Пример: 0025011990',
+            'inputsCertificate.unique' => 'Такой сертификат ПФДО уже есть в базе, введите другой  сертификат ПФДО',
             'name_1_ot.regex' => 'Необходимо указать Имя Отчество (ребенка)',
             'surname_1_fam.regex' => 'Необходимо указать Фамилию (ребенка) ',
             'inputEmail.required' => 'Необходимо указать правельный email адрес ',
+            'inputEmail.unique' => 'Необходимо указать другой email адрес или такой email уже есть в базе',
             'childDateInput.required' => 'Необходимо указать Дату рождения',
+            'childDateInput.date' => 'Необходимо указать Дату рождения',
             'inputsSchool.regex' => 'Необходимо указать Учебное заведение',
             'inputsClass.regex' => 'Необходимо указать Класс',
             'inputsKvantum.required' => 'Необходимо указать Выбор направления обучения',
@@ -142,8 +145,8 @@ class StudentController extends Controller
         $student->save();
 
         //dd($student);
-        $request->session()->flash('message', $student->name_1_ot . ' has been create');
-        return redirect()->route('students.students.index');
+        //session()->flash('message', $student->name_1_ot . ' has been create');
+        return redirect()->route('students.students.index')->with('success', $student->name_1_ot . ' создан(а) успешно.');
 
         // if($student->create()){
         //     $request->session()->flash('success', $student->name_1_ot . ' has been create');
@@ -225,6 +228,7 @@ class StudentController extends Controller
             'surname_1_fam.regex' => 'Необходимо указать Фамилию (ребенка) ',
             'inputEmail.required' => 'Необходимо указать правельный email адрес ',
             'childDateInput.required' => 'Необходимо указать Дату рождения',
+            'childDateInput.date' => 'Необходимо указать Дату рождения',
             'inputsSchool.regex' => 'Необходимо указать Учебное заведение',
             'inputsClass.regex' => 'Необходимо указать Класс',
             'inputsKvantum.required' => 'Необходимо указать Выбор направления обучения',
