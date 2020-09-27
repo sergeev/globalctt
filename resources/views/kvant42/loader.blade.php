@@ -19,24 +19,4 @@
   <!-- Main Stylesheet File -->
   <link href="{{ URL::asset('css/style.css') }}" rel="stylesheet">
 
-  <script type="text/javascript">
-    var _userway_config = {
-      /* uncomment the following line to override default position*/
-      /* position: '1', */
-      /* uncomment the following line to override default size (values: small, large)*/
-      size: 'small',
-      /* uncomment the following line to override default language (e.g., fr, de, es, he, nl, etc.)*/
-      /* language: 'ru', */
-      /* uncomment the following line to override color set via widget (e.g., #053f67)*/
-      /* color: '#385E9D', */
-      /* uncomment the following line to override type set via widget (1=person, 2=chair, 3=eye, 4=text)*/
-      /* type: '4', */
-      /* uncomment the following lines to override the accessibility statement*/
-      /* statement_text: "Our Accessibility Statement", */
-      /* statement_url: "http://www.example.com/accessibility", */
-      /* uncomment the following line to override support on mobile devices*/
-      mobile: true,
-      account: 'G4bls11Hfp'
-    };
-  </script>
-  <script type="text/javascript" src="https://cdn.userway.org/widget.js"></script>
+  <script>(function(d){var s = d.createElement("script");s.setAttribute("data-account", "G4bls11Hfp");s.setAttribute("src", "https://accessibilityserver.org/widget.js");(d.body || d.head).appendChild(s);})(document)</script><noscript>Please ensure Javascript is enabled for purposes of <a href="https://accessibilityserver.org">website accessibility</a></noscript>

@@ -76,6 +76,7 @@
                             <th scope="col">#</th>
                             <th scope="col">Сертификат</th>
                             <th scope="col">Ф.И.О</th>
+                            <th scope="col">Педагог</th> 
                             <th scope="col">Группа</th>
                             <th scope="col">Действия</th>
                         </tr>
@@ -86,6 +87,7 @@
                         <th scope="row">{{ $student->id }}</th>
                         <td>{{ $student->inputsCertificate }}</td>
                         <td>{{ $student->name_1_ot }} {{ $student->surname_1_fam }}</td>
+                        <td>{{ $student->teacherName }}</td>
                         <td>{{ $student->groupTime }}</td>
                         <td>
                             @can('edit-users')

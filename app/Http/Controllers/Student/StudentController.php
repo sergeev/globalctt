@@ -38,8 +38,10 @@ class StudentController extends Controller
     public function index()
     {
         $students = Student::all();
-        
-        return view('students.index')->with('students', $students);
+        $students_list = Student::latest()->paginate(5);
+
+        return view('students.index',compact('students', $students, 'students_list'))
+        ->with('i', (request()->input('page', 1) - 1) * 5);
     }
 
     /**

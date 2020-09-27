@@ -15,7 +15,7 @@
                         <thead>
                             <tr>
                                 <th scope="col">#</th>
-                                <th scope="col">Сертификат</th>
+                                <th scope="col">{{ __('Сертификат') }}</th>
                                 <th scope="col">Ф.И.О</th>
                                 <th scope="col">Квантум</th>
                                 <th scope="col">Педагог</th>
@@ -49,5 +49,10 @@
             </div>
         </div>
     </div>
+    <nav aria-label="Events navigation">
+        <ul class="pagination justify-content-center">
+            {{-- $students->render() --}}
+        </ul>
+    </nav>
 </div>
 @endsection

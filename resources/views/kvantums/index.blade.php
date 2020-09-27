@@ -100,7 +100,7 @@
 
                                     @csrf
                                     @method('DELETE')
-                                    @can('manage-kvantums')
+                                    @can('manage-kvantums-edit')
                                     <button type="submit" class="btn btn-danger">Удал.</button>
                                     @endcan
                                 </form>
@@ -115,5 +115,9 @@
         </div>
     </div>
 </div>
-{!! $kvantums->render() !!}
+<nav aria-label="Events navigation">
+    <ul class="pagination justify-content-center">
+        {!! $kvantums->render() !!}
+    </ul>
+</nav>
 @endsection

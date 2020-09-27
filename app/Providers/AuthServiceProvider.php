@@ -29,7 +29,7 @@ class AuthServiceProvider extends ServiceProvider
 
         // Access for only admin & director
         Gate::define('manage-users', function($user){
-            return $user->hasAnyRoles(['admin', 'manager']);
+            return $user->hasAnyRoles(['admin', '']);
         });
 
         Gate::define('manage-teachers', function($user){
@@ -39,6 +39,11 @@ class AuthServiceProvider extends ServiceProvider
         Gate::define('manage-kvantums', function($user){
             return $user->hasAnyRoles(['admin', 'manager']);
         });
+
+        Gate::define('manage-kvantums-edit', function($user){
+            return $user->hasAnyRoles(['admin', '']);
+        });
+        
 
         Gate::define('manage-students', function($user){
             return $user->hasAnyRoles(['admin', 'manager']);
