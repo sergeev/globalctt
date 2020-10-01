@@ -30,6 +30,11 @@ class TeacherController extends Controller
      */
     public function index()
     {
+        // $teachers_kvantum = Teacher::whereHas('kvantums', function($query) {
+        //     $query->whereId(request()->input('teacher_kvantum', 0));
+        // })
+        // ->pluck('teacher_full_name', 'id');
+
         $teachers = Teacher::latest()->paginate(20);
         return view('teachers.index',compact('teachers'))
             ->with('i', (request()->input('page', 1) - 1) * 5);

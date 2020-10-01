@@ -59,44 +59,44 @@
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                     @can('manage-users')
                                     <a class="dropdown-item" href="{{ route('admin.users.index') }}">
-                                        User Managment
+                                        {{ __('Упр. пользователями') }}
                                     </a>
                                     @endcan
 
                                     @can('manage-kvantums')
                                     <a class="dropdown-item" href="{{ route('admin.kvantums.index') }}">
-                                        Kvantums Managment
+                                        {{ __('Упр. квантумами') }}
                                     </a>
                                     @endcan
 
                                     @can('manage-teachers')
                                     <a class="dropdown-item" href="{{ route('admin.teachers.index') }}">
-                                        Teachers Managment
+                                        {{ __('Упр. педагогами') }}
                                     </a>
                                     @endcan
 
                                     @can('manage-students')
                                     <a class="dropdown-item" href="{{ route('students.students.index') }}">
-                                        Student Managment
+                                        {{ __('Упр. студентами') }}
                                     </a>
                                     @endcan
 
                                     @can('manage-timetables')
                                     <a class="dropdown-item" href="{{ route('admin.timetables.index') }}">
-                                        Timetable Managment
+                                        {{ __('Упр. расписанием') }}
                                     </a>
                                     @endcan
 
                                     @can('manage-events')
                                     <a class="dropdown-item" href="{{ route('events.events.index') }}">
-                                        Events Managment
+                                        {{ __('Упр. событиями') }}
                                     </a>
                                     @endcan
 
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
+                                        {{ __('Выйти') }}
                                     </a>
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">

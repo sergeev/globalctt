@@ -5,7 +5,7 @@
 <div class="row justify-content-center">
     <div class="col-md-8">
         <div class="card">
-            <div class="card-header">{{ __('Dashboard') }}</div>
+            <div class="card-header">{{ __('Панель приборов') }}</div>
 
             <div class="card-body">
                 @if (session('status'))
@@ -18,9 +18,9 @@
                     <div class="col-sm-6">
                         <div class="card">
                           <div class="card-body">
-                            <h5 class="card-title">Create event</h5>
-                            <p class="card-text">Add cool event!</p>
-                            <a href="{{ route('events.events.index') }}" class="btn btn-primary">Add Event</a>
+                            <h5 class="card-title">{{ __('Создать событие') }}</h5>
+                            <p class="card-text">{{ __('Добавте крутое событие!') }}</p>
+                            <a href="{{ route('events.events.index') }}" class="btn btn-primary">{{ __('Добавить событие') }}</a>
                         </div>
                     </div>
                 </div>
@@ -29,9 +29,21 @@
                 <div class="col-sm-6">
                     <div class="card">
                       <div class="card-body">
-                        <h5 class="card-title">Create student</h5>
-                        <p class="card-text">Add students</p>
-                        <a href="{{ route('students.students.index') }}" class="btn btn-primary">Add Students</a>
+                        <h5 class="card-title">{{ __('Добавить студента') }}</h5>
+                        <p class="card-text">{{ __('Добавить студента') }}</p>
+                        <a href="{{ route('students.students.index') }}" class="btn btn-primary">{{ __('Добавить студента') }}</a>
+                    </div>
+                </div>   
+                </div>
+                @endcan
+
+                @can('teacher-students-report')
+                <div class="col-sm-6">
+                    <div class="card">
+                      <div class="card-body">
+                        <h5 class="card-title">{{ __('Создать отчет') }}</h5>
+                        <p class="card-text">{{ __('Сформировать и отправить отчет о наполняемости детей') }}</p>
+                        <a href="{{ route('teachers_report.index') }}" class="btn btn-primary">{{ __('Создать отчет') }}</a>
                     </div>
                 </div>   
                 </div>

@@ -57,3 +57,7 @@ Route::namespace('Redactor')->prefix('admin')->name('events.')->middleware('can:
 	Route::resource('/events', 'EventController');
 	//Route::post('/events/eventPublished', 'EventController@eventPublished');
 });
+
+Route::namespace('Teacher')->middleware('can:teacher-students-report')->group(function(){
+	Route::resource('/teachers_report', 'TeacherReportController');
+});

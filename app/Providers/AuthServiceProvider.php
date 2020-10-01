@@ -66,5 +66,10 @@ class AuthServiceProvider extends ServiceProvider
         Gate::define('manage-events', function($user){
             return $user->hasAnyRoles(['admin', 'redactor', 'manager']);
         });
+
+        // Teacher
+        Gate::define('teacher-students-report', function($user){
+            return $user->hasAnyRoles(['admin', 'teacher', 'manager']);
+        });
     }
 }

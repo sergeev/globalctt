@@ -25,4 +25,9 @@ class Teacher extends Model
         'teacher_kvantum', 
         'teacher_desc'
     ];
+
+    public function kvantums()
+    {
+        return $this->hasMany(Kvantum::class);
+    }
 }
