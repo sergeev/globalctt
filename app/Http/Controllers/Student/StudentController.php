@@ -37,10 +37,20 @@ class StudentController extends Controller
      */
     public function index()
     {
+        $student_checked_ok = DB::table('students')
+        ->selectRaw('count(*) as total')
+        ->selectRaw("count(case when student_checked = '1' then 1 end) as id")
+        ->first();
+
+        $student_checked_bad = DB::table('students')
+        ->selectRaw('count(*) as total')
+        ->selectRaw("count(case when student_checked = '0' then 1 end) as id")
+        ->first();
+
         $students = Student::all();
         $students_list = Student::latest()->paginate(5);
 
-        return view('students.index',compact('students', $students, 'students_list'))
+        return view('students.index',compact('students', $students, 'students_list', 'student_checked_ok', 'student_checked_bad'))
         ->with('i', (request()->input('page', 1) - 1) * 5);
     }
 
@@ -51,12 +61,22 @@ class StudentController extends Controller
      */
     public function create()
     {
+        $student_checked_ok = DB::table('students')
+        ->selectRaw('count(*) as total')
+        ->selectRaw("count(case when student_checked = '1' then 1 end) as id")
+        ->first();
+
+        $student_checked_bad = DB::table('students')
+        ->selectRaw('count(*) as total')
+        ->selectRaw("count(case when student_checked = '0' then 1 end) as id")
+        ->first();
+
         $teachers = Teacher::pluck('teacher_full_name','teacher_full_name')->all();
         $kvantums = Kvantum::pluck('kvantum_name','kvantum_name')->all();
 
         $timetables = Timetable::pluck('week_group_id', 'week_group_id')->all();
 
-        return view('students.create' ,compact('teachers', 'kvantums', 'timetables'));
+        return view('students.create' ,compact('teachers', 'kvantums', 'timetables', 'student_checked_ok', 'student_checked_bad'));
     }
 
     /**
@@ -177,6 +197,16 @@ class StudentController extends Controller
      */
     public function edit(Student $student, Kvantum $kvantum)
     {
+        $student_checked_ok = DB::table('students')
+        ->selectRaw('count(*) as total')
+        ->selectRaw("count(case when student_checked = '1' then 1 end) as id")
+        ->first();
+
+        $student_checked_bad = DB::table('students')
+        ->selectRaw('count(*) as total')
+        ->selectRaw("count(case when student_checked = '0' then 1 end) as id")
+        ->first();
+
         $id = Student::all();
         $teachers = Teacher::pluck('teacher_full_name','teacher_full_name')->all();
         $kvantums = Kvantum::pluck('kvantum_name','kvantum_name')->all();
@@ -195,7 +225,7 @@ class StudentController extends Controller
             return redirect(route('admin.users.index'));
         }
         //return view('students.edit',compact('student', 'genders'));
-        return view('students.edit',compact('student', 'kvantums', 'teachers', 'week_group_id', 'id'));
+        return view('students.edit',compact('student', 'kvantums', 'teachers', 'week_group_id', 'id', 'student_checked_ok', 'student_checked_bad'));
     }
 
     /**
@@ -271,9 +301,9 @@ class StudentController extends Controller
         //dd($student);
 
         if($student->save()){
-            $request->session()->flash('success', $student->name_1_ot . ' has been update');
+            $request->session()->flash('success', $student->name_1_ot . ' был обнавлен успешно');
         }else{
-            $request->session()->flash('error', 'Student not update, error message');
+            $request->session()->flash('error', 'Студент не был обнавлен, возникла ошибка!');
         }
 
         return redirect()->route('students.students.index');
@@ -288,9 +318,9 @@ class StudentController extends Controller
     public function destroy(Request $request, Student $student)
     {
         if($student->delete()){
-            $request->session()->flash('success', $student->name_1_ot . ' has been deleted');
+            $request->session()->flash('success', $student->name_1_ot . ' был удален из базы');
         }else{
-            $request->session()->flash('error', 'User not deleted, error message');
+            $request->session()->flash('error', 'Студент не был удален из базы, произошла ошибка!');
         }
         return redirect()->route('students.students.index');
     }

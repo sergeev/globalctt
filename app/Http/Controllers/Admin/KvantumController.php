@@ -31,6 +31,10 @@ class KvantumController extends Controller
         $totals = DB::table('students')->selectRaw('count(*) as total')->first();
         //$hitechs = DB::table('students')->where('inputsKvantum', '')->first();
 
+        $totals_group = DB::table('timetables')
+        ->selectRaw('count(*) as total')
+        ->first();
+
         $kvantum_status = Kvantum::All();
 
         $meridian_stat = DB::table('students')
@@ -121,7 +125,7 @@ class KvantumController extends Controller
 
         $kvantums = Kvantum::latest()->paginate(10);
 
-        return view('kvantums.index', compact('kvantum_status', 'meridian_stat', 'kvantorium_stat', 'itcube_stat', 'totals', 'kvantums', 'hitechs', 'promrobo', 'it_k', 'energy_k', 'nano_k', 'vr_ar_k', 'chess_k', 'maths_k', 'MVP', 'resident_evil', 'student_checked_ok', 'student_checked_bad', 'gender_m', 'gender_f'))
+        return view('kvantums.index', compact('totals_group', 'kvantum_status', 'meridian_stat', 'kvantorium_stat', 'itcube_stat', 'totals', 'kvantums', 'hitechs', 'promrobo', 'it_k', 'energy_k', 'nano_k', 'vr_ar_k', 'chess_k', 'maths_k', 'MVP', 'resident_evil', 'student_checked_ok', 'student_checked_bad', 'gender_m', 'gender_f'))
         ->with('i', (request()->input('page', 1) - 1) * 5);
     }
 
@@ -132,7 +136,17 @@ class KvantumController extends Controller
      */
     public function create()
     {
-        return view('kvantums.create');
+        $student_checked_ok = DB::table('students')
+        ->selectRaw('count(*) as total')
+        ->selectRaw("count(case when student_checked = '1' then 1 end) as id")
+        ->first();
+
+        $student_checked_bad = DB::table('students')
+        ->selectRaw('count(*) as total')
+        ->selectRaw("count(case when student_checked = '0' then 1 end) as id")
+        ->first();
+
+        return view('kvantums.create', compact('student_checked_ok', 'student_checked_bad'));
     }
 
     /**
@@ -174,8 +188,18 @@ class KvantumController extends Controller
      */
     public function show(Kvantum $kvantum)
     {
+        $student_checked_ok = DB::table('students')
+        ->selectRaw('count(*) as total')
+        ->selectRaw("count(case when student_checked = '1' then 1 end) as id")
+        ->first();
+
+        $student_checked_bad = DB::table('students')
+        ->selectRaw('count(*) as total')
+        ->selectRaw("count(case when student_checked = '0' then 1 end) as id")
+        ->first();
+
         $students = Student::all();
-        return view('kvantums.show',compact('kvantum', 'students'));
+        return view('kvantums.show',compact('kvantum', 'students', 'student_checked_ok', 'student_checked_bad'));
     }
 
     /**
@@ -186,7 +210,17 @@ class KvantumController extends Controller
      */
     public function edit(Kvantum $kvantum)
     {
-        return view('kvantums.edit',compact('kvantum'));
+        $student_checked_ok = DB::table('students')
+        ->selectRaw('count(*) as total')
+        ->selectRaw("count(case when student_checked = '1' then 1 end) as id")
+        ->first();
+
+        $student_checked_bad = DB::table('students')
+        ->selectRaw('count(*) as total')
+        ->selectRaw("count(case when student_checked = '0' then 1 end) as id")
+        ->first();
+
+        return view('kvantums.edit',compact('kvantum', 'student_checked_ok', 'student_checked_bad'));
     }
 
     /**

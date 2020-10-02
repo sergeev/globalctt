@@ -24,8 +24,8 @@ class CreateTeachersTable extends Migration
             $table->string('link_web_skype', 100)->unsignedInteger()->default();  
             $table->string('link_web_google', 100)->unsignedInteger()->default(); 
             $table->string('link_web_vk', 100)->unsignedInteger()->default();  
-            $table->integer('teacher_kvantum_id')->unsigned();
-            //$table->string('teacher_kvantum')->unsignedInteger()->default();
+            $table->integer('teacher_kvantum_id')->unsigned()->default();
+            $table->string('teacher_kvantum')->unsignedInteger()->default();
             //$table->foreign('teacher_kvantum')->references('id')->on('kvantums');
             $table->string('teacher_desc', 300);
             $table->timestamps();

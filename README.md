@@ -41,3 +41,6 @@ Route::get('/clear-cache', function() {
 - Create CRUD
 	- php artisan make:migration create_[examples]_table --create=examples
     - php artisan make:controller ExamplesController --resource --model=Examples
+
+# Composer packages
+- composer require yajra/laravel-datatables-oracle:"~9.0"

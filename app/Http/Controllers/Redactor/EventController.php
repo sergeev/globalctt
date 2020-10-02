@@ -9,6 +9,7 @@ use Gate;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 class EventController extends Controller
 {
@@ -24,11 +25,21 @@ class EventController extends Controller
      */
     public function index()
     {
+        $student_checked_ok = DB::table('students')
+        ->selectRaw('count(*) as total')
+        ->selectRaw("count(case when student_checked = '1' then 1 end) as id")
+        ->first();
+
+        $student_checked_bad = DB::table('students')
+        ->selectRaw('count(*) as total')
+        ->selectRaw("count(case when student_checked = '0' then 1 end) as id")
+        ->first();
+
         //$events = Event::where('id',$id)->first();
         $events = Event::latest()->paginate(20);
         $events_all = Event::all();
 
-        return view('admin.redactor.index',compact('events', 'events_all'))
+        return view('admin.redactor.index',compact('events', 'events_all', 'student_checked_ok', 'student_checked_bad'))
             ->with('i', (request()->input('page', 1) - 1) * 5
         );
     }
@@ -41,7 +52,7 @@ class EventController extends Controller
     public function create()
     {
         $users = User::pluck('name','name')->all();
-
+    
         return view('admin.redactor.create', compact('users'));
     }
 
@@ -53,12 +64,15 @@ class EventController extends Controller
      */
     public function store(Request $request)
     {
+        // Получаем автора из базы TODO - наверное не самый верный способ!
+        $user = Auth::user()->name;
+
         $rules = [
             'title' => 'required',
             'link_images_1' => 'required',
             'content_main_page' => 'required|max:300',
             'content' => 'required|max:5000',
-            'author' => 'required',
+            //'author' => 'required',
             //'published' => 'required',
             //'published_slider_status' => 'required'
             ];
@@ -69,7 +83,7 @@ class EventController extends Controller
                 'content_main_page.max' => 'Вы ввели более 300 символов!',
                 'content.required' => 'Введите текст статьи',
                 'content.max' => 'Введите менее 5000 символов!',
-                'author.required' => 'Выберите автора'
+                //'author.required' => 'Выберите автора'
             ];
 
             $this->validate($request, $rules, $messages);
@@ -79,10 +93,10 @@ class EventController extends Controller
                 'link_images_1' => $request->get('link_images_1'),
                 'content_main_page' => $request->get('content_main_page'),
                 'content' => $request->get('content'),
-                'author' => $request->get('author'),
                 //'published' => $request->get('published'),
                 //'published_slider_status' => $request->get('published_slider_status')
-            ]);
+            ]); 
+            $event->author = $user;
 
             $event->save();
 
@@ -136,15 +150,16 @@ class EventController extends Controller
             'content'=>'required'
         ]);
 
+        // Получаем автора из базы TODO - наверное не самый верный способ!
+        $user = Auth::user()->name;
+       
         $event = Event::find($id);
         $event->title = $request->get('title');
         $event->link_images_1 = $request->get('link_images_1');
         $event->content_main_page = $request->get('content_main_page');
         $event->content = $request->get('content');
         $event->slug = $request->get('slug');
-        $event->author = $request->get('author');
-
-        //$event->author = $request->get($user->this);
+        $event->author = $user;
         $event->published = $request->get('published');
         $event->published_slider_status = $request->get('published_slider_status');
 

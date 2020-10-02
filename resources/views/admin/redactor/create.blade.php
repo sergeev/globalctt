@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card">
-                <div class="card-header">Events Add
+                <div class="card-header">Добавить событие
                     @can('manage-events')
                     <a href="{{ route('events.events.index') }}"><button type="buttor"
                             class="btn btn-primary float-right">Назад</button></a>
@@ -52,12 +52,12 @@
                                         placeholder=""></textarea>
                                 </div>
                             </div>
-                            <div class="col-xs-12 col-sm-12 col-md-12">
+                            {{-- <div class="col-xs-12 col-sm-12 col-md-12">
                                 <div class="form-group">
                                     <strong>Автор:</strong>
                                     {{ Form::select('author', $users, [], array('class' => 'form-control')) }}
                                 </div>
-                            </div>
+                            </div> --}}
 
                             <div class="col-xs-12 col-sm-12 col-md-12">
                                 <div class="input-group mb-3">

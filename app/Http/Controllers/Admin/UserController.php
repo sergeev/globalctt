@@ -8,6 +8,7 @@ use Gate;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 
 class UserController extends Controller
@@ -24,8 +25,18 @@ class UserController extends Controller
      */
     public function index()
     {
+        $student_checked_ok = DB::table('students')
+        ->selectRaw('count(*) as total')
+        ->selectRaw("count(case when student_checked = '1' then 1 end) as id")
+        ->first();
+
+        $student_checked_bad = DB::table('students')
+        ->selectRaw('count(*) as total')
+        ->selectRaw("count(case when student_checked = '0' then 1 end) as id")
+        ->first();
+
         $users = User::all();
-        return view('admin.users.index')->with('users', $users);
+        return view('admin.users.index', compact('student_checked_ok', 'student_checked_bad'))->with('users', $users);
     }
 
     public function create(Request $request)
