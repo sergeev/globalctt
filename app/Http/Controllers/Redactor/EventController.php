@@ -51,9 +51,19 @@ class EventController extends Controller
      */
     public function create()
     {
+        $student_checked_ok = DB::table('students')
+        ->selectRaw('count(*) as total')
+        ->selectRaw("count(case when student_checked = '1' then 1 end) as id")
+        ->first();
+
+        $student_checked_bad = DB::table('students')
+        ->selectRaw('count(*) as total')
+        ->selectRaw("count(case when student_checked = '0' then 1 end) as id")
+        ->first();
+        
         $users = User::pluck('name','name')->all();
     
-        return view('admin.redactor.create', compact('users'));
+        return view('admin.redactor.create', compact('users', 'student_checked_ok', 'student_checked_bad'));
     }
 
     /**
@@ -113,7 +123,17 @@ class EventController extends Controller
      */
     public function show(Event $event)
     {
-        return view('admin.redactor.show', compact('event'));
+        $student_checked_ok = DB::table('students')
+        ->selectRaw('count(*) as total')
+        ->selectRaw("count(case when student_checked = '1' then 1 end) as id")
+        ->first();
+
+        $student_checked_bad = DB::table('students')
+        ->selectRaw('count(*) as total')
+        ->selectRaw("count(case when student_checked = '0' then 1 end) as id")
+        ->first();
+
+        return view('admin.redactor.show', compact('event', 'student_checked_ok', 'student_checked_bad'));
     }
 
     /**
@@ -124,6 +144,16 @@ class EventController extends Controller
      */
     public function edit($id)
     {
+        $student_checked_ok = DB::table('students')
+        ->selectRaw('count(*) as total')
+        ->selectRaw("count(case when student_checked = '1' then 1 end) as id")
+        ->first();
+
+        $student_checked_bad = DB::table('students')
+        ->selectRaw('count(*) as total')
+        ->selectRaw("count(case when student_checked = '0' then 1 end) as id")
+        ->first();
+
         // AuthServiceProvider ->
         if(Gate::denies('manage-events')){
             return redirect(route('admin.redactor.index'));
@@ -132,7 +162,7 @@ class EventController extends Controller
         $users = User::pluck('name','name')->all();
         $event = Event::find($id);
         
-        return view('admin.redactor.edit', compact('event', 'users'));
+        return view('admin.redactor.edit', compact('event', 'users', 'student_checked_ok', 'student_checked_bad'));
     }
 
     /**

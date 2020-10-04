@@ -48,4 +48,4 @@
 </div>
 <br>
 <br>
-@include('kvant42.footer')
+

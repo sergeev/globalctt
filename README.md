@@ -27,7 +27,9 @@
 
 # Fix errors create new file in project (Example - Target class [ExamplesSeeder] does not exist.)
 
-* composer dumpautoload
+* php artisan clear-compiled
+* composer dump-autoload
+* php artisan optimize
 
 ```
 Route::get('/clear-cache', function() {
@@ -44,3 +46,4 @@ Route::get('/clear-cache', function() {
 
 # Composer packages
 - composer require yajra/laravel-datatables-oracle:"~9.0"
+- composer require livewire/livewire

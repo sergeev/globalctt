@@ -24,24 +24,23 @@
 <section id="services" class="section-bg">
     <div class="container">
         <header class="section-header">
-            <h3><a href="{{ route('events.index') }}">Все Новости</a></h3>
+            <h3><a href="{{ route('events.index') }}">{{ __('Все Новости') }}</a></h3>
         </header>
         <div class="row">
             <div class="container">
                 <div class="card-deck">
                     @foreach ($events as $event)
-                    @if($event->published == '1')
-                    <div class="col-md-6 col-lg-6 wow bounceInUp" data-wow-duration="1.4s">
-                        <div class="box">
-                            <img class="img-fluid" src="{{ $event->link_images_1 }}" alt="">
-                            <div class="card-body">
-                                <h5 class="card-title"><a href="{{ route('events.show', $event->id) }}">{!!
-                                        $event->title !!}</a></h5>
-                                <p class="card-text">{!! Str::limit($event->content, 300) !!} </p>
+                        @if ($event->published == '1')
+                            <div class="col-md-6 col-lg-6 wow bounceInUp" data-wow-duration="1.4s">
+                                <div class="box">
+                                    <img class="img-fluid" src="{{ $event->link_images_1 }}" alt="">
+                                    <div class="card-body">
+                                        <h5 class="card-title"><a href="{{ route('events.show', $event->id) }}">{!! $event->title !!}</a></h5>
+                                        <p class="card-text">{!! Str::limit($event->content, 300) !!} </p>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                    </div>
-                    @endif
+                        @endif
                     @endforeach
                 </div>
             </div>
@@ -54,5 +53,3 @@
     </nav>
 
 </section>
-
-@include('kvant42.footer')
