@@ -4,7 +4,13 @@ namespace App\Http\Controllers\Teacher;
 
 use Illuminate\Http\Request;
 use App\TeacherReport;
+use App\Teacher;
+use App\Kvantum;
+use App\Timetable;
+use Carbon\Carbon;
 use DataTables;
+use Gate;
+
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
 
@@ -23,23 +29,22 @@ class TeacherReportController extends Controller
      */
     public function index(Request $request)
     {
-        if ($request->ajax()) {
-            $data = TeacherReport::latest()->get();
-            return Datatables::of($data)
-                    ->addIndexColumn()
-                    ->addColumn('action', function($row){
-   
-                           $btn = '<a href="javascript:void(0)" data-toggle="tooltip"  data-id="'.$row->id.'" data-original-title="Edit" class="edit btn btn-primary btn-sm editProduct">Edit</a>';
-   
-                           $btn = $btn.' <a href="javascript:void(0)" data-toggle="tooltip"  data-id="'.$row->id.'" data-original-title="Delete" class="btn btn-danger btn-sm deleteProduct">Delete</a>';
-    
-                            return $btn;
-                    })
-                    ->rawColumns(['action'])
-                    ->make(true);
-        }
-      
-        return view('teachers.report');
+        $report_lists = TeacherReport::all();   
+        $kvantums = Kvantum::all();
+        $teachers = Teacher::all();
+        $timetables = Timetable::all();
+
+        return view('teachers.reportShow', compact('report_lists', 'kvantums', 'teachers', 'timetables'))
+        ->with('i', (request()->input('page', 1) - 1) * 5);
+    }
+
+    public function create()
+    {
+        $kvantums = Kvantum::pluck('kvantum_name','kvantum_name')->all();
+        $teachers = Teacher::pluck('teacher_full_name','teacher_full_name')->all();
+        $timetables = Timetable::pluck('week_group_id', 'week_group_id')->all();
+
+        return view('teachers.report', compact('kvantums', 'teachers', 'timetables'));
     }
 
     /**
@@ -49,43 +54,41 @@ class TeacherReportController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {    
+    {
+        //$teacher = Teacher::Teacher()->teacher_full_name;
+        $date = Carbon::parse($request->startFrom)->format('d-m-Y H:i:s');
+
             $report = new TeacherReport([
                 'teacher_full_name' => $request->get('teacher_full_name'),
                 'inputsKvantum' => $request->get('inputsKvantum'),
                 'student_count' => $request->get('student_count'),
-                'content' => $request->get('content')
-                //'report_date_input' => $request->get('report_date_input')
+                'week_group_id' => $request->get('week_group_id'),
+                //'content' => $request->get('content')
+                'report_date_input' => $request->get('report_date_input')
             ]);
 
             //$report->date('report_date_input')->default(date("Y-m-d H:i:s"));
-            $report->timestamp('add_at');
+
+            //$report->teacher_full_name = $teacher;
+            //$report->timestamp('add_at');
             $report->save();
    
-        return response()->json(['success'=>'Report saved successfully.']);
-    }
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Product  $product
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        $teacherReport = TeacherReport::find($id);
-        return response()->json($teacherReport);
+        //return response()->json(['success'=>'Report saved successfully.']);
+        return redirect()->route('teachers.reportShow')->with('success', 'Отчет добавлен успешно.');
     }
 
-    /**
-     * Remove the specified resource from storage.
+        /**
+     * Display the specified resource.
      *
-     * @param  \App\Product  $product
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function show(TeacherReport $TeacherReport)
     {
-        TeacherReport::find($id)->delete();
-     
-        return response()->json(['success'=>'Teacher Report deleted successfully.']);
+        $kvantums = Kvantum::pluck('kvantum_name','kvantum_name')->all();
+        $teachers = Teacher::pluck('teacher_full_name','teacher_full_name')->all();
+        $timetables = Timetable::pluck('week_group_id', 'week_group_id')->all();
+
+        return view('teachers.reportShow', compact('TeacherReport', 'kvantums', 'teachers', 'timetables'));
     }
 }

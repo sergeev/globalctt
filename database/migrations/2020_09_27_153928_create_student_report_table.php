@@ -18,7 +18,8 @@ class CreateStudentReportTable extends Migration
             $table->string('teacher_full_name');
             $table->string('inputsKvantum');
             $table->string('student_count');
-            $table->timestamp('add_at')->useCurrent();
+            $table->string('week_group_id');
+            $table->string('report_date_input');
             $table->timestamps();
         });
     }

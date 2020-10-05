@@ -15,7 +15,8 @@ class TeacherReport extends Model
     protected $fillable = [
         'teacher_full_name', 
         'inputsKvantum', 
-        'student_count', 
+        'student_count',
+        'week_group_id',
         'report_date_input'
     ];
 }

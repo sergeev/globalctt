@@ -59,5 +59,5 @@ Route::namespace('Redactor')->prefix('admin')->name('events.')->middleware('can:
 });
 
 Route::namespace('Teacher')->prefix('teacher')->name('teacher.')->middleware('can:teacher-students-report')->group(function(){
-	Route::resource('/teachers', 'TeacherReportController');
+	Route::resource('/reports', 'TeacherReportController');
 });

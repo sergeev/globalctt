@@ -43,7 +43,7 @@
                       <div class="card-body">
                         <h5 class="card-title">{{ __('Создать отчет') }}</h5>
                         <p class="card-text">{{ __('Сформировать и отправить отчет о наполняемости детей') }}</p>
-                        <a href="{{ route('teachers_report.index') }}" class="btn btn-primary">{{ __('Создать отчет') }}</a>
+                        <a href="{{ route('teacher.reports.index') }}" class="btn btn-primary">{{ __('Создать отчет') }}</a>
                     </div>
                 </div>   
                 </div>
