@@ -38,20 +38,20 @@ class StudentController extends Controller
     public function index()
     {
         $student_checked_ok = DB::table('students')
-        ->selectRaw('count(*) as total')
-        ->selectRaw("count(case when student_checked = '1' then 1 end) as id")
-        ->first();
+            ->selectRaw('count(*) as total')
+            ->selectRaw("count(case when student_checked = '1' then 1 end) as id")
+            ->first();
 
         $student_checked_bad = DB::table('students')
-        ->selectRaw('count(*) as total')
-        ->selectRaw("count(case when student_checked = '0' then 1 end) as id")
-        ->first();
+            ->selectRaw('count(*) as total')
+            ->selectRaw("count(case when student_checked = '0' then 1 end) as id")
+            ->first();
 
         $students = Student::all();
         $students_list = Student::latest()->paginate(5);
 
-        return view('students.index',compact('students', $students, 'students_list', 'student_checked_ok', 'student_checked_bad'))
-        ->with('i', (request()->input('page', 1) - 1) * 5);
+        return view('students.index', compact('students', $students, 'students_list', 'student_checked_ok', 'student_checked_bad'))
+            ->with('i', (request()->input('page', 1) - 1) * 5);
     }
 
     /**
@@ -62,21 +62,21 @@ class StudentController extends Controller
     public function create()
     {
         $student_checked_ok = DB::table('students')
-        ->selectRaw('count(*) as total')
-        ->selectRaw("count(case when student_checked = '1' then 1 end) as id")
-        ->first();
+            ->selectRaw('count(*) as total')
+            ->selectRaw("count(case when student_checked = '1' then 1 end) as id")
+            ->first();
 
         $student_checked_bad = DB::table('students')
-        ->selectRaw('count(*) as total')
-        ->selectRaw("count(case when student_checked = '0' then 1 end) as id")
-        ->first();
+            ->selectRaw('count(*) as total')
+            ->selectRaw("count(case when student_checked = '0' then 1 end) as id")
+            ->first();
 
-        $teachers = Teacher::pluck('teacher_full_name','teacher_full_name')->all();
-        $kvantums = Kvantum::pluck('kvantum_name','kvantum_name')->all();
+        $teachers = Teacher::pluck('teacher_full_name', 'teacher_full_name')->all();
+        $kvantums = Kvantum::pluck('kvantum_name', 'kvantum_name')->all();
 
         $timetables = Timetable::pluck('week_group_id', 'week_group_id')->all();
 
-        return view('students.create' ,compact('teachers', 'kvantums', 'timetables', 'student_checked_ok', 'student_checked_bad'));
+        return view('students.create', compact('teachers', 'kvantums', 'timetables', 'student_checked_ok', 'student_checked_bad'));
     }
 
     /**
@@ -141,28 +141,39 @@ class StudentController extends Controller
         $this->validate($request, $rules, $messages);
 
 
-         $student = new Student([
-             'inputsCertificate' => $request->get('inputsCertificate'),
-             'name_1_ot' => $request->get('name_1_ot'),
-             'surname_1_fam' => $request->get('surname_1_fam'),
-             'inputEmail' => $request->get('inputEmail'),
-             'childDateInput' => $request->get('childDateInput'),
-             'gender' => $request->get('gender'),
-             'inputsSchool' => $request->get('inputsSchool'),
-             'inputsClass' => $request->get('inputsClass'),
-             'inputsKvantum' => $request->get('inputsKvantum'),
-             'teacherName' => $request->get('teacherName'),
-             'groupTime' => $request->get('groupTime'),
-             'inputsNameLegalRepresentative' => $request->get('inputsNameLegalRepresentative'),
-             'NameLegalRepresentativeTelephone' => $request->get('NameLegalRepresentativeTelephone'),
-             'inputsComments' => $request->get('inputsComments')
-         ]);
+        $student = new Student([
+            'inputsCertificate' => $request->get('inputsCertificate'),
+            'name_1_ot' => $request->get('name_1_ot'),
+            'surname_1_fam' => $request->get('surname_1_fam'),
+            'inputEmail' => $request->get('inputEmail'),
+            'childDateInput' => $request->get('childDateInput'),
+            'gender' => $request->get('gender'),
+            'inputsSchool' => $request->get('inputsSchool'),
+            'inputsClass' => $request->get('inputsClass'),
+            'inputsKvantum' => $request->get('inputsKvantum'),
+            'teacherName' => $request->get('teacherName'),
+            'groupTime' => $request->get('groupTime'),
+            'inputsNameLegalRepresentative' => $request->get('inputsNameLegalRepresentative'),
+            'NameLegalRepresentativeTelephone' => $request->get('NameLegalRepresentativeTelephone'),
+            'inputsComments' => $request->get('inputsComments')
+        ]);
 
         $student->student_rang = 0;
         $student->student_exp = 0;
         $student->student_coin = 0;
         $student->student_checked = 0;
         $student->student_deleted = 0;
+
+        //  Проверка на существующую запись в базе данных
+        if (Student::where('inputsCertificate', '=', Request::get('inputsCertificate'))->exists()) {
+            $request->session()->flash('success', $student->inputsCertificate . ' Такой сертификат уже есть в базе данных!');
+            //return 'Такой сертификат уже есть в базе данных';
+        };
+
+        if (Student::where('inputEmail', '=', Request::get('inputEmail'))->exists()) {
+            return Redirect::to('join')->withErrors('Такой email уже есть в базе данных!');
+            $request->session()->flash('success', $student->inputEmail . ' уже есть в базе данных!');
+        };
 
         $student->save();
 
@@ -198,18 +209,18 @@ class StudentController extends Controller
     public function edit(Student $student, Kvantum $kvantum)
     {
         $student_checked_ok = DB::table('students')
-        ->selectRaw('count(*) as total')
-        ->selectRaw("count(case when student_checked = '1' then 1 end) as id")
-        ->first();
+            ->selectRaw('count(*) as total')
+            ->selectRaw("count(case when student_checked = '1' then 1 end) as id")
+            ->first();
 
         $student_checked_bad = DB::table('students')
-        ->selectRaw('count(*) as total')
-        ->selectRaw("count(case when student_checked = '0' then 1 end) as id")
-        ->first();
+            ->selectRaw('count(*) as total')
+            ->selectRaw("count(case when student_checked = '0' then 1 end) as id")
+            ->first();
 
         $id = Student::all();
-        $teachers = Teacher::pluck('teacher_full_name','teacher_full_name')->all();
-        $kvantums = Kvantum::pluck('kvantum_name','kvantum_name')->all();
+        $teachers = Teacher::pluck('teacher_full_name', 'teacher_full_name')->all();
+        $kvantums = Kvantum::pluck('kvantum_name', 'kvantum_name')->all();
 
         $week_group_id = Timetable::pluck('week_group_id', 'week_group_id')->all();
         $week_day = Timetable::pluck('week_day', 'week_day')->all();
@@ -218,14 +229,14 @@ class StudentController extends Controller
 
         $genders = array(
             'gender' =>  DB::table('students')->get()
-          );
+        );
 
         // AuthServiceProvider ->
-        if(Gate::denies('manage-students')){
+        if (Gate::denies('manage-students')) {
             return redirect(route('admin.users.index'));
         }
         //return view('students.edit',compact('student', 'genders'));
-        return view('students.edit',compact('student', 'kvantums', 'teachers', 'week_group_id', 'id', 'student_checked_ok', 'student_checked_bad'));
+        return view('students.edit', compact('student', 'kvantums', 'teachers', 'week_group_id', 'id', 'student_checked_ok', 'student_checked_bad'));
     }
 
     /**
@@ -300,9 +311,9 @@ class StudentController extends Controller
 
         //dd($student);
 
-        if($student->save()){
+        if ($student->save()) {
             $request->session()->flash('success', $student->name_1_ot . ' был обнавлен успешно');
-        }else{
+        } else {
             $request->session()->flash('error', 'Студент не был обнавлен, возникла ошибка!');
         }
 
@@ -317,9 +328,9 @@ class StudentController extends Controller
      */
     public function destroy(Request $request, Student $student)
     {
-        if($student->delete()){
+        if ($student->delete()) {
             $request->session()->flash('success', $student->name_1_ot . ' был удален из базы');
-        }else{
+        } else {
             $request->session()->flash('error', 'Студент не был удален из базы, произошла ошибка!');
         }
         return redirect()->route('students.students.index');

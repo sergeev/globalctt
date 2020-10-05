@@ -19,4 +19,9 @@ class TeacherReport extends Model
         'week_group_id',
         'report_date_input'
     ];
+
+    public function teacher()
+    {
+      return $this->belongsTo(Teacher::class);
+    }
 }

@@ -191,7 +191,7 @@ class TeacherController extends Controller
             //'teacher_full_id' => 'required', 
             'teacher_full_name' => 'required', 
             'link_images_1' => 'required', 
-            //'teacher_kvantum_id' => 'required', 
+            'teacher_kvantum_id' => 'required', 
             'teacher_kvantum' => 'required', 
             'teacher_desc' => 'required'
         ];
@@ -200,8 +200,8 @@ class TeacherController extends Controller
             'teacher_full_name.required' => 'Введите Ф.И.О',
             'link_images_1.required' => 'Выбирете ссылку на изображение педагога',
             'kvantum_name.required' => 'Выбирите педагога',
-            //'teacher_kvantum_id.required' => 'Выбирете квантум',
-            'teacher_kvantum.required' => 'Введите ID квантума',
+            'teacher_kvantum_id.required' => 'Введите ID квантума',
+            'teacher_kvantum.required' => 'Выбирете квантум',
             'teacher_desc.required' => 'Введите примечание(краткое описание)'
         ];
 

@@ -27,7 +27,7 @@
                                 <td>{{ $report_list->inputsKvantum }}</td>
                                 <td>{{ $report_list->student_count }} </td>
                                 <td>{{ $report_list->week_group_id }}</td>
-                                <td>@if($report_list->report_date_input == $report_list->created_at)
+                                <td>@if($report_list->report_date_input !== $report_list->created_at)
                                     <a class="text-success">{{ $report_list->report_date_input }}</a>
                                     @else
                                     <a class="text-danger">{{ $report_list->report_date_input }}</a>

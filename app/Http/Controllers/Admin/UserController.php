@@ -84,6 +84,16 @@ class UserController extends Controller
      */
     public function edit(user $user)
     {
+        $student_checked_ok = DB::table('students')
+        ->selectRaw('count(*) as total')
+        ->selectRaw("count(case when student_checked = '1' then 1 end) as id")
+        ->first();
+
+        $student_checked_bad = DB::table('students')
+        ->selectRaw('count(*) as total')
+        ->selectRaw("count(case when student_checked = '0' then 1 end) as id")
+        ->first();
+
         // AuthServiceProvider ->
         if(Gate::denies('edit-users')){
             return redirect(route('admin.users.index'));
@@ -91,7 +101,7 @@ class UserController extends Controller
 
         $roles = Role::all();
 
-        return view('admin.users.edit')->with([
+        return view('admin.users.edit', compact('student_checked_ok', 'student_checked_bad'))->with([
             'user' => $user,
             'roles' => $roles
         ]);
