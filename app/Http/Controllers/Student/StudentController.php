@@ -218,6 +218,8 @@ class StudentController extends Controller
             ->selectRaw("count(case when student_checked = '0' then 1 end) as id")
             ->first();
 
+        $kvantum_id = Kvantum::all();
+
         $id = Student::all();
         $teachers = Teacher::pluck('teacher_full_name', 'teacher_full_name')->all();
         $kvantums = Kvantum::pluck('kvantum_name', 'kvantum_name')->all();
@@ -236,7 +238,7 @@ class StudentController extends Controller
             return redirect(route('admin.users.index'));
         }
         //return view('students.edit',compact('student', 'genders'));
-        return view('students.edit', compact('student', 'kvantums', 'teachers', 'week_group_id', 'id', 'student_checked_ok', 'student_checked_bad'));
+        return view('students.edit', compact('kvantum_id', 'student', 'kvantums', 'teachers', 'week_group_id', 'id', 'student_checked_ok', 'student_checked_bad'));
     }
 
     /**

@@ -99,7 +99,7 @@
                         <div class="col-xs-12 col-sm-12 col-md-12">
                             <div class="form-group">
                                 <strong>*Выбор направления обучения:</strong>
-                                {{ Form::select('inputsKvantum', $kvantums, [], array('class' => 'form-control')) }}
+                                {{ Form::select('inputsKvantum', $kvantums, ['1' => 'Хай-Тек', '2' => 'Робоквантум', '3' => 'IT-квантум', '4' => 'Энерджиквантум', '5' => 'Наноквантум', '6' => 'VR/AR-квантум', '7' => 'Шахматная гостиная', '8' => 'Математика'], array('class' => 'form-control')) }}
                             </div>
                         </div>
 

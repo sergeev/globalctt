@@ -1,64 +1,141 @@
-<div class="modal fade" id="joinModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
-    aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLongTitle">Записаться</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-
-                <div class="card text-center">
-                    <div class="card-header">
-                        <p class="description">Научно-технический прогресс не стоит на месте:
-                            высокоточное оборудование поражает своими результатами, новые роботы
-                            заменяют людей на производствах, транспорт может передвигаться сам, а
-                            прогуляться по Парижу стало возможным, не выходя из собственного дома, но
-                            одно остается неизменным. Чтобы достичь высоких результатов в инженерной
-                            области, необходимо знание математики.</p>
-                    </div>
-                    <div class="card-body">
-                        <h5 class="card-title">36</h5>
-                        <p class="card-text">Учебных часа в программе.</p>
-                    </div>
-
-                    <div class="card-body">
-                        <h5 class="card-title">12+</h5>
-                        <p class="card-text">Возрастная категория.</p>
-                    </div>
-
-                    <div class="card-body">
-                        <h5 class="card-title">12</h5>
-                        <p class="card-text">Количество обучающихся в группе.</p>
-                    </div>
-                    <div class="card-footer text-muted">
-                        {{-- Статистика заполняемости от максемальной,
-                        когда 100 квантум закрыт! --}}
-                        <h6>Наполняемость</h6>
-                        @foreach ($kvantums as $key => $kvantum)
-                            @if ($kvantum->kvantum_id == '8')
-                                <div class="progress">
-                                    <div class="progress-bar progress-bar-striped progress-bar-animated"
-                                        data-toggle="tooltip" data-placement="top"
-                                        title="Если полоска достигнет 100% квантум будет закрыт" role="progressbar"
-                                        style="width:{{ $maths_k->id }}%">
-                                        {{ $maths_k->id }}</div>
-                                </div>
-                            @endif
-                        @endforeach
-                    </div>
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">Create Student
+                    <a href="{{ route('home') }}"><button type="buttor"
+                            class="btn btn-primary float-right">Назад</button></a>
                 </div>
-            </div>
 
-            <div class="modal-footer">
-                <!-- button type="button" class="btn btn-success">Записаться</button> -->
-                <button type="button" class="btn btn-success" data-toggle="modal" data-target="#joinModal"
-                    data-whatever="@getbootstrap">Записаться</button>
-                <button type="button" class="btn btn-primary" data-toggle="modal"
-                    data-target="#calendarModalCenterMaths">Расписание</button>
+                <div class="card-body">
+
+                    @include('admin.errorsForm')
+
+                    {!! Form::open(array('route' => 'join.store','method'=>'POST')) !!}
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-12 col-md-12">
+                            <div class="form-group">
+                                <strong>*Организация: </strong>
+                                {!! Form::select('organization', array('0' => 'Меридиан', '1' => 'Кванториум', '2' =>
+                                'ИТКуб'), null, ['class' => 'form-control']) !!}
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-12 col-md-12">
+                            <div class="form-group">
+                                <strong>*Номер сертификата ПФДО:</strong>
+                                {!! Form::text('inputsCertificate', null, array('placeholder' => '0000000000','class' =>
+                                'form-control', 'maxlength' => '10')) !!}
+                            </div>
+                        </div>
+
+                        <div class="col-xs-12 col-sm-12 col-md-12">
+                            <div class="form-group">
+                                <strong>*Имя Отчество (ребенка):</strong>
+                                {!! Form::text('name_1_ot', null, array('placeholder' => 'Имя Отчество (ребенка)','class' => 'form-control')) !!}
+                            </div>
+                        </div>
+
+                        <div class="col-xs-12 col-sm-12 col-md-12">
+                            <div class="form-group">
+                                <strong>*Фамилия (ребенка):</strong>
+                                {!! Form::text('surname_1_fam', null, array('placeholder' => 'Фамилия (ребенка)','class'
+                                => 'form-control')) !!}
+                            </div>
+                        </div>
+
+                        <div class="col-xs-12 col-sm-12 col-md-12">
+                            <div class="form-group">
+                                <strong>*Эл.почта:</strong>
+                                {!! Form::email('inputEmail', null, array('placeholder' => 'Эл.почта','class' =>
+                                'form-control')) !!}
+                            </div>
+                        </div>
+
+                        <div class="col-xs-12 col-sm-12 col-md-12">
+                            <div class="form-group">
+                                <strong>*Дата рождения:</strong>
+                                {!! Form::date('childDateInput', null, array('placeholder' => 'Дата рождения','class' =>
+                                'form-control')) !!}
+                            </div>
+                        </div>
+
+                        <div class="col-xs-12 col-sm-12 col-md-12">
+                            <div class="form-group">
+                                <strong>*Пол:</strong>
+                                {!! Form::select('gender', ['0' => 'Девочка', '1' => 'Мальчик'], null, ['class' =>
+                                'form-control']) !!}
+                            </div>
+                        </div>
+
+                        <div class="col-xs-12 col-sm-12 col-md-12">
+                            <div class="form-group">
+                                <strong>*Учебное заведение:</strong>
+                                {!! Form::text('inputsSchool', null, array('placeholder' => 'МАОУ СОШ № 81','class' =>
+                                'form-control')) !!}
+                            </div>
+                        </div>
+
+                        <div class="col-xs-12 col-sm-12 col-md-12">
+                            <div class="form-group">
+                                <strong>*Класс:</strong>
+                                {!! Form::text('inputsClass', null, array('placeholder' => '6A','class' =>
+                                'form-control')) !!}
+                            </div>
+                        </div>
+
+                        <div class="col-xs-12 col-sm-12 col-md-12">
+                            <div class="form-group">
+                                <strong>*Выбор направления обучения:</strong>
+                                {{ Form::select('inputsKvantum', $kvantums, null, array('class' => 'form-control')) }}
+                            </div>
+                        </div>
+
+                        <div class="col-xs-12 col-sm-12 col-md-12">
+                            <div class="form-group">
+                                <strong>*Выбор педагога:</strong>
+                                {{ Form::select('teacherName', $teachers, [], array('class' => 'form-control')) }}
+                            </div>
+                        </div>
+
+
+                        <div class="col-xs-12 col-sm-12 col-md-12">
+                            <div class="form-group">
+                                <strong>*Группа:</strong>
+                                {{ Form::select('groupTime', $timetables, null, array('class' => 'form-control')) }}
+                            </div>
+                        </div>
+
+                        <div class="col-xs-12 col-sm-12 col-md-12">
+                            <div class="form-group">
+                                <strong>*ФИО родителя (законного представителя):</strong>
+                                {!! Form::text('inputsNameLegalRepresentative', null, ['class' => 'form-control',
+                                'placeholder' => 'ФИО родителя (законного представителя):']) !!}
+                            </div>
+                        </div>
+
+
+                        <div class="col-xs-12 col-sm-12 col-md-12">
+                            <div class="form-group">
+                                <strong>*Телефон родителя (законного представителя):</strong>
+                                {!! Form::text('NameLegalRepresentativeTelephone', null, ['class' => 'form-control',
+                                'placeholder' => '*+7-000-000-00-00', 'maxlength' => '16']) !!}
+                            </div>
+                        </div>
+
+                        <div class="col-xs-12 col-sm-12 col-md-12">
+                            <div class="form-group">
+                                <strong>Комментарий:</strong>
+                                {!! Form::textarea('inputsComments', null, ['class' => 'form-control' ]) !!}
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-12 col-md-12 text-center">
+                            <button type="submit" class="btn btn-primary">Отправить</button>
+                        </div>
+                    </div>
+                    {!! Form::close() !!}
+                </div>
             </div>
         </div>
     </div>
+</div>
 </div>

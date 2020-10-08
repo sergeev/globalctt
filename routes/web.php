@@ -61,3 +61,7 @@ Route::namespace('Redactor')->prefix('admin')->name('events.')->middleware('can:
 Route::namespace('Teacher')->prefix('teacher')->name('teacher.')->middleware('can:teacher-students-report')->group(function(){
 	Route::resource('/reports', 'TeacherReportController');
 });
+
+Route::namespace('Student')->group(function(){
+	Route::resource('/join', 'JoinStudentController');
+});

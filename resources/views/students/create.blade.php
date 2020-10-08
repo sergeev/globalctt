@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card">
-                <div class="card-header">Create Student
+                <div class="card-header">Создание нового студента
                     <a href="{{ route('students.students.index') }}"><button type="buttor"
                             class="btn btn-primary float-right">Назад</button></a>
                 </div>

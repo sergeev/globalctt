@@ -15,8 +15,12 @@ class JoinStudentController extends Controller
     public function index()
     {
         $students = Student::all();
+        $teachers = Teacher::pluck('teacher_full_name','teacher_full_name')->all();
+        $kvantums = Kvantum::pluck('kvantum_name','kvantum_name')->all();
+
+        $timetables = Timetable::pluck('week_group_id', 'week_group_id')->all();
         
-        return view('students.index')->with('students', $students);
+        return view('kvant42.kvantums.joinKvantum')->with('students', $students, $teachers, $kvantums);
     }
 
     public function create()
@@ -26,7 +30,7 @@ class JoinStudentController extends Controller
 
         $timetables = Timetable::pluck('week_group_id', 'week_group_id')->all();
 
-        return view('students.join' ,compact('teachers', 'kvantums', 'timetables'));
+        return view('kvant42.kvantums.joinKvantum' ,compact('teachers', 'kvantums', 'timetables'));
     }
 
     public function store(Request $request)
@@ -68,16 +72,16 @@ class JoinStudentController extends Controller
             //'max' => 'Необходимо указать не более 10 символов сертификата ПФДО, Пример: 0025011990',
         ];
 
-        //  Проверка на существующую запись в базе данных
-        // if (Student::where('inputsCertificate', '=', Input::get('inputsCertificate'))->exists()) {
-        //     return redirect()->route('students.index')
-        //                     ->with('success','Такой сертификат уже есть в базе данных!');        
-        // }
+        // Проверка на существующую запись в базе данных
+        if (Student::where('inputsCertificate', '=', Request::get('inputsCertificate'))->exists()) {
+            return redirect()->route('students.index')
+                            ->with('success','Такой сертификат уже есть в базе данных!');        
+        }
 
-        // if (Student::where('inputEmail', '=', Input::get('inputEmail'))->exists()) {
-        //     return redirect()->route('students.index')
-        //                     ->with('success','Такая почта уже есть в базе данных!');        
-        // }
+        if (Student::where('inputEmail', '=', Request::get('inputEmail'))->exists()) {
+            return redirect()->route('students.index')
+                            ->with('success','Такая почта уже есть в базе данных!');        
+        }
 
         $this->validate($request, $rules, $messages);
 
