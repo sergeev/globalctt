@@ -78,11 +78,33 @@ class TeacherReportController extends Controller
         //$teacher = Teacher::Teacher()->teacher_full_name;
         $date = Carbon::parse($request->startFrom)->format('d-m-Y H:i:s');
 
+        $rules = [
+            'teacher_full_name' => 'required',
+            'inputsKvantum' => 'required',
+            'student_count' => 'required',
+            'week_group_id' => 'required',
+            'week_day_report' => 'required',
+            'report_date_input' => 'required|date',
+        ];
+        
+         $messages = [
+             'teacher_full_name.required' => 'Выберите педагога',
+             'inputsKvantum.required' => 'Выберите квантум',
+             'student_count.required' => 'Введите фактическоие количество детей',
+             'week_group_id.required' => 'Выберите группу педагога',
+             'week_day_report.required' => 'Введите день недели',
+             'report_date_input.required' => 'Введите дату'
+
+         ];
+
+        $this->validate($request, $rules, $messages);
+
         $report = new TeacherReport([
             'teacher_full_name' => $request->get('teacher_full_name'),
             'inputsKvantum' => $request->get('inputsKvantum'),
             'student_count' => $request->get('student_count'),
             'week_group_id' => $request->get('week_group_id'),
+            'week_day_report' => $request->get('week_day_report'),
             //'content' => $request->get('content')
             'report_date_input' => $request->get('report_date_input')
         ]);
@@ -94,7 +116,7 @@ class TeacherReportController extends Controller
         $report->save();
 
         //return response()->json(['success'=>'Report saved successfully.']);
-        return redirect()->route('teacher/reports ')->with('success', 'Отчет добавлен успешно.');
+        return redirect()->route('teacher.reports.index')->with('success', 'Отчет добавлен успешно.');
     }
 
     /**

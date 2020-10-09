@@ -19,6 +19,7 @@ class CreateStudentReportTable extends Migration
             $table->string('inputsKvantum');
             $table->string('student_count');
             $table->string('week_group_id');
+            $table->string('week_day_report');
             $table->timestamp('report_date_input');
             $table->timestamps();
         });

@@ -103,6 +103,9 @@
                             </div>
                         </div>
 
+                        {{-- <option value="inputsKvantum" @if($kvantums->kvantum_name === 'Хай-Тек') selected @endif>
+                            Хай-Тек</option> --}}
+
                         <div class="col-xs-12 col-sm-12 col-md-12">
                             <div class="form-group">
                                 <strong>*Выбор педагога:</strong>

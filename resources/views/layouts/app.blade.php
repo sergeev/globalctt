@@ -106,6 +106,12 @@
                                         </a>
                                     @endcan
 
+                                    @can('manage-events')
+                                        <a class="dropdown-item" href="{{ route('teacher.reports.index') }}">
+                                            {{ __('Отчеты педагогов') }}
+                                        </a>
+                                    @endcan
+
                                     <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
                                                              document.getElementById('logout-form').submit();">
                                         {{ __('Выйти') }}

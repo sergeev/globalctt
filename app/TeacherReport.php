@@ -17,6 +17,7 @@ class TeacherReport extends Model
         'inputsKvantum', 
         'student_count',
         'week_group_id',
+        'week_day_report',
         'report_date_input'
     ];
 
