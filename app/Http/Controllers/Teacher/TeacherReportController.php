@@ -8,11 +8,13 @@ use App\Teacher;
 use App\Kvantum;
 use App\Timetable;
 use Carbon\Carbon;
+use App\User;
 use DataTables;
 use Gate;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 class TeacherReportController extends Controller
 {
@@ -29,6 +31,8 @@ class TeacherReportController extends Controller
      */
     public function index(Request $request)
     {
+        $users = User::all();
+
         $report_lists = TeacherReport::all();
         $kvantums = Kvantum::all();
         $teachers = Teacher::all();
@@ -44,7 +48,7 @@ class TeacherReportController extends Controller
             ->selectRaw("count(case when student_checked = '0' then 1 end) as id")
             ->first();
 
-        return view('teachers.reportShow', compact('report_lists', 'kvantums', 'teachers', 'timetables', 'student_checked_ok', 'student_checked_bad'))
+        return view('teachers.reportShow', compact('users', 'report_lists', 'kvantums', 'teachers', 'timetables', 'student_checked_ok', 'student_checked_bad'))
             ->with('i', (request()->input('page', 1) - 1) * 5);
     }
 
@@ -75,11 +79,11 @@ class TeacherReportController extends Controller
      */
     public function store(Request $request)
     {
-        //$teacher = Teacher::Teacher()->teacher_full_name;
-        $date = Carbon::parse($request->startFrom)->format('d-m-Y H:i:s');
+        $teacher = Auth::user()->teacher_id;
+        //$date = Carbon::parse($request->startFrom)->format('d-m-Y H:i:s');
 
         $rules = [
-            'teacher_full_name' => 'required',
+            //'teacher_full_name' => 'required',
             'inputsKvantum' => 'required',
             'student_count' => 'required',
             'week_group_id' => 'required',
@@ -88,7 +92,7 @@ class TeacherReportController extends Controller
         ];
         
          $messages = [
-             'teacher_full_name.required' => 'Выберите педагога',
+             //'teacher_full_name.required' => 'Выберите педагога',
              'inputsKvantum.required' => 'Выберите квантум',
              'student_count.required' => 'Введите фактическоие количество детей',
              'week_group_id.required' => 'Выберите группу педагога',
@@ -100,7 +104,7 @@ class TeacherReportController extends Controller
         $this->validate($request, $rules, $messages);
 
         $report = new TeacherReport([
-            'teacher_full_name' => $request->get('teacher_full_name'),
+            //'teacher_full_name' => $request->get('teacher_full_name'),
             'inputsKvantum' => $request->get('inputsKvantum'),
             'student_count' => $request->get('student_count'),
             'week_group_id' => $request->get('week_group_id'),
@@ -111,7 +115,7 @@ class TeacherReportController extends Controller
 
         //$report->date('report_date_input')->default(date("Y-m-d H:i:s"));
 
-        //$report->this->teacher_full_name;
+        $report->teacher_full_name = $teacher;
         //$report->timestamp('add_at');
         $report->save();
 

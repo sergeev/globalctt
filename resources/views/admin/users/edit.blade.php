@@ -26,7 +26,7 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="name" class="col-md-2 col-form-label text-md-right">Name</label>
+                            <label for="name" class="col-md-2 col-form-label text-md-right">Имя</label>
 
                             <div class="col-md-6">
                                 <input id="name" type="text" class="form-control @error('name') is-invalid @enderror"
@@ -40,10 +40,25 @@
                             </div>
                         </div>
 
+                        <div class="form-group row">
+                            <label for="teacher_id" class="col-md-2 col-form-label text-md-right">Преподаватель - ID</label>
+
+                            <div class="col-md-6">
+                                <input id="teacher_id" type="text" class="form-control @error('teacher_id') is-invalid @enderror"
+                                    name="teacher_id" value="{{ $user->teacher_id }}" required autofocus>
+
+                                @error('teacher_id')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
+                            </div>
+                        </div>
+
                         @csrf
                         {{ method_field('PUT') }}
                         <div class="form-group row">
-                            <label for="roles" class="col-md-2 col-form-label text-md-right">Roles</label>
+                            <label for="roles" class="col-md-2 col-form-label text-md-right">Привилегии</label>
                             <div class="col-md-6">
                                 @foreach($roles as $role)
                                 <div class="form-check">
@@ -55,7 +70,7 @@
                             </div>
                         </div>
                         <button type="submit" class="btn btn-primary">
-                            Update
+                            Обновить
                         </button>
 
                     </form>

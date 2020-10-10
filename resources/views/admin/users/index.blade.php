@@ -36,6 +36,7 @@
                                 <th scope="col">Имя</th>
                                 <th scope="col">Email</th>
                                 <th scope="col">Роль</th>
+                                <th scope="col">Привязан к</th>
                                 <th scope="col">Действие</th>
                             </tr>
                         </thead>
@@ -45,6 +46,11 @@
                             <td>{{ $user->name }}</td>
                             <td>{{ $user->email }}</td>
                             <td>{{ implode(', ', $user->roles()->get()->pluck('name')->toArray()) }}</td>
+                            <td>@if($user->teacher_id == 0)
+                                Нет привязки</td>
+                                @else
+                                {{ $user->teacher_id }}
+                                @endif
                             <td>
                                 @can('edit-users')
                                 <a href="{{ route('admin.users.edit', $user->id) }}"><button type="buttor"

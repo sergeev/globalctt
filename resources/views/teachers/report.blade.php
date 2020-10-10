@@ -14,12 +14,12 @@
 
                     <div class="row">
 
-                        <div class="col-xs-12 col-sm-12 col-md-12">
+                        {{-- <div class="col-xs-12 col-sm-12 col-md-12">
                             <div class="form-group">
                                 <strong>Преподаватель:</strong>
                                 {{ Form::select('teacher_full_name', $teachers, [], ['placeholder' => '', 'class' => 'form-control']) }}
                             </div>
-                        </div>
+                        </div> --}}
 
                         <div class="col-xs-12 col-sm-12 col-md-12">
                             <div class="form-group">

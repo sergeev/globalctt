@@ -120,6 +120,7 @@ class UserController extends Controller
 
         $user->name = $request->name;
         $user->email = $request->email;
+        $user->teacher_id = $request->teacher_id;
         
         if($user->save()){
             $request->session()->flash('success', $user->name . ' has been update');

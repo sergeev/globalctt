@@ -5,7 +5,9 @@
         <div class="row justify-content-center">
             <div class="col-md-12">
                 <div class="card">
+                    {{-- @foreach ($users as $user) --}}
                     <div class="card-header"><p class= "float-center">Мои отчеты по наполняемости</p>
+                        {{-- @endforeach --}}
                         <a class="btn btn-primary float-right" href="{{ route('home') }}"> Назад</a>
                         <a class="btn btn-primary float-left" href="{{ route('teacher.reports.create') }}"> Добавление нового отчета наполняемости </a>
                     </div>
@@ -23,8 +25,14 @@
                                     <th scope="col">Дата отчета</th>
                                 </tr>
                             </thead>
-                            @foreach($report_lists as $report_list)
+                            @foreach ($teachers as $teacher)
+                            
+                            
                             <tr>
+                                @foreach($report_lists as $report_list)
+                                @foreach ($users as $user)
+                                @if($user->teacher_id == $teacher->id)
+                                {{-- @if($report_list->teacher_full_name === $teacher->teacher_full_name) --}}
                                 <th scope="row">{{ $report_list->id }}</th>
                                 <td>{{ $report_list->inputsKvantum }}</td>
                                 <td>{{ $report_list->teacher_full_name }}</td>
@@ -37,9 +45,16 @@
                                     <a class="text-danger">{{ $report_list->report_date_input }}</a>
                                     @endif
                                 </td>
-                            </td>
-                        </tr>
+                            </td>  
+                           
+                           @elseif('')
+                           <p>Нет отчетов</p>
+                           @endif
+                        </tr> 
                         @endforeach
+                        @endforeach
+                        @endforeach
+                        </table>
                     </div>
                 </div>
             </div>
