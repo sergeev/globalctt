@@ -20,7 +20,7 @@ class JoinStudentController extends Controller
 
         $timetables = Timetable::pluck('week_group_id', 'week_group_id')->all();
         
-        return view('kvant42.kvantums.joinKvantum')->with('students', $students, $teachers, $kvantums);
+        return view('kvant42.kvantums.joinKvantum')->with('students', $students, $teachers, $kvantums, 'kvantums');
     }
 
     public function create()
