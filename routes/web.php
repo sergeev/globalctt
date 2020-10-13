@@ -85,8 +85,6 @@ Route::domain('itcube42.ru')->group(function () {
 	
 		Route::get('/bigdate', 'Itcube\ArrowPagesController@bigdate_page');
 	
-		Route::get('/vrarapp', 'Itcube\ArrowPagesController@vrarapp_page');
-	
 		Route::get('/vr-ar', 'Itcube\ArrowPagesController@vr_ar_page');
 	
 		Route::get('/clanguage', 'Itcube\ArrowPagesController@clanguage_page');

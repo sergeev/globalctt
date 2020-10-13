@@ -5,7 +5,13 @@
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Montserrat:300,400,500,700" rel="stylesheet">
 
-
+  <link href="{{ URL::asset('lib/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet">
+  <link href="{{ URL::asset('lib/animate/animate.min.css') }}" rel="stylesheet">
+  <link href="{{ URL::asset('lib/ionicons/css/ionicons.min.css') }}" rel="stylesheet">
+  <link href="{{ URL::asset('lib/owlcarousel/assets/owl.carousel.min.css') }}" rel="stylesheet">
+  <link href="{{ URL::asset('lib/lightbox/css/lightbox.min.css') }}" rel="stylesheet">
+  <link href="{{ URL::asset('css/team.css') }}" rel="stylesheet">
+  
   <link href="{{ URL::asset('itcube/css/solid.css') }}" rel="stylesheet">
   <link href="{{ URL::asset('itcube/css/brands.css') }}" rel="stylesheet">
   <link href="{{ URL::asset('itcube/css/fontawesome.css') }}" rel="stylesheet">
