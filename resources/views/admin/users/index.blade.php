@@ -46,11 +46,13 @@
                             <td>{{ $user->name }}</td>
                             <td>{{ $user->email }}</td>
                             <td>{{ implode(', ', $user->roles()->get()->pluck('name')->toArray()) }}</td>
-                            <td>@if($user->teacher_id == 0)
+                            @foreach($teachers as $teacher)
+                            <td>@if($user->teacher_id == $teacher->teacher_full_id)
                                 Нет привязки</td>
                                 @else
                                 {{ $user->teacher_id }}
                                 @endif
+                            @endforeach
                             <td>
                                 @can('edit-users')
                                 <a href="{{ route('admin.users.edit', $user->id) }}"><button type="buttor"

@@ -83,7 +83,7 @@ class TeacherReportController extends Controller
         //$date = Carbon::parse($request->startFrom)->format('d-m-Y H:i:s');
 
         $rules = [
-            //'teacher_full_name' => 'required',
+            'teacher_full_name' => 'required',
             'inputsKvantum' => 'required',
             'student_count' => 'required',
             'week_group_id' => 'required',
@@ -92,7 +92,7 @@ class TeacherReportController extends Controller
         ];
         
          $messages = [
-             //'teacher_full_name.required' => 'Выберите педагога',
+             'teacher_full_name.required' => 'Выберите педагога',
              'inputsKvantum.required' => 'Выберите квантум',
              'student_count.required' => 'Введите фактическоие количество детей',
              'week_group_id.required' => 'Выберите группу педагога',
@@ -104,7 +104,7 @@ class TeacherReportController extends Controller
         $this->validate($request, $rules, $messages);
 
         $report = new TeacherReport([
-            //'teacher_full_name' => $request->get('teacher_full_name'),
+            'teacher_full_name' => $request->get('teacher_full_name'),
             'inputsKvantum' => $request->get('inputsKvantum'),
             'student_count' => $request->get('student_count'),
             'week_group_id' => $request->get('week_group_id'),
@@ -115,7 +115,7 @@ class TeacherReportController extends Controller
 
         //$report->date('report_date_input')->default(date("Y-m-d H:i:s"));
 
-        $report->teacher_full_name = $teacher;
+        //$report->teacher_full_name = $teacher;
         //$report->timestamp('add_at');
         $report->save();
 

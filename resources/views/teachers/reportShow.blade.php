@@ -31,7 +31,7 @@
                             <tr>
                                 @foreach($report_lists as $report_list)
                                 @foreach ($users as $user)
-                                @if($user->teacher_id == $teacher->id)
+                                @if($user->teacher_id == $teacher->teacher_full_id)
                                 {{-- @if($report_list->teacher_full_name === $teacher->teacher_full_name) --}}
                                 <th scope="row">{{ $report_list->id }}</th>
                                 <td>{{ $report_list->inputsKvantum }}</td>

@@ -6,6 +6,7 @@ use App\User;
 use App\Role;
 use Gate;
 use App\Http\Controllers\Controller;
+use App\Teacher;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\DB;
@@ -36,7 +37,9 @@ class UserController extends Controller
         ->first();
 
         $users = User::all();
-        return view('admin.users.index', compact('student_checked_ok', 'student_checked_bad'))->with('users', $users);
+        $teachers = Teacher::all();
+
+        return view('admin.users.index', compact('student_checked_ok', 'student_checked_bad'))->with('users', $users, 'teachers', $teachers);
     }
 
     public function create(Request $request)

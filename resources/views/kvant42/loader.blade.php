@@ -15,6 +15,7 @@
   <link href="{{ URL::asset('lib/owlcarousel/assets/owl.carousel.min.css') }}" rel="stylesheet">
   <link href="{{ URL::asset('lib/lightbox/css/lightbox.min.css') }}" rel="stylesheet">
   <link href="{{ URL::asset('css/team.css') }}" rel="stylesheet">
+  <link href="{{ URL::asset('css/owl-carousel/assets/owl.carousel.min.css') }}" rel="stylesheet">
 
   <!-- Main Stylesheet File -->
   <link href="{{ URL::asset('css/style.css') }}" rel="stylesheet">
