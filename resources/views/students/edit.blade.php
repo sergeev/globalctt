@@ -3,9 +3,9 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-12">
+        <div class="col-md-8">
             <div class="card">
-                <div class="card-header">Edit Student {{ $student->name_1_ot }}
+                <div class="card-header">Редактирование студента {{ $student->name_1_ot }} {{ $student->surname_1_fam }}
                     <a href="{{ route('students.students.index') }}"><button type="buttor"
                             class="btn btn-primary float-right">Назад</button></a>
                 </div>
@@ -22,17 +22,41 @@
                         </ul>
                     </div>
                     @endif
-
-
+<div class="row">
                     {!! Form::model($student, ['method' => 'PATCH','route' => ['students.students.update',
                     $student->id]]) !!}
-                    <div class="row">
+                    
+                    <ul class="nav nav-tabs">
+                        <li class="nav-item">
+                            <a class="nav-link" data-toggle="tab" href="#organization">Организация</a>
+                          </li>
+                        <li class="nav-item">
+                          <a class="nav-link active" data-toggle="tab" href="#student">Ученик</a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link" data-toggle="tab" href="#parents">Родители</a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link" data-toggle="tab" href="#misc">Разное</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link table-danger" data-toggle="tab" href="#dangerZone">Опасная зона</a>
+                          </li>
+                      </ul>
+
+                      <div class="tab-content">
+                        <div class="tab-pane fade" id="organization">
                         <div class="col-xs-12 col-sm-12 col-md-12">
                             <div class="form-group">
                                 <strong>*Организация: </strong>
                                 {{ Form::select('organization', array('0' => 'Меридиан', '1' => 'Кванториум', '2' => 'ИТКуб'), null, ['class' => 'form-control']) }}
                             </div>
                         </div>
+                          </div>
+                        <div class="tab-pane fade show active" id="student">
+
+                    
+
                         <div class="col-xs-12 col-sm-12 col-md-12">
                             <div class="form-group">
                                 <strong>*Номер сертификата ПФДО:</strong>
@@ -123,28 +147,6 @@
 
                         <div class="col-xs-12 col-sm-12 col-md-12">
                             <div class="form-group">
-                                <strong>*ФИО родителя (законного представителя):</strong>
-                                {{ Form::text('inputsNameLegalRepresentative', null, ['class' => 'form-control', 'placeholder' => 'ФИО родителя (законного представителя):']) }}
-                            </div>
-                        </div>
-
-
-                        <div class="col-xs-12 col-sm-12 col-md-12">
-                            <div class="form-group">
-                                <strong>*Телефон родителя (законного представителя):</strong>
-                                {{ Form::text('NameLegalRepresentativeTelephone', null, ['class' => 'form-control', 'placeholder' => '*+7-000-000-00-00', 'maxlength' => '16']) }}
-                            </div>
-                        </div>
-
-                        <div class="col-xs-12 col-sm-12 col-md-12">
-                            <div class="form-group">
-                                <strong>Ранг:</strong>
-                                {{ Form::select('student_rang', ['0' => 'Нет ранга', '1' => 'Резидент', '2' => 'MVP'], null, ['class' => 'form-control']) }}
-                            </div>
-                        </div>
-
-                        <div class="col-xs-12 col-sm-12 col-md-12">
-                            <div class="form-group">
                                 <strong>Проверен в ручную:</strong>
                                 {{ Form::select('student_checked', ['0' => 'Не проверен', '1' => 'Проверен'], null, ['class' => 'form-control']) }}
                             </div>
@@ -157,32 +159,60 @@
                                 {{ Form::textarea('inputsComments', null, ['class' => 'form-control' ]) }}
                             </div>
                         </div>
-
-                        <div class="col-xs-12 col-sm-12 col-md-12">
-                            <div class="form-row">
-                                <div class="form-group col-md-4">
-                                    <strong>student_exp:</strong>
-                                    {{ Form::text('student_exp', null, ['class' => 'form-control' ]) }}
+                        </div>
+                        <div class="tab-pane fade" id="parents">
+                            <div class="col-xs-12 col-sm-12 col-md-12">
+                                <div class="form-group">
+                                    <strong>*ФИО родителя (законного представителя):</strong>
+                                    {{ Form::text('inputsNameLegalRepresentative', null, ['class' => 'form-control', 'placeholder' => 'ФИО родителя (законного представителя):']) }}
                                 </div>
-
-                                <div class="form-group col-md-4">
-                                    <strong>student_coin:</strong>
-                                    {{ Form::text('student_coin', null, ['class' => 'form-control' ]) }}
-                                </div>
-
-                                <div class="form-group col-md-4">
-                                    <strong>student_deleted:</strong>
-                                    {{ Form::select('student_deleted', ['0' => 'Действующий', '1' => 'Удален'], null, ['class' => 'form-control']) }}
+                            </div>
+    
+    
+                            <div class="col-xs-12 col-sm-12 col-md-12">
+                                <div class="form-group">
+                                    <strong>*Телефон родителя (законного представителя):</strong>
+                                    {{ Form::text('NameLegalRepresentativeTelephone', null, ['class' => 'form-control', 'placeholder' => '*+7-000-000-00-00', 'maxlength' => '16']) }}
                                 </div>
                             </div>
                         </div>
+                        <div class="tab-pane fade" id="misc">
+                            <div class="col-xs-12 col-sm-12 col-md-12">
+                                <div class="form-group">
+                                    <strong>Ранг:</strong>
+                                    {{ Form::select('student_rang', ['0' => 'Нет ранга', '1' => 'Резидент', '2' => 'MVP'], null, ['class' => 'form-control']) }}
+                                </div>
+                            </div>
 
+                            <div class="col-xs-12 col-sm-12 col-md-12">
+                                <div class="form-row">
+                                    <div class="form-group col-md-4">
+                                        <strong>student_exp:</strong>
+                                        {{ Form::text('student_exp', null, ['class' => 'form-control' ]) }}
+                                    </div>
+    
+                                    <div class="form-group col-md-4">
+                                        <strong>student_coin:</strong>
+                                        {{ Form::text('student_coin', null, ['class' => 'form-control' ]) }}
+                                    </div>
+                                </div>
+                            </div>
 
-                        <div class="col-xs-12 col-sm-12 col-md-12 text-center">
+                        </div>
+
+                        <div class="tab-pane fade" id="dangerZone">
+                            <div class="form-group col-md-4">
+                                <strong>Удалить студента</strong>
+                                {{ Form::select('student_deleted', ['0' => 'Действующий', '1' => 'Удален'], null, ['class' => 'form-control']) }}
+                            </div>
+                        </div>
+                      </div>
+                      <div class="col-xs-12 col-sm-12 col-md-12 text-center">
                             <button type="submit" class="btn btn-primary">Отправить</button>
                         </div>
-                    </div>
-                    {!! Form::close() !!}
+</div> 
+
+ {!! Form::close() !!}
                 </div>
             </div>
         </div>

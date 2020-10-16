@@ -18,7 +18,7 @@ use Illuminate\Support\Facades\Route;
 //     return view('welcome');
 // });
 
-Route::domain('kvantorium-nvkz.ru')->group(function () {
+Route::domain('127.0.0.1')->group(function () {
 	Route::get('/', 'indexController@default');
     // Route::get('user/{id}', function ($account, $id) {
     //     //
