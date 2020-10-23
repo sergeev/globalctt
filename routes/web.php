@@ -30,6 +30,8 @@ Route::domain('127.0.0.1')->group(function () {
 	Route::namespace('Admin')->group(function(){
 		Route::resource('/timetables', 'TimetableGlobalController');
 	});
+
+	Route::get('/students/all', 'StudentController@all');
 	
 	Auth::routes();
 	
@@ -53,6 +55,7 @@ Route::domain('127.0.0.1')->group(function () {
 	
 	Route::namespace('Student')->prefix('admin')->name('students.')->middleware('can:manage-students')->group(function(){
 		Route::resource('/students', 'StudentController');
+		//Route::get('/students/all', 'StudentController@all');
 	});
 	
 	Route::namespace('Redactor')->prefix('admin')->name('events.')->middleware('can:manage-events')->group(function(){

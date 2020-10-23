@@ -322,6 +322,30 @@ class StudentController extends Controller
         return redirect()->route('students.students.index');
     }
 
+
+    public function all()
+    {
+        $student_checked_ok = DB::table('students')
+        ->selectRaw('count(*) as total')
+        ->selectRaw("count(case when student_checked = '1' then 1 end) as id")
+        ->first();
+
+    $student_checked_bad = DB::table('students')
+        ->selectRaw('count(*) as total')
+        ->selectRaw("count(case when student_checked = '0' then 1 end) as id")
+        ->first();
+
+                // AuthServiceProvider ->
+                if (Gate::denies('manage-students')) {
+                    return redirect(route('admin.users.index'));
+                }
+
+    $students = Student::all();
+    $students_list = Student::latest()->paginate(5);
+    
+        return view('students.all', compact('students', $students, 'students_list', 'student_checked_ok', 'student_checked_bad'));
+    }
+
     /**
      * Remove the specified resource from storage.
      *
