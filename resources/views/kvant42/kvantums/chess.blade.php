@@ -83,7 +83,7 @@
                         <tr>
                             <th>Педагог</th>
                             <th>День недели</th>
-                            <th>Время</th>
+                            <th width="280px">Время</th>
                             <th>Группа</th>
                         </tr>
                         @foreach ($timetables as $key => $timetable)

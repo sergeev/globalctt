@@ -14,7 +14,7 @@
                     @endcan
                 </div>
                 <div class="card-body">
-                    <table class="table">
+                    <table class="table table-responsive">
                         <thead>
                             <th>Название урока</th>
                             <th>Ф.И.О</th>

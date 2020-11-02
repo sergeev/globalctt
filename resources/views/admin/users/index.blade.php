@@ -47,8 +47,8 @@
                             <td>{{ $user->email }}</td>
                             <td>{{ implode(', ', $user->roles()->get()->pluck('name')->toArray()) }}</td>
                             @foreach($teachers as $teacher)
-                            <td>@if($user->teacher_id == $teacher->teacher_full_id)
-                                Нет привязки</td>
+                            <td>@if($user->teacher_id == $teacher->teacher_full_id)</td>
+                                Нет привязки
                                 @else
                                 {{ $user->teacher_id }}
                                 @endif

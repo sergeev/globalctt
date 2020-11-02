@@ -165,15 +165,15 @@ class StudentController extends Controller
         $student->student_deleted = 0;
 
         //  Проверка на существующую запись в базе данных
-        if (Student::where('inputsCertificate', '=', Request::get('inputsCertificate'))->exists()) {
-            $request->session()->flash('success', $student->inputsCertificate . ' Такой сертификат уже есть в базе данных!');
-            //return 'Такой сертификат уже есть в базе данных';
-        };
+        // if (Student::where('inputsCertificate', '=', Request::get('inputsCertificate'))->exists()) {
+        //     $request->session()->flash('success', $student->inputsCertificate . ' Такой сертификат уже есть в базе данных!');
+        //     //return 'Такой сертификат уже есть в базе данных';
+        // };
 
-        if (Student::where('inputEmail', '=', Request::get('inputEmail'))->exists()) {
-            return Redirect::to('join')->withErrors('Такой email уже есть в базе данных!');
-            $request->session()->flash('success', $student->inputEmail . ' уже есть в базе данных!');
-        };
+        // if (Student::where('inputEmail', '=', Request::get('inputEmail'))->exists()) {
+        //     return Redirect::to('join')->withErrors('Такой email уже есть в базе данных!');
+        //     $request->session()->flash('success', $student->inputEmail . ' уже есть в базе данных!');
+        // };
 
         $student->save();
 

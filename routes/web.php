@@ -18,7 +18,7 @@ use Illuminate\Support\Facades\Route;
 //     return view('welcome');
 // });
 
-Route::domain('127.0.0.1')->group(function () {
+Route::domain('kvantorium-nvkz.ru')->group(function () {
 	Route::get('/', 'indexController@default');
     // Route::get('user/{id}', function ($account, $id) {
     //     //
@@ -65,9 +65,15 @@ Route::domain('127.0.0.1')->group(function () {
 	});
 	
 	Route::namespace('Student')->group(function(){
-		Route::resource('/join', 'JoinStudentController');
+		Route::resource('/_join', 'JoinStudentController');
 	});
 });
+
+// Route::domain('join.kvantorium-nvkz.ru')->group(function () {
+// 	Route::namespace('Student')->group(function(){
+// 		Route::resource('/', 'JoinStudentController');
+// 	});
+// });
 
 //Route::get('/python', [ArrowPagesController::class, 'python_page']);
 

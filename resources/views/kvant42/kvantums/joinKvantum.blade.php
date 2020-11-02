@@ -12,14 +12,8 @@
                     @include('admin.errorsForm')
 
                     {!! Form::open(array('route' => 'join.store','method'=>'POST')) !!}
+                    @csrf
                     <div class="row">
-                        <div class="col-xs-12 col-sm-12 col-md-12">
-                            <div class="form-group">
-                                <strong>*Организация: </strong>
-                                {!! Form::select('organization', array('0' => 'Меридиан', '1' => 'Кванториум', '2' =>
-                                'ИТКуб'), null, ['class' => 'form-control']) !!}
-                            </div>
-                        </div>
                         <div class="col-xs-12 col-sm-12 col-md-12">
                             <div class="form-group">
                                 <strong>*Номер сертификата ПФДО:</strong>

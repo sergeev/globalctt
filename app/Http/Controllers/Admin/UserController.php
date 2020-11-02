@@ -39,7 +39,7 @@ class UserController extends Controller
         $users = User::all();
         $teachers = Teacher::all();
 
-        return view('admin.users.index', compact('student_checked_ok', 'student_checked_bad'))->with('users', $users, 'teachers', $teachers);
+        return view('admin.users.index', compact('student_checked_ok', 'student_checked_bad', 'teachers'))->with('users', $users);
     }
 
     public function create(Request $request)

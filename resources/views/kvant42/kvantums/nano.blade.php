@@ -79,7 +79,7 @@
                         <tr>
                             <th>Педагог</th>
                             <th>День недели</th>
-                            <th>Время</th>
+                            <th class="w-50">Время</th>
                             <th>Группа</th>
                         </tr>
                         @foreach ($timetables as $key => $timetable)
@@ -105,7 +105,7 @@
                                             Расписание ещё не опубликовано
                                         @endif
                                     </td>
-                                    <td>{!! $timetable->week_time !!}</td>
+                                    <td class="w-50">{!! $timetable->week_time !!}</td>
                                     <td>{!! $timetable->week_group_id !!}</td>
                             </tr>
                         @endif

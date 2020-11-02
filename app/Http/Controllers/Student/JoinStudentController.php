@@ -8,6 +8,7 @@ use App\Student;
 use App\Timetable;
 
 use Illuminate\Http\Request;
+//use Illuminate\Support\Facades\Request;
 use App\Http\Controllers\Controller;
 
 class JoinStudentController extends Controller
@@ -20,7 +21,7 @@ class JoinStudentController extends Controller
 
         $timetables = Timetable::pluck('week_group_id', 'week_group_id')->all();
         
-        return view('kvant42.kvantums.joinKvantum')->with('students', $students, $teachers, $kvantums, 'kvantums');
+        return view('kvant42.kvantums.joinKvantum', compact('students', 'teachers', 'kvantums', 'timetables'));
     }
 
     public function create()
@@ -68,23 +69,22 @@ class JoinStudentController extends Controller
             'inputsComments.regex' => 'Необходимо указать Комментарий',
             //'inputsComments.min' => 'Необходимо ввести не менее 5 символов в комментариях',
 
-            //'min' => 'Необходимо указать все 10 символов сертификата ПФДО, Пример: 0025011990',
+            'min' => 'Необходимо указать все 10 символов сертификата ПФДО, Пример: 0025011990',
             //'max' => 'Необходимо указать не более 10 символов сертификата ПФДО, Пример: 0025011990',
         ];
 
+        $this->validate($request, $rules, $messages);
+
         // Проверка на существующую запись в базе данных
-        if (Student::where('inputsCertificate', '=', Request::get('inputsCertificate'))->exists()) {
+        if (Student::where('inputsCertificate', '==', Request::get('inputsCertificate'))->exists()) {
             return redirect()->route('students.index')
                             ->with('success','Такой сертификат уже есть в базе данных!');        
         }
 
-        if (Student::where('inputEmail', '=', Request::get('inputEmail'))->exists()) {
+        if (Student::where('inputEmail', '==', Request::get('inputEmail'))->exists()) {
             return redirect()->route('students.index')
                             ->with('success','Такая почта уже есть в базе данных!');        
         }
-
-        $this->validate($request, $rules, $messages);
-
 
          $student = new Student([
              'inputsCertificate' => $request->get('inputsCertificate'),
@@ -103,6 +103,8 @@ class JoinStudentController extends Controller
              'inputsComments' => $request->get('inputsComments')
          ]);
 
+         // Для кванториума = 1 
+         $student->organization = 1;
         $student->student_rang = 0;
         $student->student_exp = 0;
         $student->student_coin = 0;
