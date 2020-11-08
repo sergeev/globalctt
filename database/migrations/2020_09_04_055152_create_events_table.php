@@ -26,6 +26,7 @@ class CreateEventsTable extends Migration
             $table->string('link_images_4', 100)->unsignedInteger()->default();
             $table->string('link_images_5', 100)->unsignedInteger()->default();
             $table->string('content_access')->unsignedInteger()->default(0);
+            $table->boolean('organization_show')->unsignedInteger()->default(10);
             $table->boolean('published')->unsignedInteger()->default(0);
             $table->boolean('published_slider_status')->unsignedInteger()->default(0);
             $table->timestamps();

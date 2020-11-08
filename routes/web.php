@@ -86,19 +86,19 @@ Route::domain('itcube42.ru')->group(function () {
 	// Cube Arrows
 	Route::name('Itcube.')->group(function() {
 
-		Route::get('/python', 'Itcube\ArrowPagesController@python_page');
+		// Route::get('/python', 'Itcube\ArrowPagesController@python_page');
 	
-		Route::get('/mobile', 'Itcube\ArrowPagesController@mobile_page');
+		// Route::get('/mobile', 'Itcube\ArrowPagesController@mobile_page');
 	
-		Route::get('/java', 'Itcube\ArrowPagesController@java_page');
+		// Route::get('/java', 'Itcube\ArrowPagesController@java_page');
 	
-		Route::get('/bigdate', 'Itcube\ArrowPagesController@bigdate_page');
+		// Route::get('/bigdate', 'Itcube\ArrowPagesController@bigdate_page');
 	
-		Route::get('/vr-ar', 'Itcube\ArrowPagesController@vr_ar_page');
+		// Route::get('/vr-ar', 'Itcube\ArrowPagesController@vr_ar_page');
 	
-		Route::get('/clanguage', 'Itcube\ArrowPagesController@clanguage_page');
+		// Route::get('/clanguage', 'Itcube\ArrowPagesController@clanguage_page');
 
-		Route::get('/system-administration', 'Itcube\ArrowPagesController@system_administratio');
+		// Route::get('/system-administration', 'Itcube\ArrowPagesController@system_administratio');
 	});
 });
 

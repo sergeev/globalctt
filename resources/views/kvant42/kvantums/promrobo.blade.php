@@ -5,9 +5,10 @@
                         <div class="modal-content">
                             <div class="modal-header">
                                 <h5 class="modal-title" id="exampleModalLongTitle">Робоквантум</h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                {{-- <button type="button" class="close"
+                                    data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
-                                </button>
+                                </button> --}}
                             </div>
                             <div class="modal-body">
 
@@ -44,7 +45,8 @@
                                                             data-toggle="tooltip" data-placement="top"
                                                             title="Если полоска достигнет 100% квантум будет закрыт"
                                                             role="progressbar" style="width:{{ $promrobo->id }}%">
-                                                            {{ $promrobo->id }}</div>
+                                                            {{ $promrobo->id }}
+                                                        </div>
                                                     </div>
 
                                                 @elseif($kvantum->kvantum_status == '0')
@@ -56,22 +58,6 @@
                                     </div>
                                 </div>
 
-                                <!--                     <div class="progress">
-                      <div class="progress-bar progress-bar-striped" role="progressbar" style="width: 10%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div>
-                    </div>
-                    <div class="progress">
-                      <div class="progress-bar progress-bar-striped bg-success" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-                    </div>
-                    <div class="progress">
-                      <div class="progress-bar progress-bar-striped bg-info" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
-                    </div>
-                    <div class="progress">
-                      <div class="progress-bar progress-bar-striped bg-warning" role="progressbar" style="width: 75%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
-                    </div>
-                    <div class="progress">
-                      <div class="progress-bar progress-bar-striped bg-danger" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
-                    </div> -->
-
                             </div>
 
                             <div class="modal-footer">
@@ -80,26 +66,27 @@
                                 </button>
                                 <!-- button type="button" class="btn btn-success">Записаться</button> -->
                                 @foreach ($kvantums as $key => $kvantum)
-                                @if ($kvantum->kvantum_id == '2')                               
-                                @if ($kvantum->kvantum_status == '1')
-                                    <button type="button" class="btn btn-success" data-toggle="modal"
-                                        data-target="#joinModal" data-whatever="@getbootstrap">Записаться</button>
-                                @elseif($kvantum->kvantum_status == '0')
-                                    <button type="button" class="btn btn-secondary" disabled>Записаться</button>
-                                @endif
-                                @endif
-                                @endforeach                              
+                                    @if ($kvantum->kvantum_id == '2')
+                                        @if ($kvantum->kvantum_status == '1')
+                                            <button type="button" class="btn btn-success" data-toggle="modal"
+                                                data-target="#joinModal"
+                                                data-whatever="@getbootstrap">Записаться</button>
+                                        @elseif($kvantum->kvantum_status == '0')
+                                            <button type="button" class="btn btn-secondary" disabled>Записаться</button>
+                                        @endif
+                                    @endif
+                                @endforeach
                                 <button type="button" class="btn btn-primary" data-toggle="modal"
-                                    data-target="#calendarModalCenterPromrobo">Расписание</button>
+                                    data-target="#calendarModalCenterPromroboTeacherShow">Расписание</button>
                             </div>
                         </div>
                     </div>
                 </div>
 
 
-                <!-- Modal Calendar Promrobo -->
-                <div class="modal bd-example-modal-lg" id="calendarModalCenterPromrobo" tabindex="-1" role="dialog"
-                    aria-labelledby="calendarModalCenterPromrobo" aria-hidden="true">
+                <!-- Modal Load teachers Promrobo -->
+                <div class="modal bd-example-modal-lg" id="calendarModalCenterPromroboTeacherShow" tabindex="-1"
+                    role="dialog" aria-labelledby="calendarModalCenterPromroboTeacherShow" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
@@ -112,7 +99,49 @@
                                 <div class="card-body">
                                     <table class="table table-responsive">
                                         <tr>
-                                            <th>Педагог</th>
+                                            <th>Педагоги</th>
+                                        </tr>
+                                        <p>Нажмите на педагога чтобы узнать расписание</p>
+                                        @foreach ($timetables as $key => $timetable)
+                                            <tr>
+                                                @if ($timetable->kvantum_name == 'Робоквантум')
+                                                    <td>
+                                                        <a data-toggle="modal"
+                                                            data-target="#calendarModalCenterPromrobo">{{ $timetable->teacher_full_name }}</a>
+                                                    </td>
+                                            </tr>
+                                        @endif
+                                        @endforeach
+                                    </table>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary"
+                                        data-dismiss="modal">Закрыть</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Modal Calendar Promrobo -->
+                <div class="modal bd-example-modal-lg" id="calendarModalCenterPromrobo" tabindex="-1" role="dialog"
+                    aria-labelledby="calendarModalCenterPromrobo" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLongTitle">Расписание педагога
+                                    {{ $timetable->teacher_full_name }}
+                                </h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="card-body">
+                                    <table class="table table-responsive">
+                                        <tr>
+                                            {{-- <th>Педагог</th>
+                                            --}}
                                             <th>День недели</th>
                                             <th>Время</th>
                                             <th>Группа</th>
@@ -120,7 +149,10 @@
                                         @foreach ($timetables as $key => $timetable)
                                             <tr>
                                                 @if ($timetable->kvantum_name == 'Робоквантум')
-                                                    <td>{{ $timetable->teacher_full_name }}</td>
+                                                    {{-- <td>
+                                                        {{ $timetable->teacher_full_name }}
+                                                    </td>
+                                                    --}}
                                                     <td>
                                                         @if ($timetable->week_day == 'Понедельник')
                                                             Понедельник
@@ -140,7 +172,7 @@
                                                             Расписание ещё не опубликовано
                                                         @endif
                                                     </td>
-                                                    <td>{!! $timetable->week_time !!}</td>
+                                                    <td width="50%">{!! $timetable->week_time !!}</td>
                                                     <td>{!! $timetable->week_group_id !!}</td>
                                             </tr>
                                         @endif
