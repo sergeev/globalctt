@@ -190,6 +190,7 @@ class EventController extends Controller
         $event->content = $request->get('content');
         $event->slug = $request->get('slug');
         $event->author = $user;
+        $event->organization_show = $request->get('organization_show');
         $event->published = $request->get('published');
         $event->published_slider_status = $request->get('published_slider_status');
 

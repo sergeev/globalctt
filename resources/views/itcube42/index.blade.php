@@ -40,15 +40,15 @@
                 </ul>
                 {{-- <form class="form-inline my-2 my-lg-0">
                     @guest
-                        <a href="{{ route('login') }}"
-                            class="btn btn-outline-dark my-2 my-sm-0 mr-3 text-uppercase">Войти</a>
-                        @if (Route::has('register'))
-                            <a href="{{ route('register') }}"
-                                class="btn btn-info my-2 my-sm-0 text-uppercase">Регистрация</a>
-                        @endif
+                    <a href="{{ route('login') }}"
+                        class="btn btn-outline-dark my-2 my-sm-0 mr-3 text-uppercase">Войти</a>
+                    @if (Route::has('register'))
+                        <a href="{{ route('register') }}"
+                            class="btn btn-info my-2 my-sm-0 text-uppercase">Регистрация</a>
+                    @endif
                     @else
-                        <a class="btn btn-info my-2 my-sm-0 text-uppercase"> {{ __('Добро пожаловать ') }}
-                            {{ Auth::user()->name }}</a>
+                    <a class="btn btn-info my-2 my-sm-0 text-uppercase"> {{ __('Добро пожаловать ') }}
+                        {{ Auth::user()->name }}</a>
                     @endguest
                 </form> --}}
             </div>
@@ -303,7 +303,8 @@
             </div>
         </div>
     </div>
-    <div class="container-fluid gtco-testimonials">
+
+    {{-- <div class="container-fluid gtco-testimonials">
         <div class="container">
             <h2>Преподаватели</h2>
             <div class="owl-carousel owl-carousel1 owl-theme">
@@ -390,63 +391,31 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
 
-
-    <!-- <div class="container-fluid gtco-features-list">
-    <div class="container">
-        <div class="row">
-            <div class="media col-md-6 col-lg-4">
-                <div class="oval mr-4"><img class="align-self-start" src="images/quality-results.png" alt=""></div>
-                <div class="media-body">
-                    <h5 class="mb-0">Quality Results</h5>
-                    Aliquam a nisl pulvinar, hendrerit arcu sed, dapibus velit. Duis ac quam id sapien vestibulum
-                    fermentum ac eu eros. Aliquam erat volutpat.
-                </div>
-            </div>
-            <div class="media col-md-6 col-lg-4">
-                <div class="oval mr-4"><img class="align-self-start" src="images/analytics.png" alt=""></div>
-                <div class="media-body">
-                    <h5 class="mb-0">Analytics</h5>
-                    Aliquam a nisl pulvinar, hendrerit arcu sed, dapibus velit. Duis ac quam id sapien vestibulum
-                    fermentum ac eu eros. Aliquam erat volutpat.
-                </div>
-            </div>
-            <div class="media col-md-6 col-lg-4">
-                <div class="oval mr-4"><img class="align-self-start" src="images/affordable-pricing.png" alt=""></div>
-                <div class="media-body">
-                    <h5 class="mb-0">Affordable Pricing</h5>
-                    Aliquam a nisl pulvinar, hendrerit arcu sed, dapibus velit. Duis ac quam id sapien vestibulum
-                    fermentum ac eu eros. Aliquam erat volutpat.
-                </div>
-            </div>
-            <div class="media col-md-6 col-lg-4">
-                <div class="oval mr-4"><img class="align-self-start" src="images/easy-to-use.png" alt=""></div>
-                <div class="media-body">
-                    <h5 class="mb-0">Easy To Use</h5>
-                    Aliquam a nisl pulvinar, hendrerit arcu sed, dapibus velit. Duis ac quam id sapien vestibulum
-                    fermentum ac eu eros. Aliquam erat volutpat.
-                </div>
-            </div>
-            <div class="media col-md-6 col-lg-4">
-                <div class="oval mr-4"><img class="align-self-start" src="images/free-support.png" alt=""></div>
-                <div class="media-body">
-                    <h5 class="mb-0">Free Support</h5>
-                    Aliquam a nisl pulvinar, hendrerit arcu sed, dapibus velit. Duis ac quam id sapien vestibulum
-                    fermentum ac eu eros. Aliquam erat volutpat.
-                </div>
-            </div>
-            <div class="media col-md-6 col-lg-4">
-                <div class="oval mr-4"><img class="align-self-start" src="images/effectively-increase.png" alt=""></div>
-                <div class="media-body">
-                    <h5 class="mb-0">Effectively Increase</h5>
-                    Aliquam a nisl pulvinar, hendrerit arcu sed, dapibus velit. Duis ac quam id sapien vestibulum
-                    fermentum ac eu eros. Aliquam erat volutpat.
-                </div>
+    <div class="container-fluid gtco-testimonials">
+        <div class="container">
+            <h2>Преподаватели</h2>
+            <div class="owl-carousel owl-carousel1 owl-theme">
+                @foreach ($teachers as $teacher)
+                    @if ($teacher->organization_show == '2')
+                        <div>
+                            <div class="card text-center"><img class="card-img-top" src="{{ $teacher->link_images_1 }}"
+                                    alt="">
+                                <div class="card-body">
+                                    <h5>{{ $teacher->teacher_full_name }}<br />
+                                        <span>{{ $teacher->teacher_kvantum }}</span>
+                                    </h5>
+                                    <p class="card-text"> </p>
+                                </div>
+                            </div>
+                        </div>
+                    @endif
+                @endforeach
             </div>
         </div>
     </div>
-</div> -->
+
     <div class="container-fluid gtco-logo-area">
         <div class="container">
             <div class="row">
@@ -462,94 +431,43 @@
     <div class="container-fluid gtco-news" id="news">
         <div class="container">
             <h2>Последнии новости</h2>
-            <div class="owl-carousel owl-carousel2 owl-theme">
-                <div>
-                    <div class="card text-center"><img class="card-img-top" src="itcube/images/news1.jpg" alt="">
-                        <div class="card-body text-left pr-0 pl-0">
-                            <h5>Aenean ultrices lorem quis blandit
-                                tempor urabitur accumsan. </h5>
-                            <p class="card-text">Donec non sem mi. In hac habitasse platea dictumst. Nullam a feugiat
-                                augue,
-                                et porta metus. Nulla mollis lobortis leet. Maecenas tincidunt, arcu sed ornare purus
-                                risus
-                                . . . </p>
-                            <a href="#">Подробнее <i class="fa fa-angle-right" aria-hidden="true"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div>
-                    <div class="card text-center"><img class="card-img-top" src="itcube/images/news2.jpg" alt="">
-                        <div class="card-body text-left pr-0 pl-0">
-                            <h5> Nam vel nisi eget odio pulvinar
-                                iaculis. Fusce aliquet. </h5>
-                            <p class="card-text">Donec non sem mi. In hac habitasse platea dictumst. Nullam a feugiat
-                                augue,
-                                et porta metus. Nulla mollis lobortis leet. Maecenas tincidunt, arcu sed ornare purus
-                                risus
-                                . . . </p>
-                            <a href="#">READ MORE <i class="fa fa-angle-right" aria-hidden="true"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div>
-                    <div class="card text-center"><img class="card-img-top" src="itcube/images/news3.jpg" alt="">
-                        <div class="card-body text-left pr-0 pl-0">
-                            <h5>Morbi faucibus odio sollicitudin
-                                risus scelerisque dignissim. </h5>
-                            <p class="card-text">Donec non sem mi. In hac habitasse platea dictumst. Nullam a feugiat
-                                augue,
-                                et porta metus. Nulla mollis lobortis leet. Maecenas tincidunt, arcu sed ornare purus
-                                risus
-                                . . . </p>
-                            <a href="#">READ MORE <i class="fa fa-angle-right" aria-hidden="true"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div>
-                    <div class="card text-center"><img class="card-img-top" src="itcube/images/news1.jpg" alt="">
-                        <div class="card-body text-left pr-0 pl-0">
-                            <h5>Aenean ultrices lorem quis blandit
-                                tempor urabitur accumsan. </h5>
-                            <p class="card-text">Donec non sem mi. In hac habitasse platea dictumst. Nullam a feugiat
-                                augue,
-                                et porta metus. Nulla mollis lobortis leet. Maecenas tincidunt, arcu sed ornare purus
-                                risus
-                                . . . </p>
-                            <a href="#">READ MORE <i class="fa fa-angle-right" aria-hidden="true"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div>
-                    <div class="card text-center"><img class="card-img-top" src="itcube/images/news2.jpg" alt="">
-                        <div class="card-body text-left pr-0 pl-0">
-                            <h5> Nam vel nisi eget odio pulvinar
-                                iaculis. Fusce aliquet. </h5>
-                            <p class="card-text">Donec non sem mi. In hac habitasse platea dictumst. Nullam a feugiat
-                                augue,
-                                et porta metus. Nulla mollis lobortis leet. Maecenas tincidunt, arcu sed ornare purus
-                                risus
-                                . . . </p>
-                            <a href="#">READ MORE <i class="fa fa-angle-right" aria-hidden="true"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div>
-                    <div class="card text-center"><img class="card-img-top" src="itcube/images/news3.jpg" alt="">
-                        <div class="card-body text-left pr-0 pl-0">
-                            <h5>Morbi faucibus odio sollicitudin
-                                risus scelerisque dignissim. </h5>
-                            <p class="card-text">Donec non sem mi. In hac habitasse platea dictumst. Nullam a feugiat
-                                augue,
-                                et porta metus. Nulla mollis lobortis leet. Maecenas tincidunt, arcu sed ornare purus
-                                risus
-                                . . . </p>
-                            <a href="#">READ MORE <i class="fa fa-angle-right" aria-hidden="true"></i></a>
+            <div>
+                <div class="row">
+                    <div class="container">
+                        <div class="card-deck">
+                            @foreach ($events as $event)
+                                @if ($event->organization_show == '2')
+                                    @if ($event->published == '1')
+                                        <div class="card text-center"><img class="card-img-top"
+                                                src="{{ $event->link_images_1 }}" alt="">
+                                            <div class="card-body text-left pr-0 pl-0">
+                                                <h5>{!! $event->title !!}</h5>
+                                                <p class="card-text">{!! Str::limit($event->content, 300) !!}</p>
+                                                {{-- <a
+                                                    href="{{ route('events.show', $event->id) }}"
+                                                    class="submit-button">Подробнее <i class="fa fa-angle-right"
+                                                        aria-hidden="true"></i></a> --}}
+                                            </div>
+                                        </div>
+                                    @endif
+                                @endif
+                            @endforeach
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+        @foreach ($events as $event)
+            @if ($event->organization_show == '2')
+                <nav aria-label="Events navigation">
+                    <ul class="pagination justify-content-center">
+                        {!! $events->render() !!}
+                    </ul>
+                </nav>
+            @endif
+        @endforeach
     </div>
+
     <footer class="container-fluid" id="gtco-footer">
         <div class="container">
             <div class="row">
@@ -567,7 +485,7 @@
                             <p><i class="ion-ios-location-outline"></i>Наш адрес: ул. Циолковского, 78А</p>
                             <p><i class="ion-ios-email-outline"></i>E-mail: it-cube.nvkz@mail.ru</p>
                             <p><i class="ion-ios-telephone-outline"></i>Телефон:</p>
-                            <p>Время работы: </p>
+                            <p>Время работы: Пн. – Сб.: 9.00 – 20.00</p>
                             <ul class="nav flex-column company-nav">
 
                                 <iframe
@@ -579,7 +497,9 @@
 
                             <h4 class="mt-5">Следите за нами в сетях!</h4>
                             <ul class="nav follow-us-nav">
-                                <li class="nav-item"><a class="nav-link pl-0" href="#"><i class="fa fa-facebook"
+                                <li class="nav-item"><a class="nav-link pl-0" href="#"><i class="fa fa-vk"
+                                            aria-hidden="true"></i></a></li>
+                                <li class="nav-item"><a class="nav-link" href="#"><i class="fa fa-facebook"
                                             aria-hidden="true"></i></a></li>
                                 <li class="nav-item"><a class="nav-link" href="#"><i class="fa fa-twitter"
                                             aria-hidden="true"></i></a></li>
@@ -593,7 +513,7 @@
                 </div>
             </div>
             <centr>
-                <p>&copy; 2020. IT-Cube 142 г.Новокузнецк <a href="" target="_blank">Меридиан</a></p>
+                <p>&copy; 2020. IT-Cube 42 г.Новокузнецк <a href="ctt-meridian.ru" target="_blank">Меридиан</a></p>
             </centr>
         </div>
     </footer>

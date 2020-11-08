@@ -61,6 +61,22 @@
 
                             <div class="col-xs-12 col-sm-12 col-md-12">
                                 <div class="input-group mb-3">
+                                    <select class="custom-select" id="organization_show">
+                                        <option selected>Выберите</option>
+                                        <option value="0">Меридиан</option>
+                                        <option value="1">Кванториум</option>
+                                        <option value="2">ИТКуб</option>
+                                        <option value="10">Нет</option>
+                                    </select>
+                                    <div class="input-group-append">
+                                        <label class="input-group-text"
+                                            for="published">Организация</label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-xs-12 col-sm-12 col-md-12">
+                                <div class="input-group mb-3">
                                     <select class="custom-select" id="published">
                                         <option selected>Выберите</option>
                                         <option value="1">Опубликовать</option>

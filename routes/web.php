@@ -83,6 +83,10 @@ Route::domain('kvantorium-nvkz.ru')->group(function () {
 Route::domain('itcube42.ru')->group(function () {
 	Route::get('/', 'Itcube\indexController@default');
 
+	Route::namespace('Redactor')->group(function(){
+		Route::resource('/events', 'Itcube42EventGlobalController');
+	});
+
 	// Cube Arrows
 	Route::name('Itcube.')->group(function() {
 

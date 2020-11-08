@@ -17,6 +17,7 @@ class CreateTeachersTable extends Migration
             $table->bigIncrements('id');
             $table->string('teacher_full_id', 100)->unsignedInteger()->default();
             $table->string('teacher_full_name');
+            $table->boolean('organization_show')->unsignedInteger()->default(10);
             $table->string('link_images_1', 100)->unsignedInteger()->default('./images/.');
             $table->string('link_web_main', 100)->unsignedInteger()->default();
             $table->string('link_web_facebook', 100)->unsignedInteger()->default();  

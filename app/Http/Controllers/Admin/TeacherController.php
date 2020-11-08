@@ -104,7 +104,8 @@ class TeacherController extends Controller
     {
         $rules = [
             //'teacher_full_id' => 'required', 
-            'teacher_full_name' => 'required', 
+            'teacher_full_name' => 'required',
+            'organization_show' => 'required',
             'link_images_1' => 'required', 
             'teacher_kvantum_id' => 'required', 
             'teacher_kvantum' => 'required', 
@@ -113,6 +114,7 @@ class TeacherController extends Controller
 
         $messages = [
             'teacher_full_name.required' => 'Введите Ф.И.О',
+            'organization_show' => 'Выберите организацию',
             'link_images_1.required' => 'Выбирете ссылку на изображение педагога',
             'kvantum_name.required' => 'Выбирите педагога',
             'teacher_kvantum_id.required' => 'Выбирете квантум',
@@ -190,6 +192,7 @@ class TeacherController extends Controller
         $rules = [
             //'teacher_full_id' => 'required', 
             'teacher_full_name' => 'required', 
+            'organization_show' => 'required',
             'link_images_1' => 'required', 
             'teacher_kvantum_id' => 'required', 
             'teacher_kvantum' => 'required', 
@@ -198,6 +201,7 @@ class TeacherController extends Controller
 
         $messages = [
             'teacher_full_name.required' => 'Введите Ф.И.О',
+            'organization_show' => 'Выберите организацию',
             'link_images_1.required' => 'Выбирете ссылку на изображение педагога',
             'kvantum_name.required' => 'Выбирите педагога',
             'teacher_kvantum_id.required' => 'Введите ID квантума',

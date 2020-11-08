@@ -13,7 +13,8 @@ class Teacher extends Model
      */
     protected $fillable = [
         'teacher_full_id', 
-        'teacher_full_name', 
+        'teacher_full_name',
+        'organization_show',
         'link_images_1', 
         'link_web_main',
         'link_web_facebook',

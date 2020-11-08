@@ -15,8 +15,9 @@
                     </div>
                     <div class="card-body">
                         <table class="table ">
-                            <tr>
-                                <th>ID</th>
+                            <tr>                             
+                                <th>ID</th> 
+                                <th>Организация</th>
                                 <th>Ф.И.О</th>
                                 <th>Квантум</th>
                                 <th>Детей</th>
@@ -26,7 +27,8 @@
                             @foreach ($teachers as $key => $teacher)
 
                                 <tr>
-                                    <td>{{ $teacher->id }}</td>
+                                    <td>{{ $teacher->id }}</td> 
+                                    <td>{{ $teacher->organization_show }}</td>
                                     <td>{{ $teacher->teacher_full_name }}</td>
                                     <td>{{ $teacher->teacher_kvantum }}</td>
                                     <td>

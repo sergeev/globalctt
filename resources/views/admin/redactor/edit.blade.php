@@ -67,6 +67,21 @@
                                             <option value="{{ $option->id }}" {{ (collect(old('options'))->contains($option->id)) ? 'selected':'' }}>{{ $option->name }}</option>
                                         @endforeach
                                     </select> --}}
+                                    {{ Form::select('organization_show', array('0' => 'Меридиан', '1' => 'Кванториум', '2' => 'ИТКуб', '10' => 'Нет'), null, ['class' => 'form-control']) }}
+                                    <div class="input-group-append">
+                                        <label class="input-group-text"
+                                            for="organization_show">Организация</label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-xs-12 col-sm-12 col-md-12">
+                                <div class="input-group mb-3">
+                                    {{-- <select name="published[]" id="published" class="form-control" multiple>
+                                        @foreach($event->includes->get('published') as $option)
+                                            <option value="{{ $option->id }}" {{ (collect(old('options'))->contains($option->id)) ? 'selected':'' }}>{{ $option->name }}</option>
+                                        @endforeach
+                                    </select> --}}
                                     {{ Form::select('published', array('0' => 'Нет', '1' => 'Да'), null, ['class' => 'form-control']) }}
                                     <div class="input-group-append">
                                         <label class="input-group-text"

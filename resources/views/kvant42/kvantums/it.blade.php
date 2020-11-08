@@ -4,9 +4,9 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLongTitle">IT-Квантум</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                {{-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
-                </button>
+                </button> --}}
             </div>
             <div class="modal-body">
 
@@ -47,7 +47,8 @@
                                         data-toggle="tooltip" data-placement="top"
                                         title="Если полоска достигнет 100% квантум будет закрыт" role="progressbar"
                                         style="width:{{ $it_k->id }}%">
-                                        {{ $it_k->id }}</div>
+                                        {{ $it_k->id }}
+                                    </div>
                                 </div>
                             @endif
                         @endforeach
@@ -57,10 +58,53 @@
 
             <div class="modal-footer">
                 <!-- button type="button" class="btn btn-success">Записаться</button> -->
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
                 <button type="button" class="btn btn-success" data-toggle="modal" data-target="#joinModal"
                     data-whatever="@getbootstrap">Записаться</button>
                 <button type="button" class="btn btn-primary" data-toggle="modal"
-                    data-target="#calendarModalCenterIt">Расписание</button>
+                    data-target="#calendarModalCenterItTeacherShow">Расписание</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Modal Load teachers it -->
+<div class="modal bd-example-modal-lg" id="calendarModalCenterItTeacherShow" tabindex="-1" role="dialog"
+    aria-labelledby="calendarModalCenterItTeacherShow" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Расписание IT-квантум
+                </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="card-body">
+                    <table class="table table-responsive">
+                        <tr>
+                            <th>Педагоги</th>
+                        </tr>
+                        <p>Нажмите на педагога чтобы узнать расписание</p>
+                        @foreach ($timetables as $key => $timetable)
+                            <tr>
+                                @if ($timetable->kvantum_name == 'IT-квантум')
+                                    <td>
+                                        <a data-toggle="modal"
+                                            data-target="#calendarModalCenterIt">{{ $timetable->teacher_full_name }}</a>
+                                    </td>
+                            </tr>
+                        @endif
+                        @endforeach
+                    </table>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрыть</button>
+                </div>
             </div>
         </div>
     </div>
@@ -73,7 +117,9 @@
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLongTitle">Расписание IT-квантум</h5>
+                <h5 class="modal-title" id="exampleModalLongTitle">Расписание педагога
+                    {{ $timetable->teacher_full_name }}
+                </h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>

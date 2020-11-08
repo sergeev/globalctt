@@ -4,7 +4,7 @@
   
   <link href="{{ URL::asset('itcube/css/font-awesome.css') }}" rel="stylesheet">
   <link href="{{ URL::asset('itcube/css/style.css') }}" rel="stylesheet"> 
-  <link href="{{ URL::asset('itcube/owl-carousel/assets/owl.carousel.min.css') }}" rel="stylesheet">  
+  
   <!-- Bootstrap CSS File -->
   <link href="{{ URL::asset('itcube/css/bootstrap.min.css') }}" rel="stylesheet">
 
