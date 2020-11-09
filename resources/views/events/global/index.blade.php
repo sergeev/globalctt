@@ -24,7 +24,7 @@
 <section id="services" class="section-bg">
     <div class="container">
         <header class="section-header">
-            <h3><a href="{{ route('events.index') }}">{{ __('Все Новости') }}</a></h3>
+            <h3><a href="{{ route('kvantorium-events.index') }}">{{ __('Все Новости') }}</a></h3>
         </header>
         <div class="row">
             <div class="container">
@@ -35,7 +35,7 @@
                                 <div class="box">
                                     <img class="img-fluid" src="{{ $event->link_images_1 }}" alt="">
                                     <div class="card-body">
-                                        <h5 class="card-title"><a href="{{ route('events.show', $event->id) }}">{!! $event->title !!}</a></h5>
+                                        <h5 class="card-title"><a href="{{ route('kvantorium-events.show', $event->id) }}">{!! $event->title !!}</a></h5>
                                         <p class="card-text">{!! Str::limit($event->content, 300) !!} </p>
                                     </div>
                                 </div>

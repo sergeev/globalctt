@@ -15,8 +15,8 @@
                     </div>
                     <div class="card-body">
                         <table class="table ">
-                            <tr>                             
-                                <th>ID</th> 
+                            <tr>
+                                <th>ID</th>
                                 <th>Организация</th>
                                 <th>Ф.И.О</th>
                                 <th>Квантум</th>
@@ -27,16 +27,26 @@
                             @foreach ($teachers as $key => $teacher)
 
                                 <tr>
-                                    <td>{{ $teacher->id }}</td> 
-                                    <td>{{ $teacher->organization_show }}</td>
+                                    <td>{{ $teacher->id }}</td>
+                                    <td>
+                                        @if ($teacher->organization_show == '0')
+                                            Меридиан
+                                        @elseif($teacher->organization_show == '1')
+                                            Кванториум
+                                        @elseif($teacher->organization_show == '2')
+                                            ИТКуб
+                                        @else
+                                            Нет
+                                        @endif
+                                    </td>
                                     <td>{{ $teacher->teacher_full_name }}</td>
                                     <td>{{ $teacher->teacher_kvantum }}</td>
                                     <td>
-                                        
-                                            {{-- @if($teacher->teacher_full_name == $ok_bla)
-                                                {{ $total_student_in_teacher_0->id }}
-                                            @endif --}}
-                                        
+
+                                        {{-- @if ($teacher->teacher_full_name == $ok_bla)
+                                            {{ $total_student_in_teacher_0->id }}
+                                        @endif --}}
+
                                     </td>
 
                                     <td>{{ $teacher->teacher_desc }}</td>

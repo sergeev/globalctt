@@ -38,7 +38,7 @@
                     {{ trans('event.author') }}
                     {{ $event->author }}
                     <div class="pull-right">
-                        <a class="btn btn-primary" href="{{ route('events.index') }}"> Назад</a>
+                        <a class="btn btn-primary" href="{{ route('kvantorium-events.index') }}"> Назад</a>
                     </div>
                 </div>
 

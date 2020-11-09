@@ -25,7 +25,7 @@
                                       <div>
                                           <h5 style="color:#FFFFFF" ;>{!! $event->content_main_page !!}</h5>
                                           <!-- <a href="" class="btn-get-started scrollto">Записаться</a> -->
-                                          <a href="{{ route('events.show', $event->id) }}"
+                                          <a href="{{ route('kvantorium-events.show', $event->id) }}"
                                               class="btn-services scrollto">Подробнее</a>
                                       </div>
                                   </div>

@@ -109,7 +109,8 @@ class TeacherController extends Controller
             'link_images_1' => 'required', 
             'teacher_kvantum_id' => 'required', 
             'teacher_kvantum' => 'required', 
-            'teacher_desc' => 'required'
+            'teacher_desc' => 'required',
+            //'organization_show' => 'required'
         ];
 
         $messages = [
@@ -119,7 +120,8 @@ class TeacherController extends Controller
             'kvantum_name.required' => 'Выбирите педагога',
             'teacher_kvantum_id.required' => 'Выбирете квантум',
             'teacher_kvantum.required' => 'Введите ID квантума',
-            'teacher_desc.required' => 'Введите примечание(краткое описание)'
+            'teacher_desc.required' => 'Введите примечание(краткое описание)',
+            //'organization_show.required' => 'Выберите организацию'
         ];
 
         $this->validate($request, $rules, $messages);
@@ -196,7 +198,8 @@ class TeacherController extends Controller
             'link_images_1' => 'required', 
             'teacher_kvantum_id' => 'required', 
             'teacher_kvantum' => 'required', 
-            'teacher_desc' => 'required'
+            'teacher_desc' => 'required',
+            'organization_show' => 'required'
         ];
 
         $messages = [
@@ -206,7 +209,8 @@ class TeacherController extends Controller
             'kvantum_name.required' => 'Выбирите педагога',
             'teacher_kvantum_id.required' => 'Введите ID квантума',
             'teacher_kvantum.required' => 'Выбирете квантум',
-            'teacher_desc.required' => 'Введите примечание(краткое описание)'
+            'teacher_desc.required' => 'Введите примечание(краткое описание)',
+            'organization_show.required' => 'Выберите организацию'
         ];
 
         $this->validate($request, $rules, $messages);

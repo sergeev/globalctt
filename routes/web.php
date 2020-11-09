@@ -24,14 +24,14 @@ Route::domain('kvantorium-nvkz.ru')->group(function () {
     //     //
 	// });
 	Route::namespace('Redactor')->group(function(){
-		Route::resource('/events', 'EventGlobalController');
+		Route::resource('/kvantorium-events', 'EventGlobalController');
 	});
 	
 	Route::namespace('Admin')->group(function(){
 		Route::resource('/timetables', 'TimetableGlobalController');
 	});
 
-	Route::get('/students/all', 'StudentController@all');
+	//Route::get('/students/all', 'StudentController@all');
 	
 	Auth::routes();
 	
@@ -83,8 +83,47 @@ Route::domain('kvantorium-nvkz.ru')->group(function () {
 Route::domain('itcube42.ru')->group(function () {
 	Route::get('/', 'Itcube\indexController@default');
 
+	Auth::routes();
+
 	Route::namespace('Redactor')->group(function(){
-		Route::resource('/events', 'Itcube42EventGlobalController');
+		Route::resource('/itcube-events', 'Itcube42EventGlobalController');
+	});
+
+
+	Route::get('/home', 'HomeController@index')->name('home');
+	
+	Route::namespace('Admin')->prefix('admin')->name('admin.')->middleware('can:manage-users')->group(function(){
+		Route::resource('/users', 'UserController', ['except' => ['show', 'create', 'store']]);
+	});
+	
+	Route::namespace('Admin')->prefix('admin')->name('admin.')->middleware('can:manage-teachers')->group(function(){
+		Route::resource('/teachers', 'TeacherController');
+	});
+	
+	Route::namespace('Admin')->prefix('admin')->name('admin.')->middleware('can:manage-timetables')->group(function(){
+		Route::resource('/timetables', 'TimetableController');
+	});
+	
+	Route::namespace('Admin')->prefix('admin')->name('admin.')->middleware('can:manage-kvantums')->group(function(){
+		Route::resource('/kvantums', 'KvantumController');
+	});
+	
+	Route::namespace('Student')->prefix('admin')->name('students.')->middleware('can:manage-students')->group(function(){
+		Route::resource('/students', 'StudentController');
+		//Route::get('/students/all', 'StudentController@all');
+	});
+	
+	Route::namespace('Redactor')->prefix('admin')->name('events.')->middleware('can:manage-events')->group(function(){
+		Route::resource('/events', 'EventController');
+		//Route::post('/events/eventPublished', 'EventController@eventPublished');
+	});
+	
+	Route::namespace('Teacher')->prefix('teacher')->name('teacher.')->middleware('can:teacher-students-report')->group(function(){
+		Route::resource('/reports', 'TeacherReportController');
+	});
+	
+	Route::namespace('Student')->group(function(){
+		Route::resource('/_join', 'JoinStudentController');
 	});
 
 	// Cube Arrows

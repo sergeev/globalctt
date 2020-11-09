@@ -26,22 +26,21 @@ class EventController extends Controller
     public function index()
     {
         $student_checked_ok = DB::table('students')
-        ->selectRaw('count(*) as total')
-        ->selectRaw("count(case when student_checked = '1' then 1 end) as id")
-        ->first();
+            ->selectRaw('count(*) as total')
+            ->selectRaw("count(case when student_checked = '1' then 1 end) as id")
+            ->first();
 
         $student_checked_bad = DB::table('students')
-        ->selectRaw('count(*) as total')
-        ->selectRaw("count(case when student_checked = '0' then 1 end) as id")
-        ->first();
+            ->selectRaw('count(*) as total')
+            ->selectRaw("count(case when student_checked = '0' then 1 end) as id")
+            ->first();
 
         //$events = Event::where('id',$id)->first();
         $events = Event::latest()->paginate(20);
         $events_all = Event::all();
 
-        return view('admin.redactor.index',compact('events', 'events_all', 'student_checked_ok', 'student_checked_bad'))
-            ->with('i', (request()->input('page', 1) - 1) * 5
-        );
+        return view('admin.redactor.index', compact('events', 'events_all', 'student_checked_ok', 'student_checked_bad'))
+            ->with('i', (request()->input('page', 1) - 1) * 5);
     }
 
     /**
@@ -52,17 +51,17 @@ class EventController extends Controller
     public function create()
     {
         $student_checked_ok = DB::table('students')
-        ->selectRaw('count(*) as total')
-        ->selectRaw("count(case when student_checked = '1' then 1 end) as id")
-        ->first();
+            ->selectRaw('count(*) as total')
+            ->selectRaw("count(case when student_checked = '1' then 1 end) as id")
+            ->first();
 
         $student_checked_bad = DB::table('students')
-        ->selectRaw('count(*) as total')
-        ->selectRaw("count(case when student_checked = '0' then 1 end) as id")
-        ->first();
-        
-        $users = User::pluck('name','name')->all();
-    
+            ->selectRaw('count(*) as total')
+            ->selectRaw("count(case when student_checked = '0' then 1 end) as id")
+            ->first();
+
+        $users = User::pluck('name', 'name')->all();
+
         return view('admin.redactor.create', compact('users', 'student_checked_ok', 'student_checked_bad'));
     }
 
@@ -85,31 +84,31 @@ class EventController extends Controller
             //'author' => 'required',
             //'published' => 'required',
             //'published_slider_status' => 'required'
-            ];
+        ];
 
-            $messages = [
-                'title.required' => 'Введите название события',
-                'content_main_page.required' => 'Введите ссылку на изображение',
-                'content_main_page.max' => 'Вы ввели более 300 символов!',
-                'content.required' => 'Введите текст статьи',
-                'content.max' => 'Введите менее 5000 символов!',
-                //'author.required' => 'Выберите автора'
-            ];
+        $messages = [
+            'title.required' => 'Введите название события',
+            'content_main_page.required' => 'Введите ссылку на изображение',
+            'content_main_page.max' => 'Вы ввели более 300 символов!',
+            'content.required' => 'Введите текст статьи',
+            'content.max' => 'Введите менее 5000 символов!',
+            //'published.required' => 'Вы не опублековали статью!',
+            //'published_slider_status.required' => 'Вы не опублековали статью в слайдер!'
+        ];
 
-            $this->validate($request, $rules, $messages);
+        $this->validate($request, $rules, $messages);
 
-            $event = new Event([
-                'title' => $request->get('title'),
-                'link_images_1' => $request->get('link_images_1'),
-                'content_main_page' => $request->get('content_main_page'),
-                'content' => $request->get('content'),
-                //'published' => $request->get('published'),
-                //'published_slider_status' => $request->get('published_slider_status')
-            ]); 
-            $event->author = $user;
+        $event = new Event();
+        $event->title = $request->get('title');
+        $event->link_images_1 = $request->get('link_images_1');
+        $event->content_main_page = $request->get('content_main_page');
+        $event->content = $request->get('content');
+        $event->published = $request->get('published');
+        $event->published_slider_status = $request->get('published_slider_status');
+        $event->author = $user;
+        $event->save();
 
-            $event->save();
-
+        //Event::create($request->all());
         //Event::create($request->all()); // TODO
 
         return redirect()->route('events.events.index')->with('success', 'Событие было добавлено успешно.');
@@ -124,14 +123,14 @@ class EventController extends Controller
     public function show(Event $event)
     {
         $student_checked_ok = DB::table('students')
-        ->selectRaw('count(*) as total')
-        ->selectRaw("count(case when student_checked = '1' then 1 end) as id")
-        ->first();
+            ->selectRaw('count(*) as total')
+            ->selectRaw("count(case when student_checked = '1' then 1 end) as id")
+            ->first();
 
         $student_checked_bad = DB::table('students')
-        ->selectRaw('count(*) as total')
-        ->selectRaw("count(case when student_checked = '0' then 1 end) as id")
-        ->first();
+            ->selectRaw('count(*) as total')
+            ->selectRaw("count(case when student_checked = '0' then 1 end) as id")
+            ->first();
 
         return view('admin.redactor.show', compact('event', 'student_checked_ok', 'student_checked_bad'));
     }
@@ -145,23 +144,23 @@ class EventController extends Controller
     public function edit($id)
     {
         $student_checked_ok = DB::table('students')
-        ->selectRaw('count(*) as total')
-        ->selectRaw("count(case when student_checked = '1' then 1 end) as id")
-        ->first();
+            ->selectRaw('count(*) as total')
+            ->selectRaw("count(case when student_checked = '1' then 1 end) as id")
+            ->first();
 
         $student_checked_bad = DB::table('students')
-        ->selectRaw('count(*) as total')
-        ->selectRaw("count(case when student_checked = '0' then 1 end) as id")
-        ->first();
+            ->selectRaw('count(*) as total')
+            ->selectRaw("count(case when student_checked = '0' then 1 end) as id")
+            ->first();
 
         // AuthServiceProvider ->
-        if(Gate::denies('manage-events')){
+        if (Gate::denies('manage-events')) {
             return redirect(route('admin.redactor.index'));
         }
 
-        $users = User::pluck('name','name')->all();
+        $users = User::pluck('name', 'name')->all();
         $event = Event::find($id);
-        
+
         return view('admin.redactor.edit', compact('event', 'users', 'student_checked_ok', 'student_checked_bad'));
     }
 
@@ -175,14 +174,14 @@ class EventController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'title'=> 'required',
+            'title' => 'required',
             'content_main_page' => 'required',
-            'content'=>'required'
+            'content' => 'required'
         ]);
 
         // Получаем автора из базы TODO - наверное не самый верный способ!
         $user = Auth::user()->name;
-       
+
         $event = Event::find($id);
         $event->title = $request->get('title');
         $event->link_images_1 = $request->get('link_images_1');
@@ -194,22 +193,24 @@ class EventController extends Controller
         $event->published = $request->get('published');
         $event->published_slider_status = $request->get('published_slider_status');
 
-        if($event->save()){
+        if ($event->save()) {
             $request->session()->flash('success', $event->title . ' has been update');
-        }else{
+        } else {
             $request->session()->flash('error', 'Event not update, error message');
         }
 
         return redirect()->route('events.events.index');
     }
 
-    public function eventPublished($id){
+    public function eventPublished($id)
+    {
         Event::whereid($id)->update([
             'published' => 1
         ]);
     }
 
-    public function eventUnPublished($id){
+    public function eventUnPublished($id)
+    {
         Event::whereid($id)->update([
             'published' => 0
         ]);
@@ -224,13 +225,13 @@ class EventController extends Controller
     public function destroy(Request $request, Event $event)
     {
         // AuthServiceProvider ->
-        if(Gate::denies('manage-events')){
+        if (Gate::denies('manage-events')) {
             return redirect(route('admin.redactor.index'));
         }
 
-        if($event->delete()){
+        if ($event->delete()) {
             $request->session()->flash('success', $event->title . ' has been delete');
-        }else{
+        } else {
             $request->session()->flash('error', 'Event not delete, error message');
         }
 

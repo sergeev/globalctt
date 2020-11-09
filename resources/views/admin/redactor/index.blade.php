@@ -17,6 +17,19 @@
             @foreach($events as $event)
             <div class="card">
                 <div class="card-header">
+                    Размещено в [
+                        @if ($event->organization_show == '0')
+                            Меридиан
+                        @elseif($event->organization_show == '1')
+                            Кванториум
+                        @elseif($event->organization_show == '2')
+                            ИТКуб
+                        @elseif($event->organization_show == '11')
+                        Везде
+                        @else
+                            Нет
+                        @endif
+                    ]
                     {{ $event->title }}
                     @can('manage-events')
                     <a href="{{ route('events.events.show', $event->id) }}"><button type="buttor"
