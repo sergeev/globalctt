@@ -430,10 +430,10 @@
     </div>
     <div class="container-fluid gtco-news" id="news">
         <div class="container">
-            <h2>Последнии новости</h2>
+            <h2><a href="{{ route('itcube-events.index') }}">Последнии новости</a></h2>
             <div>
                 <div class="row">
-                    <div class="container">
+                    <div class="col-md-12 col-xl-12">
                         <div class="card-deck">
                             @foreach ($events as $event)
                                 @if ($event->organization_show == '2')
@@ -441,12 +441,11 @@
                                         <div class="card text-center"><img class="card-img-top"
                                                 src="{{ $event->link_images_1 }}" alt="">
                                             <div class="card-body text-left pr-0 pl-0">
-                                                <h5>{!! $event->title !!}</h5>
+                                                <h4 class="card-title">{!! $event->title !!}</h4>
                                                 <p class="card-text">{!! Str::limit($event->content, 300) !!}</p>
-                                                {{-- <a
-                                                    href="{{ route('events.show', $event->id) }}"
-                                                    class="submit-button">Подробнее <i class="fa fa-angle-right"
-                                                        aria-hidden="true"></i></a> --}}
+                                                <a href="{{ route('itcube-events.show', $event->id) }}"
+                                                    class="submit-button"> <i class="fa fa-angle-right"
+                                                        aria-hidden="true">Подробнее</i></a>
                                             </div>
                                         </div>
                                     @endif
@@ -457,15 +456,6 @@
                 </div>
             </div>
         </div>
-        @foreach ($events as $event)
-            @if ($event->organization_show == '2')
-                <nav aria-label="Events navigation">
-                    <ul class="pagination justify-content-center">
-                        {!! $events->render() !!}
-                    </ul>
-                </nav>
-            @endif
-        @endforeach
     </div>
 
     <footer class="container-fluid" id="gtco-footer">

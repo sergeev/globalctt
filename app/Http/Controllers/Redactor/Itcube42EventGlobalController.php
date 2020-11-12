@@ -35,11 +35,9 @@ class Itcube42EventGlobalController extends Controller
      * @param  \App\Event  $event
      * @return \Illuminate\Http\Response
      */
-    public function show(Event $event)
+    public function show(Event $event, $id)
     {
-        $events = Event::latest()->paginate(4);
-        $events_all = Event::all();
-
-        return view('events.itcube42.show', compact('events'));
+        $event = Event::find($id);
+        return view('events.itcube42.show', compact('event'));
     }
 }
