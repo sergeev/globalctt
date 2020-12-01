@@ -32,6 +32,8 @@ use Illuminate\Support\Facades\Route;
 	//Route::get('/students/all', 'StudentController@all');
 	
 	Auth::routes();
+
+	Route::get('/showtimes', 'ShowTimeController@show');
 	
 	Route::get('/home', 'HomeController@index')->name('home');
 	

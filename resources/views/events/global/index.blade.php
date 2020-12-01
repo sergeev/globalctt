@@ -24,7 +24,7 @@
 <section id="services" class="section-bg">
     <div class="container">
         <header class="section-header">
-            <h3><a href="{{ route('kvantorium-events.index') }}">{{ __('Все Новости') }}</a></h3>
+            <h3><a href="{{ route('events.index') }}">{{ __('Все Новости') }}</a></h3>
         </header>
         <div class="row">
             <div class="container">
