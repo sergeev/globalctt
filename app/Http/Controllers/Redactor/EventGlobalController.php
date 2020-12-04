@@ -50,10 +50,10 @@ class EventGlobalController extends Controller
      * @param  \App\Event  $event
      * @return \Illuminate\Http\Response
      */
-    public function show(Event $event, $id)
+    public function show(Event $event)
     {
         // views link resource/events/global/show.blade.php
-        $event = Event::find($id);
-        return view('itcube-events.global.show', compact('event'));
+        //$event = Event::find($id);
+        return view('events.global.show', compact('event'));
     }
 }

@@ -13,6 +13,7 @@
           <li class="active"><a href="#intro">Главная</a></li>
           <li><a href="#about">О нас</a></li>
           <li><a href="#services">Квантумы</a></li>
+          <li><a href="./showtimes">Расписание</a></li>
           <li><a href="#why-us">Цифры</a>
             <li><a href="#portfolio">Галерея</a></li>
             <li><a href="#team">Команда</a></li>

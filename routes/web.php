@@ -33,7 +33,7 @@ use Illuminate\Support\Facades\Route;
 	
 	Auth::routes();
 
-	Route::get('/showtimes', 'ShowTimeController@show');
+	Route::get('/showtimes', 'ShowTimeController@index');
 	
 	Route::get('/home', 'HomeController@index')->name('home');
 	

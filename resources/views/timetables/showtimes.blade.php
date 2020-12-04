@@ -14,86 +14,84 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
+
 <body>
-    <main class="py-4">
+    <main id="main">
         <div class="container">
-            <div class="row">
-                <div class="col-lg-12 margin-tb">
-                    <div class="pull-left">
-                        <h2>Расписания занятий кванториума 42 Новокузнецк</h2>
-                    </div>
-                    <div class="pull-right">
-                        <a class="btn btn-primary" href="./"> На главную</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="row">
-
-<table class="table">
-  <thead class="thead-dark">
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">First</th>
-      <th scope="col">Last</th>
-      <th scope="col">Handle</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
-    </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>Jacob</td>
-      <td>Thornton</td>
-      <td>@fat</td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td>Larry</td>
-      <td>the Bird</td>
-      <td>@twitter</td>
-    </tr>
-  </tbody>
-</table>
-
-<table class="table">
-  <thead class="thead-light">
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">First</th>
-      <th scope="col">Last</th>
-      <th scope="col">Handle</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
-    </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>Jacob</td>
-      <td>Thornton</td>
-      <td>@fat</td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td>Larry</td>
-      <td>the Bird</td>
-      <td>@twitter</td>
-    </tr>
-  </tbody>
-</table>
-
-</div>
-</main>
-</div>
+            <header class="section-header">
+                <h3>Расписания занятий кванториума 42 Новокузнецк</h3>
+            </header>
+            <table class="table table-bordered table-responsive">
+                <tr>
+                    <th rowspan="2" class="first">Ф.И.О</th>
+                    <th colspan="7">Дни / время проведения занятий</th>
+                </tr>
+                <tr>
+                    <td class="first">Понедельник</td>
+                    <td class="first">Вторник</td>
+                    <td class="first">Среда</td>
+                    <td class="first">Четверг</td>
+                    <td class="first">Пятница</td>
+                    <td class="first">Суббота</td>
+                    <td class="first">Воскресенье</td>
+                </tr>
+                @foreach ($timetables as $key => $timetable)
+                    <tr>
+                        <td rowspan="1" class="first">{{ $timetable->teacher_full_name }} ({{ $timetable->kvantum_name }})</td> 
+                        <td>
+                            @if ($timetable->week_day == 'Понедельник')
+                                {{ $timetable->week_time }}
+                            @else
+                                Нет занятий
+                            @endif
+                        </td>
+                        <td>
+                            @if ($timetable->week_day == 'Вторник')
+                                {{ $timetable->week_time }}
+                            @else
+                                Нет занятий
+                            @endif
+                        </td>
+                        <td>
+                            @if ($timetable->week_day == 'Среда')
+                                {{ $timetable->week_time }}
+                            @else
+                                Нет занятий
+                            @endif
+                        </td>
+                        <td>
+                            @if ($timetable->week_day == 'Четверг')
+                                {{ $timetable->week_time }}
+                            @else
+                                Нет занятий
+                            @endif
+                        </td>
+                        <td>
+                            @if ($timetable->week_day == 'Пятница')
+                                {{ $timetable->week_time }}
+                            @else
+                                Нет занятий
+                            @endif
+                        </td>
+                        <td>
+                            @if ($timetable->week_day == 'Суббота')
+                                {{ $timetable->week_time }}
+                            @else
+                                Нет занятий
+                            @endif
+                        </td>
+                        <td>
+                            @if ($timetable->week_day == 'Воскресенье')
+                                {{ $timetable->week_time }}
+                            @else
+                                Нет занятий
+                            @endif
+                        </td>
+                    </tr>
+                @endforeach
+            </table>
+        </div>
+    </main>
 </body>
+
 </html>
