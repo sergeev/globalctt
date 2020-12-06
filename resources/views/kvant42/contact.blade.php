@@ -59,6 +59,7 @@
                 <div class="text-center"><button type="submit" title="Send Message">Отправить</button></div>
               </form>
             </div>
+            
           </div>
 
         </div>

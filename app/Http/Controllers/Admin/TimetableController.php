@@ -172,6 +172,7 @@ class TimetableController extends Controller
      */
     public function update(Request $request, Timetable $timetable)
     {
+        $timetable->organization = $request->organization;
         $timetable->update($request->all());
 
         return redirect()->route('admin.timetables.index')

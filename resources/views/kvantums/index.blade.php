@@ -100,6 +100,8 @@
                                             {{ $chess_k->id }}
                                         @elseif($kvantum->kvantum_id == '8')
                                             {{ $maths_k->id }}
+                                        @elseif($kvantum->kvantum_id == '9')
+                                            {{ $englisch_k->id }}
                                         @endif
                                     </td>
                                     <td>

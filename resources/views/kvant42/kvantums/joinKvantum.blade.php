@@ -11,7 +11,7 @@
 
                     @include('admin.errorsForm')
 
-                    {!! Form::open(array('route' => 'join.store','method'=>'POST')) !!}
+                    {!! Form::open(array('route' => '_join.store','method'=>'POST')) !!}
                     @csrf
                     <div class="row">
                         <div class="col-xs-12 col-sm-12 col-md-12">

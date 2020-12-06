@@ -26,6 +26,8 @@
 
 @include('kvant42.about')
 
+@include('kvant42.showtimes')
+
 @include('kvant42.services')
 
 @include('kvant42.why_us')

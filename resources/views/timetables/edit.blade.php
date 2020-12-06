@@ -18,6 +18,14 @@
                 <div class="card-body">
                     <div class="col-xs-12 col-sm-12 col-md-12">
                         <div class="form-group">
+                            <strong>*Организация: </strong>
+                            {!! Form::select('organization', array('0' => 'Меридиан', '1' => 'Кванториум', '2' =>
+                            'ИТКуб'), null, ['class' => 'form-control']) !!}
+                        </div>
+                    </div>
+
+                    <div class="col-xs-12 col-sm-12 col-md-12">
+                        <div class="form-group">
                             <strong>Название урока "опционально":</strong>
                             {!! Form::text('topic', null, array('placeholder' => 'Урок лазерной резки','class' =>
                             'form-control')) !!}

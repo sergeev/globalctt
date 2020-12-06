@@ -44,7 +44,8 @@
                                         data-toggle="tooltip" data-placement="top"
                                         title="Если полоска достигнет 100% квантум будет закрыт" role="progressbar"
                                         style="width:{{ $maths_k->id }}%">
-                                        {{ $maths_k->id }}</div>
+                                        {{ $maths_k->id }}
+                                    </div>
                                 </div>
                             @endif
                         @endforeach
@@ -53,11 +54,23 @@
             </div>
 
             <div class="modal-footer">
-                <!-- button type="button" class="btn btn-success">Записаться</button> -->
-                <button type="button" class="btn btn-success" data-toggle="modal" data-target="#joinModal"
-                    data-whatever="@getbootstrap">Записаться</button>
-                <button type="button" class="btn btn-primary" data-toggle="modal"
-                    data-target="#calendarModalCenterMaths">Расписание</button>
+                <div class="col text-center">
+                    {{-- button --}}
+                    @foreach ($kvantums as $key => $kvantum)
+                        @if ($kvantum->kvantum_id == '8')
+                            @if ($kvantum->kvantum_status == '1')
+                                <button type="button" class="btn btn-success" data-toggle="modal" data-target=""
+                                    data-whatever="@getbootstrap">Записаться</button>
+                            @elseif($kvantum->kvantum_status == '0')
+                                <button type="button" class="btn btn-secondary" disabled>Квантум закрыт для
+                                    зачисления</button>
+                            @endif
+                        @endif
+                    @endforeach
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true" <i class="fa fa-window-close"></i></i></span>
+                    </button>
+                </div>
             </div>
         </div>
     </div>

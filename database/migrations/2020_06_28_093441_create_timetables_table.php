@@ -15,6 +15,8 @@ class CreateTimetablesTable extends Migration
     {
         Schema::create('timetables', function (Blueprint $table) {
             $table->bigIncrements('id');
+            // Организация
+            $table->boolean('organization')->unsignedInteger()->default();
             // Название урока "опционально"
             $table->string('topic');
             // Ф.И.О

@@ -61,23 +61,24 @@
                             </div>
 
                             <div class="modal-footer">
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                                <!-- button type="button" class="btn btn-success">Записаться</button> -->
-                                @foreach ($kvantums as $key => $kvantum)
-                                    @if ($kvantum->kvantum_id == '2')
-                                        @if ($kvantum->kvantum_status == '1')
-                                            <button type="button" class="btn btn-success" data-toggle="modal"
-                                                data-target="#joinModal"
-                                                data-whatever="@getbootstrap">Записаться</button>
-                                        @elseif($kvantum->kvantum_status == '0')
-                                            <button type="button" class="btn btn-secondary" disabled>Записаться</button>
+                                <div class="col text-center">
+                                    {{-- button --}}
+                                    @foreach ($kvantums as $key => $kvantum)
+                                        @if ($kvantum->kvantum_id == '2')
+                                            @if ($kvantum->kvantum_status == '1')
+                                                <button type="button" class="btn btn-success" data-toggle="modal"
+                                                    data-target="" data-whatever="@getbootstrap">Записаться</button>
+                                            @elseif($kvantum->kvantum_status == '0')
+                                                <button type="button" class="btn btn-secondary" disabled>Квантум закрыт
+                                                    для
+                                                    зачисления</button>
+                                            @endif
                                         @endif
-                                    @endif
-                                @endforeach
-                                <button type="button" class="btn btn-primary" data-toggle="modal"
-                                    data-target="#calendarModalCenterPromroboTeacherShow">Расписание</button>
+                                    @endforeach
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true" <i class="fa fa-window-close"></i></i></span>
+                                    </button>
+                                </div>
                             </div>
                         </div>
                     </div>

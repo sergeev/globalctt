@@ -113,26 +113,42 @@
                     </div>
                 </div>
 
-                <!-- Begin Modal all kvantums -->
-                <!-- Modal robo -->
-                @include('kvant42.kvantums.promrobo')
-                <!-- Modal it -->
-                @include('kvant42.kvantums.it')
-                <!-- Modal hitech -->
-                @include('kvant42.kvantums.hitech')
-                <!-- Modal energy -->
-                @include('kvant42.kvantums.energy')
-                <!-- Modal nano -->
-                @include('kvant42.kvantums.nano')
-                <!-- Modal vrar -->
-                @include('kvant42.kvantums.vrar')
-                <!-- Modal chess -->
-                @include('kvant42.kvantums.chess')
-                <!-- Modal mathsh -->
-                @include('kvant42.kvantums.mathsh')
+                <div class="col-md-6 col-lg-5 offset-lg-1 wow bounceInUp" data-wow-duration="1.4s">
+                    <div class="box">
+                        <div class="icon"></div>
+                        <h4 class="title"><a href="" data-toggle="modal" data-target="#englishModalCenter"><img
+                                    src="{{ asset('img/kvantum/english/technicalen.png') }}" class="img-fluid" alt="alt text"
+                                    height="120" width="120"> Английский язык</a></h4>
+                        <p class="description"> Английский является языком международного общения XXI века и наиболее
+                            востребован в научных и технических отраслях. Крупнейшие компании мира ведут документацию к
+                            своим разработкам на английском языке с использованием профессиональных терминов и сложных
+                            оборотов в предложении.</p>
+                    </div>
+                </div>
+            </div>
 
-                <!-- Form JOIN TO DO-->
-                <!--             <div class="modal fade" id="joinModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <!-- Begin Modal all kvantums -->
+            <!-- Modal robo -->
+            @include('kvant42.kvantums.promrobo')
+            <!-- Modal it -->
+            @include('kvant42.kvantums.it')
+            <!-- Modal hitech -->
+            @include('kvant42.kvantums.hitech')
+            <!-- Modal energy -->
+            @include('kvant42.kvantums.energy')
+            <!-- Modal nano -->
+            @include('kvant42.kvantums.nano')
+            <!-- Modal vrar -->
+            @include('kvant42.kvantums.vrar')
+            <!-- Modal chess -->
+            @include('kvant42.kvantums.chess')
+            <!-- Modal mathsh -->
+            @include('kvant42.kvantums.mathsh')
+            <!-- Modal english -->
+            @include('kvant42.kvantums.english')
+
+            <!-- Form JOIN TO DO-->
+            <!--             <div class="modal fade" id="joinModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
               <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
                   <div class="modal-header">
@@ -162,7 +178,7 @@
             </div> -->
 
 
-            </div>
+        </div>
 
         </div>
     </section><!-- #services -->

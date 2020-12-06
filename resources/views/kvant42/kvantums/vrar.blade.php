@@ -53,70 +53,24 @@ aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
         </div>
 
         <div class="modal-footer">
-            <!-- button type="button" class="btn btn-success">Записаться</button> -->
-            <button type="button" class="btn btn-success" data-toggle="modal"
-                data-target="#joinModal" data-whatever="@getbootstrap">Записаться</button>
-            <button type="button" class="btn btn-primary" data-toggle="modal"
-                data-target="#calendarModalCenterVRAR">Расписание</button>
-        </div>
-    </div>
-</div>
-</div>
-
-<!-- Modal Calendar VR/AR-квантум -->
-<div class="modal fade" id="calendarModalCenterVRAR" tabindex="-1" role="dialog"
-    aria-labelledby="calendarModalCenterVRAR" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLongTitle">Расписание VR/AR-квантум</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <div class="card-body">
-                    <table class="table table-responsive">
-                        <tr>
-                            <th>Педагог</th>
-                            <th>День недели</th>
-                            <th>Время</th>
-                            <th>Группа</th>
-                        </tr>
-                        @foreach ($timetables as $key => $timetable)
-                            <tr>
-                                @if ($timetable->kvantum_name == 'VR/AR-квантум')
-                                    <td>{{ $timetable->teacher_full_name }}</td>
-                                    <td>
-                                        @if ($timetable->week_day == 'Понедельник')
-                                            Понедельник
-                                        @elseif($timetable->week_day == 'Вторник')
-                                            Вторинк
-                                        @elseif($timetable->week_day == 'Среда')
-                                            Среда
-                                        @elseif($timetable->week_day == 'Четверг')
-                                            Четверг
-                                        @elseif($timetable->week_day == 'Пятница')
-                                            Пятница
-                                        @elseif($timetable->week_day == 'Суббота')
-                                            Суббота
-                                        @elseif($timetable->week_day == 'Воскресенье')
-                                            Воскресенье
-                                        @else
-                                            Расписание ещё не опубликовано
-                                        @endif
-                                    </td>
-                                    <td>{!! $timetable->week_time !!}</td>
-                                    <td>{!! $timetable->week_group_id !!}</td>
-                            </tr>
+            <div class="col text-center">
+                {{-- button --}}
+                @foreach ($kvantums as $key => $kvantum)
+                    @if ($kvantum->kvantum_id == '6')
+                        @if ($kvantum->kvantum_status == '1')
+                            <button type="button" class="btn btn-success" data-toggle="modal" data-target=""
+                                data-whatever="@getbootstrap">Записаться</button>
+                        @elseif($kvantum->kvantum_status == '0')
+                            <button type="button" class="btn btn-secondary" disabled>Квантум закрыт для
+                                зачисления</button>
                         @endif
-                        @endforeach
-                    </table>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрыть</button>
-                </div>
-            </div>
+                    @endif
+                @endforeach
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true" <i class="fa fa-window-close"></i></i></span>
+                </button>
+        </div>
         </div>
     </div>
+</div>
 </div>
