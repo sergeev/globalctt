@@ -47,25 +47,57 @@
                         </div>
 
                         <div class="col-xs-12 col-sm-12 col-md-12">
-                            <label for="week_day">*День недели преподавания:</label>
-                            {{ Form::select('week_day', ['Понедельник' => 'Понедельник', 'Вторник' => 'Вторник', 'Среда' => 'Среда', 'Четверг' => 'Четверг', 'Пятница' => 'Пятница', 'Суббота' => 'Суббота', 'Воскресенье' => 'Воскресенье', 'Событие' => 'Событие'], null, ['class' => 'form-control']) }}
-                        </div>
-
-                        <div class="col-xs-12 col-sm-12 col-md-12">
-                            <div class="form-group">
-                                <strong>*Время занятия:</strong>
-                                {!! Form::text('week_time', null, ['placeholder' => '9:30', 'class' => 'form-control']) !!}
-                            </div>
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                  <th scope="col">*День недели преподавания:</th>
+                                  <th scope="col">*Время занятия:</th>
+                                </tr>
+                              </thead>
+                            <tbody>
+                              <tr>
+                                <th scope="row">Понедельник: {{ Form::select('week_day_1', ['0' => 'Нет', '1' => 'Да'], null, ['class' => 'form-control']) }}
+                                </th>
+                                <td>Пример: 15:30 - 16:10 {!! Form::text('week_time_day_1', null, ['placeholder' => '9:30', 'class' => 'form-control']) !!}</td>
+                              </tr>
+                              <tr>
+                                <th scope="row">Вторник: {{ Form::select('week_day_2', ['0' => 'Нет', '1' => 'Да'], null, ['class' => 'form-control']) }}
+                                </th>
+                                <td>Пример: 15:30 - 16:10 {!! Form::text('week_time_day_2', null, ['placeholder' => '9:30', 'class' => 'form-control']) !!}</td>
+                              </tr>
+                              <tr>
+                                <th scope="row">Среда: {{ Form::select('week_day_3', ['0' => 'Нет', '1' => 'Да'], null, ['class' => 'form-control']) }}
+                                </th>
+                                <td>Пример: 15:30 - 16:10 {!! Form::text('week_time_day_3', null, ['placeholder' => '9:30', 'class' => 'form-control']) !!}</td>
+                              </tr>
+                              <tr>
+                                <th scope="row">Четверг: {{ Form::select('week_day_4', ['0' => 'Нет', '1' => 'Да'], null, ['class' => 'form-control']) }}
+                                </th>
+                                <td>Пример: 15:30 - 16:10 {!! Form::text('week_time_day_4', null, ['placeholder' => '9:30', 'class' => 'form-control']) !!}</td>
+                              </tr>
+                              <tr>
+                                <th scope="row">Пятница: {{ Form::select('week_day_5', ['0' => 'Нет', '1' => 'Да'], null, ['class' => 'form-control']) }}
+                                </th>
+                                <td>Пример: 15:30 - 16:10 {!! Form::text('week_time_day_5', null, ['placeholder' => '9:30', 'class' => 'form-control']) !!}</td>
+                              </tr>
+                              <tr>
+                                <th scope="row">Суббота: {{ Form::select('week_day_6', ['0' => 'Нет', '1' => 'Да'], null, ['class' => 'form-control']) }}
+                                </th>
+                                <td>Пример: 15:30 - 16:10 {!! Form::text('week_time_day_6', null, ['placeholder' => '9:30', 'class' => 'form-control']) !!}</td>
+                              </tr>
+                              <tr>
+                                <th scope="row">Воскресенье: {{ Form::select('week_day_7', ['0' => 'Нет', '1' => 'Да'], null, ['class' => 'form-control']) }}
+                                </th>
+                                <td>Пример: 15:30 - 16:10 {!! Form::text('week_time_day_7', null, ['placeholder' => '9:30', 'class' => 'form-control']) !!}</td>
+                              </tr>
+                            </tbody>
+                          </table>
                         </div>
 
                         <div class="col-xs-12 col-sm-12 col-md-12">
                             <div class="form-group">
                                 <strong>*Группа:</strong>
-                                {!! Form::text('week_group_id', null, [
-                                'placeholder' => 'Группа 1 Сергеев.В.А
-                                9:00',
-                                'class' => 'form-control',
-                                ]) !!}
+                                {!! Form::text('week_group_id', null, ['placeholder' => 'Группа 1 Сергеев.В.А 9:00','class' => 'form-control',]) !!}
                             </div>
                         </div>
 

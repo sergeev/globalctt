@@ -24,9 +24,22 @@ class CreateTimetablesTable extends Migration
             // Направление
             $table->string('kvantum_name');
             // День недели преподавания
-            $table->string('week_day');
+            // 0 - false | 1 - true
+            $table->string('week_day_1');
+            $table->string('week_day_2');
+            $table->string('week_day_3');
+            $table->string('week_day_4');
+            $table->string('week_day_5');
+            $table->string('week_day_6');
+            $table->string('week_day_7');
             // Время занятия
-            $table->string('week_time');
+            $table->string('week_time_day_1');
+            $table->string('week_time_day_2');
+            $table->string('week_time_day_3');
+            $table->string('week_time_day_4');
+            $table->string('week_time_day_5');
+            $table->string('week_time_day_6');
+            $table->string('week_time_day_7');
             // Группа
             $table->string('week_group_id');
             $table->timestamps();

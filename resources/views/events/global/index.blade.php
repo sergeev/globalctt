@@ -13,7 +13,7 @@
     <!-- =======================================================
     Name: Kvantorium42 Novokuznetsk
     Author: v.sergeev.m@gmail.com
-    Dev love for CTT family
+    Free work 
   ======================================================= -->
 </head>
 

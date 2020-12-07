@@ -89,8 +89,8 @@ class TimetableController extends Controller
             'topic' => 'required',
             'teacher_full_name' => 'required',
             'kvantum_name' => 'required',
-            'week_day' => 'required',
-            'week_time' => 'required',
+            //'week_day' => 'required',
+            //'week_time' => 'required',
             'week_group_id' => 'required'
         ];
 
@@ -98,8 +98,8 @@ class TimetableController extends Controller
             'topic.required' => 'Введите название урока',
             'teacher_full_name.required' => 'Выбирете название квантума',
             'kvantum_name.required' => 'Выбирите педагога',
-            'week_day.required' => 'Выбирете день недели преподавания',
-            'week_time.required' => 'Введите время занятия',
+            //'week_day.required' => 'Выбирете день недели преподавания',
+            //'week_time.required' => 'Введите время занятия',
             'week_group_id.required' => 'Введите время занятия'
         ];
 
