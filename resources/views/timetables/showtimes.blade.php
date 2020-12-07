@@ -8,17 +8,122 @@
                 --}}
             </header>
 
-            <div class="accordion" id="accordionExample">
-                <div class="card-header" id="headingOne">
-                    <h2 class="mb-0">
-                        <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse"
-                            data-target="#timetableShowIT" aria-expanded="true" aria-controls="timetableShowIT">
-                            <div class="col text-center">
-                                <i class="fa fa-mouse">ИТ квантум</i>
-                            </div>
-                        </button>
-                    </h2>
+            <div class="row">
+                <div class="col-sm">
+                    <div class="card-header" id="headingOne">
+                        <h2 class="mb-0">
+                            <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse"
+                                data-target="#timetableShowIT" aria-expanded="true" aria-controls="timetableShowIT">
+                                <div class="col text-center">
+                                    <i class="fa fa-mouse">ИТ квантум</i>
+                                </div>
+                            </button>
+                        </h2>
+                    </div>
                 </div>
+                <div class="col-sm">
+                    <div class="card-header" id="headingOne">
+                        <h2 class="mb-0">
+                            <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse"
+                                data-target="#timetableShowIT" aria-expanded="true" aria-controls="timetableShowIT">
+                                <div class="col text-center">
+                                    <i class="fa fa-mouse">Робоквантум</i>
+                                </div>
+                            </button>
+                        </h2>
+                    </div>
+                </div>
+                <div class="col-sm">
+                    <div class="card-header" id="headingOne">
+                        <h2 class="mb-0">
+                            <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse"
+                                data-target="#timetableShowIT" aria-expanded="true" aria-controls="timetableShowIT">
+                                <div class="col text-center">
+                                    <i class="fa fa-mouse">Хай-Тек Цех</i>
+                                </div>
+                            </button>
+                        </h2>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div class="row">                
+                <div class="col-sm">
+                    <div class="card-header" id="headingOne">
+                        <h2 class="mb-0">
+                            <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse"
+                                data-target="#timetableShowIT" aria-expanded="true" aria-controls="timetableShowIT">
+                                <div class="col text-center">
+                                    <i class="fa fa-mouse">Хай-Тек Цех 2</i>
+                                </div>
+                            </button>
+                        </h2>
+                    </div>
+                </div>
+                <div class="col-sm">
+                    <div class="card-header" id="headingOne">
+                        <h2 class="mb-0">
+                            <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse"
+                                data-target="#timetableShowIT" aria-expanded="true" aria-controls="timetableShowIT">
+                                <div class="col text-center">
+                                    <i class="fa fa-mouse">Хай-Тек Цех 2</i>
+                                </div>
+                            </button>
+                        </h2>
+                    </div>
+                </div>
+                <div class="col-sm">
+                    <div class="card-header" id="headingOne">
+                        <h2 class="mb-0">
+                            <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse"
+                                data-target="#timetableShowIT" aria-expanded="true" aria-controls="timetableShowIT">
+                                <div class="col text-center">
+                                    <i class="fa fa-mouse">Хай-Тек Цех 2</i>
+                                </div>
+                            </button>
+                        </h2>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col-sm">
+                    <div class="card-header" id="headingOne">
+                        <h2 class="mb-0">
+                            <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse"
+                                data-target="#timetableShowIT" aria-expanded="true" aria-controls="timetableShowIT">
+                                <div class="col text-center">
+                                    <i class="fa fa-mouse">Хай-Тек Цех 2</i>
+                                </div>
+                            </button>
+                        </h2>
+                    </div>
+                </div>
+                <div class="col-sm">
+                    <div class="card-header" id="headingOne">
+                        <h2 class="mb-0">
+                            <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse"
+                                data-target="#timetableShowIT" aria-expanded="true" aria-controls="timetableShowIT">
+                                <div class="col text-center">
+                                    <i class="fa fa-mouse">Хай-Тек Цех 2</i>
+                                </div>
+                            </button>
+                        </h2>
+                    </div>
+                </div>
+                <div class="col-sm">
+                    <div class="card-header" id="headingOne">
+                        <h2 class="mb-0">
+                            <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse"
+                                data-target="#timetableShowIT" aria-expanded="true" aria-controls="timetableShowIT">
+                                <div class="col text-center">
+                                    <i class="fa fa-mouse">Хай-Тек Цех 2</i>
+                                </div>
+                            </button>
+                        </h2>
+                    </div>
+                </div>
+            </div>
     
                 <div id="timetableShowIT" class="collapse" aria-labelledby="headingOne" data-parent="#timetableShowIT">
                     @foreach ($timetables as $key => $timetable)
@@ -128,7 +233,7 @@
                     @endif
                     @endforeach
                 </div>
-            </div>
+            
             {{-- @foreach ($timetables as $timetable)
                 <p>Последнее обновление {{ $timetable->updated_at }}</p>
             @endforeach --}}
