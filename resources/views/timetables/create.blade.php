@@ -46,19 +46,20 @@
                             </div>
                         </div>
 
-                        <div class="col-xs-12 col-sm-12 col-md-12">
+                        <div class="col-xs-12 col-sm-6 col-md-12">
                         <table class="table table-bordered">
                             <thead>
                                 <tr>
                                   <th scope="col">*День недели преподавания:</th>
-                                  <th scope="col">*Время занятия:</th>
+                                  <th scope="col">*Номер группы | *Время занятия:</th>
                                 </tr>
                               </thead>
                             <tbody>
                               <tr>
                                 <th scope="row">Понедельник: {{ Form::select('week_day_1', ['0' => 'Нет', '1' => 'Да'], null, ['class' => 'form-control']) }}
                                 </th>
-                                <td>Пример: 15:30 - 16:10 {!! Form::text('week_time_day_1', null, ['placeholder' => '9:30', 'class' => 'form-control']) !!}</td>
+                                <td>Пример: 1группа {!! Form::text('week_time_day_1', null, ['placeholder' => '9:30', 'class' => 'form-control']) !!}
+                                </td>
                               </tr>
                               <tr>
                                 <th scope="row">Вторник: {{ Form::select('week_day_2', ['0' => 'Нет', '1' => 'Да'], null, ['class' => 'form-control']) }}

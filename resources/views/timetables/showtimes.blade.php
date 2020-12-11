@@ -150,7 +150,7 @@
                                     <td>
                                         @if ($timetable->week_day_1 == 1)
                                             @if ($timetable->organization == 1)
-                                                {{ $timetable->week_time_day_1 }}
+                                                {{ nl2br(e($timetable->week_time_day_1)) }}
                                             @else
                                                 Нет занятий
                                             @endif
@@ -161,7 +161,7 @@
                                     <td>
                                         @if ($timetable->week_day_2 == 1)
                                             @if ($timetable->organization == 1)
-                                                {{ $timetable->week_time_day_2 }}
+                                                {{ nl2br(e($timetable->week_time_day_2)) }}
                                             @else
                                                 Нет занятий
                                             @endif
@@ -172,7 +172,7 @@
                                     <td>
                                         @if ($timetable->week_day_3 == 1)
                                             @if ($timetable->organization == 1)
-                                                {{ $timetable->week_time_day_3 }}
+                                                {!! str_replace("\n","<br>", $timetable->week_time_day_3) !!}
                                             @else
                                                 Нет занятий
                                             @endif
@@ -183,7 +183,7 @@
                                     <td>
                                         @if ($timetable->week_day_4 == 1)
                                             @if ($timetable->organization == 1)
-                                                {{ $timetable->week_time_day_4 }}
+                                                {!! str_replace("\n","<br>", $timetable->week_time_day_4) !!}
                                             @else
                                                 Нет занятий
                                             @endif
@@ -194,7 +194,7 @@
                                     <td>
                                         @if ($timetable->week_day_5 == 1)
                                             @if ($timetable->organization == 1)
-                                                {{ $timetable->week_time_day_5 }}
+                                                {!! str_replace("\n","<br>", $timetable->week_time_day_5) !!}
                                             @else
                                                 Нет занятий
                                             @endif
@@ -205,7 +205,7 @@
                                     <td>
                                         @if ($timetable->week_day_6 == 1)
                                             @if ($timetable->organization == 1)
-                                                {{ $timetable->week_time_day_6 }}
+                                                {!! str_replace("\n","<br>", $timetable->week_time_day_6) !!}
                                             @else
                                                 Нет занятий
                                             @endif
@@ -216,7 +216,7 @@
                                     <td>
                                         @if ($timetable->week_day_7 == 1)
                                             @if ($timetable->organization == 1)
-                                                {{ $timetable->week_time_day_7 }}
+                                                {!! str_replace("\n","<br>", $timetable->week_time_day_7) !!}
                                             @else
                                                 Нет занятий
                                             @endif
