@@ -31,6 +31,7 @@ class TeacherController extends Controller
     public function index()
     {
         $students = Student::all();
+        $teachers = Teacher::all();
         $teachers_a = Student::pluck('organization','organization')->all();
 
         // $total_student_in_teacher = DB::table('students')
@@ -38,7 +39,7 @@ class TeacherController extends Controller
         // //->selectRaw("count(case when teacherName = 'Смагин Константин Николаевич' then 1 end) as id")
         // ->first();
 
-        // $totalCheck0 = $students = Student::pluck('teacherName','teacherName')->all();
+        $studentsd = Student::pluck('teacherName', 'teacherName')->all();
         // $totalCheck1 = $teachers = Teacher::pluck('teacher_full_name','teacher_full_name')->all();
 
         // $ok_bla = $totalCheck0 == $totalCheck1;
@@ -53,6 +54,11 @@ class TeacherController extends Controller
         // ->selectRaw("count(case when teacherName = 'Сергеев Василий Александрович' then 1 end) as id")
         // ->first();
 
+        $student_techer_count = DB::table('students')
+        ->selectRaw('count(*) as total')
+        ->selectRaw("count(case when teacherName = ' . $studentsd->teacherName == $teachers->teacher_full_name  . ' then 1 end) as id")
+        ->first();
+
         $student_checked_ok = DB::table('students')
         ->selectRaw('count(*) as total')
         ->selectRaw("count(case when student_checked = '1' then 1 end) as id")
@@ -62,13 +68,14 @@ class TeacherController extends Controller
         ->selectRaw('count(*) as total')
         ->selectRaw("count(case when student_checked = '0' then 1 end) as id")
         ->first();
+
         // $teachers_kvantum = Teacher::whereHas('kvantums', function($query) {
         //     $query->whereId(request()->input('teacher_kvantum', 0));
         // })
         // ->pluck('teacher_full_name', 'id');
 
         $teachers = Teacher::latest()->paginate(20);
-        return view('teachers.index',compact('students', 'teachers', 'student_checked_ok', 'student_checked_bad'))
+        return view('teachers.index',compact('students', 'teachers', 'student_checked_ok', 'student_checked_bad', 'student_techer_count'))
             ->with('i', (request()->input('page', 1) - 1) * 5);
     }
 

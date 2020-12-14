@@ -42,10 +42,15 @@
                                     <td>{{ $teacher->teacher_full_name }}</td>
                                     <td>{{ $teacher->teacher_kvantum }}</td>
                                     <td>
+                                        @foreach ( $students as $student)
+                                            
+                                        @if ($student->teacherName == $teacher->teacher_full_name)
+                                           {{ $student_techer_count->id  }}
+                                        @else
+                                        Нет данных
+                                        @endif
 
-                                        {{-- @if ($teacher->teacher_full_name == $ok_bla)
-                                            {{ $total_student_in_teacher_0->id }}
-                                        @endif --}}
+                                        @endforeach
 
                                     </td>
 
