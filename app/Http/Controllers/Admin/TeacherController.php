@@ -56,7 +56,7 @@ class TeacherController extends Controller
 
         $student_techer_count = DB::table('students')
         ->selectRaw('count(*) as total')
-        ->selectRaw("count(case when teacherName = ' . $studentsd->teacherName == $teachers->teacher_full_name  . ' then 1 end) as id")
+        ->selectRaw("count(case when teacherName = '0' then 1 end) as id")
         ->first();
 
         $student_checked_ok = DB::table('students')

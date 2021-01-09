@@ -20,7 +20,7 @@ class JoinStudentController extends Controller
         $kvantums = Kvantum::pluck('kvantum_name','kvantum_name')->all();
 
         $timetables = Timetable::pluck('week_group_id', 'week_group_id')->all();
-        
+
         return view('kvant42.kvantums.joinKvantum', compact('students', 'teachers', 'kvantums', 'timetables'));
     }
 
@@ -37,7 +37,7 @@ class JoinStudentController extends Controller
     public function store(Request $request)
     {
         $rules = [
-            'inputsCertificate' => 'required|regex:/^([0-9\s\-\+\(\)]*)$/|min:10',
+            'inputsCertificate' => 'regex:/^([0-9\s\-\+\(\)]*)$/|min:10',
             'name_1_ot' => 'regex:/^[\w\- \p{Cyrillic}]*$/u',
             'surname_1_fam' => 'regex:/^[\w\- \p{Cyrillic}]*$/u',
             'inputEmail' => 'required|string|email|max:255|unique:students|nullable',
@@ -54,7 +54,7 @@ class JoinStudentController extends Controller
         ];
 
         $messages = [
-            'inputsCertificate.required' => 'Необходимо указать все 10 символов сертификата ПФДО, Пример: 0025011990',
+            //'inputsCertificate.required' => 'Необходимо указать все 10 символов сертификата ПФДО, Пример: 0025011990',
             'name_1_ot.regex' => 'Необходимо указать Имя Отчество (ребенка)',
             'surname_1_fam.regex' => 'Необходимо указать Фамилию (ребенка) ',
             'inputEmail.required' => 'Необходимо указать правельный email адрес ',
@@ -78,12 +78,12 @@ class JoinStudentController extends Controller
         // Проверка на существующую запись в базе данных
         if (Student::where('inputsCertificate', '==', Request::get('inputsCertificate'))->exists()) {
             return redirect()->route('students.index')
-                            ->with('success','Такой сертификат уже есть в базе данных!');        
+                            ->with('success','Такой сертификат уже есть в базе данных!');
         }
 
         if (Student::where('inputEmail', '==', Request::get('inputEmail'))->exists()) {
             return redirect()->route('students.index')
-                            ->with('success','Такая почта уже есть в базе данных!');        
+                            ->with('success','Такая почта уже есть в базе данных!');
         }
 
          $student = new Student([
@@ -103,7 +103,7 @@ class JoinStudentController extends Controller
              'inputsComments' => $request->get('inputsComments')
          ]);
 
-         // Для кванториума = 1 
+         // Для кванториума = 1
          $student->organization = 1;
         $student->student_rang = 0;
         $student->student_exp = 0;
@@ -122,5 +122,5 @@ class JoinStudentController extends Controller
             $request->session()->flash('error', 'Student not create, error message');
         }
     }
-    
+
 }

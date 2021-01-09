@@ -58,38 +58,38 @@
                               <tr>
                                 <th scope="row">Понедельник: {{ Form::select('week_day_1', ['0' => 'Нет', '1' => 'Да'], null, ['class' => 'form-control']) }}
                                 </th>
-                                <td>Пример: 1группа {!! Form::text('week_time_day_1', null, ['placeholder' => '9:30', 'class' => 'form-control']) !!}
+                                <td>Пример: 15:30 - 16:10 {!! Form::textarea('week_time_day_1', null, ['placeholder' => '9:30', 'class' => 'form-control']) !!}
                                 </td>
                               </tr>
                               <tr>
                                 <th scope="row">Вторник: {{ Form::select('week_day_2', ['0' => 'Нет', '1' => 'Да'], null, ['class' => 'form-control']) }}
                                 </th>
-                                <td>Пример: 15:30 - 16:10 {!! Form::text('week_time_day_2', null, ['placeholder' => '9:30', 'class' => 'form-control']) !!}</td>
+                                <td>Пример: 15:30 - 16:10 {!! Form::textarea('week_time_day_2', null, ['placeholder' => '9:30', 'class' => 'form-control']) !!}</td>
                               </tr>
                               <tr>
                                 <th scope="row">Среда: {{ Form::select('week_day_3', ['0' => 'Нет', '1' => 'Да'], null, ['class' => 'form-control']) }}
                                 </th>
-                                <td>Пример: 15:30 - 16:10 {!! Form::text('week_time_day_3', null, ['placeholder' => '9:30', 'class' => 'form-control']) !!}</td>
+                                <td>Пример: 15:30 - 16:10 {!! Form::textarea('week_time_day_3', null, ['placeholder' => '9:30', 'class' => 'form-control']) !!}</td>
                               </tr>
                               <tr>
                                 <th scope="row">Четверг: {{ Form::select('week_day_4', ['0' => 'Нет', '1' => 'Да'], null, ['class' => 'form-control']) }}
                                 </th>
-                                <td>Пример: 15:30 - 16:10 {!! Form::text('week_time_day_4', null, ['placeholder' => '9:30', 'class' => 'form-control']) !!}</td>
+                                <td>Пример: 15:30 - 16:10 {!! Form::textarea('week_time_day_4', null, ['placeholder' => '9:30', 'class' => 'form-control']) !!}</td>
                               </tr>
                               <tr>
                                 <th scope="row">Пятница: {{ Form::select('week_day_5', ['0' => 'Нет', '1' => 'Да'], null, ['class' => 'form-control']) }}
                                 </th>
-                                <td>Пример: 15:30 - 16:10 {!! Form::text('week_time_day_5', null, ['placeholder' => '9:30', 'class' => 'form-control']) !!}</td>
+                                <td>Пример: 15:30 - 16:10 {!! Form::textarea('week_time_day_5', null, ['placeholder' => '9:30', 'class' => 'form-control']) !!}</td>
                               </tr>
                               <tr>
                                 <th scope="row">Суббота: {{ Form::select('week_day_6', ['0' => 'Нет', '1' => 'Да'], null, ['class' => 'form-control']) }}
                                 </th>
-                                <td>Пример: 15:30 - 16:10 {!! Form::text('week_time_day_6', null, ['placeholder' => '9:30', 'class' => 'form-control']) !!}</td>
+                                <td>Пример: 15:30 - 16:10 {!! Form::textarea('week_time_day_6', null, ['placeholder' => '9:30', 'class' => 'form-control']) !!}</td>
                               </tr>
                               <tr>
                                 <th scope="row">Воскресенье: {{ Form::select('week_day_7', ['0' => 'Нет', '1' => 'Да'], null, ['class' => 'form-control']) }}
                                 </th>
-                                <td>Пример: 15:30 - 16:10 {!! Form::text('week_time_day_7', null, ['placeholder' => '9:30', 'class' => 'form-control']) !!}</td>
+                                <td>Пример: 15:30 - 16:10 {!! Form::textarea('week_time_day_7', null, ['placeholder' => '9:30', 'class' => 'form-control']) !!}</td>
                               </tr>
                             </tbody>
                           </table>

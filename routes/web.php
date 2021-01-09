@@ -68,7 +68,7 @@ Route::namespace('Teacher')->prefix('teacher')->name('teacher.')->middleware('ca
 });
 
 Route::namespace('Student')->group(function () {
-	//Route::resource('/_join', 'JoinStudentController');
+	Route::resource('/_join', 'JoinStudentController');
 });
 
 //Route::get('/contact', [ContactUsFormController::class, 'createForm']);
