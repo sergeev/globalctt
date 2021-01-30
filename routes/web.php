@@ -55,7 +55,7 @@ Route::namespace('Admin')->prefix('admin')->name('admin.')->middleware('can:mana
 
 Route::namespace('Student')->prefix('admin')->name('students.')->middleware('can:manage-students')->group(function () {
 	Route::resource('/students', 'StudentController');
-	//Route::get('/students/all', 'StudentController@all');
+	Route::get('/students/all', 'StudentController@all');
 });
 
 Route::namespace('Redactor')->prefix('admin')->name('events.')->middleware('can:manage-events')->group(function () {

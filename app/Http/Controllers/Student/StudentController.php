@@ -130,12 +130,12 @@ class StudentController extends Controller
         //  Проверка на существующую запись в базе данных
         // if (Student::where('inputsCertificate', '=', Input::get('inputsCertificate'))->exists()) {
         //     return redirect()->route('students.index')
-        //                     ->with('success','Такой сертификат уже есть в базе данных!');        
+        //                     ->with('success','Такой сертификат уже есть в базе данных!');
         // }
 
         // if (Student::where('inputEmail', '=', Input::get('inputEmail'))->exists()) {
         //     return redirect()->route('students.index')
-        //                     ->with('success','Такая почта уже есть в базе данных!');        
+        //                     ->with('success','Такая почта уже есть в базе данных!');
         // }
 
         $this->validate($request, $rules, $messages);
@@ -336,16 +336,20 @@ class StudentController extends Controller
         ->first();
 
                 // AuthServiceProvider ->
-                if (Gate::denies('manage-students')) {
-                    return redirect(route('admin.users.index'));
-                }
+//                if (Gate::denies('manage-students')) {
+//                    return redirect(route('admin.users.index'));
+//                }
 
     $students = Student::all();
     $students_list = Student::latest()->paginate(5);
-    
+
         return view('students.all', compact('students', $students, 'students_list', 'student_checked_ok', 'student_checked_bad'));
     }
 
+    public function checked()
+    {
+
+    }
     /**
      * Remove the specified resource from storage.
      *
