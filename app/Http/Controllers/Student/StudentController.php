@@ -225,7 +225,7 @@ class StudentController extends Controller
         $kvantums = Kvantum::pluck('kvantum_name', 'kvantum_name')->all();
 
         $week_group_id = Timetable::pluck('week_group_id', 'week_group_id')->all();
-        $week_day = Timetable::pluck('week_day', 'week_day')->all();
+        //$week_day = Timetable::pluck('week_day', 'week_day')->all();
 
         //$timetables_table = $week_group_id['week_group_id'].' '.$week_day['week_day'];
 

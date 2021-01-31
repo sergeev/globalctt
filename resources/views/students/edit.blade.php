@@ -25,7 +25,7 @@
 <div class="row">
                     {!! Form::model($student, ['method' => 'PATCH','route' => ['students.students.update',
                     $student->id]]) !!}
-                    
+
                     <ul class="nav nav-tabs">
                         <li class="nav-item">
                             <a class="nav-link" data-toggle="tab" href="#organization">Организация</a>
@@ -55,7 +55,7 @@
                           </div>
                         <div class="tab-pane fade show active" id="student">
 
-                    
+
 
                         <div class="col-xs-12 col-sm-12 col-md-12">
                             <div class="form-group">
@@ -167,8 +167,8 @@
                                     {{ Form::text('inputsNameLegalRepresentative', null, ['class' => 'form-control', 'placeholder' => 'ФИО родителя (законного представителя):']) }}
                                 </div>
                             </div>
-    
-    
+
+
                             <div class="col-xs-12 col-sm-12 col-md-12">
                                 <div class="form-group">
                                     <strong>*Телефон родителя (законного представителя):</strong>
@@ -190,7 +190,7 @@
                                         <strong>student_exp:</strong>
                                         {{ Form::text('student_exp', null, ['class' => 'form-control' ]) }}
                                     </div>
-    
+
                                     <div class="form-group col-md-4">
                                         <strong>student_coin:</strong>
                                         {{ Form::text('student_coin', null, ['class' => 'form-control' ]) }}
@@ -210,7 +210,7 @@
                       <div class="col-xs-12 col-sm-12 col-md-12 text-center">
                             <button type="submit" class="btn btn-primary">Отправить</button>
                         </div>
-</div> 
+</div>
 
  {!! Form::close() !!}
                 </div>
