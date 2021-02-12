@@ -156,7 +156,6 @@ class StudentController extends Controller
             'inputsNameLegalRepresentative' => $request->get('inputsNameLegalRepresentative'),
             'NameLegalRepresentativeTelephone' => $request->get('NameLegalRepresentativeTelephone'),
             'inputsComments' => $request->get('inputsComments')
-            //
         ]);
 
         $student->student_rang = 0;

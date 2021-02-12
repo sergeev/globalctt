@@ -194,7 +194,7 @@ class EventController extends Controller
         $event->published_slider_status = $request->get('published_slider_status');
 
         if ($event->save()) {
-            $request->session()->flash('success', $event->title . ' has been update');
+            $request->session()->flash('success', $event->title . ' успешно обновлен');
         } else {
             $request->session()->flash('error', 'Event not update, error message');
         }
@@ -230,7 +230,7 @@ class EventController extends Controller
         }
 
         if ($event->delete()) {
-            $request->session()->flash('success', $event->title . ' has been delete');
+            $request->session()->flash('success', $event->title . ' был удален успешно');
         } else {
             $request->session()->flash('error', 'Event not delete, error message');
         }
