@@ -323,7 +323,7 @@ class StudentController extends Controller
     }
 
 
-    public function all()
+    public function all(Request $request, Student $student)
     {
         $student_checked_ok = DB::table('students')
         ->selectRaw('count(*) as total')
@@ -348,7 +348,7 @@ class StudentController extends Controller
 
     public function checked()
     {
-
+        echo 'checked pages';
     }
     /**
      * Remove the specified resource from storage.

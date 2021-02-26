@@ -34,10 +34,10 @@
                                 <th scope="col">Действия</th>
                             </tr>
                         </thead>
-                        
+
                         <div class="tab-pane fade show active" id="studentСheckedOk">
                             @foreach($students as $student)
-                            @if($student->student_checked == 1)
+                            @if($student->student_checked = 1)
                             6lat
                         <tr>
                             <th scope="row">{{ $student->id }}</th>
@@ -58,15 +58,16 @@
                                 </form>
                                 @endcan
                             </td>
-                        </td>
                     </tr>
+                                @elseif($student->student_checked = 0)
+                                Net dannix
                     @endif
                     @endforeach
                 </div>
-                    
+
                     <div class="tab-pane fade show" id="studentСheckedNotOk">
                         @foreach($students as $student)
-                        @if($student->student_checked == 0)
+                        @if($student->student_checked = 0)
                         6lat 2
                         <tr>
                             <th scope="row">{{ $student->id }}</th>
@@ -87,15 +88,14 @@
                                 </form>
                                 @endcan
                             </td>
-                        </td>
                     </tr>
-                    @endif 
-                    @endforeach 
-                </div>   
-                
+                    @endif
+                    @endforeach
+                </div>
+
                 <div class="tab-pane fade show" id="deletedStudent">
                     @foreach($students as $student)
-                    @if($student->student_deleted == 0)
+                    @if($student->student_deleted = 0)
                     6lat 3 deleted
                     <tr>
                         <th scope="row">{{ $student->id }}</th>
@@ -116,11 +116,10 @@
                             </form>
                             @endcan
                         </td>
-                    </td>
                 </tr>
-                @endif 
-                @endforeach 
-            </div> 
+                @endif
+                @endforeach
+            </div>
                     </table>
                 </div>
             </div>

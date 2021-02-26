@@ -67,7 +67,7 @@
                                             <option value="{{ $option->id }}" {{ (collect(old('options'))->contains($option->id)) ? 'selected':'' }}>{{ $option->name }}</option>
                                         @endforeach
                                     </select> --}}
-                                    {{ Form::select('organization_show', array('0' => 'Меридиан', '1' => 'Кванториум', '2' => 'ИТКуб', '10' => 'Нет'), null, ['class' => 'form-control']) }}
+                                    {{ Form::select('organization_show', ['0' => 'Меридиан', '1' => 'Кванториум', '2' => 'ИТКуб', '10' => 'Нет'], null, ['class' => 'form-control']) }}
                                     <div class="input-group-append">
                                         <label class="input-group-text"
                                             for="organization_show">Организация</label>
@@ -82,7 +82,7 @@
                                             <option value="{{ $option->id }}" {{ (collect(old('options'))->contains($option->id)) ? 'selected':'' }}>{{ $option->name }}</option>
                                         @endforeach
                                     </select> --}}
-                                    {{ Form::select('published', array('0' => 'Нет', '1' => 'Да'), null, ['class' => 'form-control']) }}
+                                    {{ Form::select('published', ['0' => 'Нет', '1' => 'Да'], null, ['class' => 'form-control']) }}
                                     <div class="input-group-append">
                                         <label class="input-group-text"
                                             for="published">{{ trans('event.publish') }}</label>
