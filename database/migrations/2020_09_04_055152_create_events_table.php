@@ -20,11 +20,11 @@ class CreateEventsTable extends Migration
             $table->string('content_main_page', 300);
             $table->string('author')->unsignedInteger()->default();
             $table->string('slug', 100)->unsignedInteger()->default();
-            $table->string('link_images_1', 100)->unsignedInteger()->default();
-            $table->string('link_images_2', 100)->unsignedInteger()->default();
-            $table->string('link_images_3', 100)->unsignedInteger()->default();
-            $table->string('link_images_4', 100)->unsignedInteger()->default();
-            $table->string('link_images_5', 100)->unsignedInteger()->default();
+            $table->string('link_images_1')->unsignedInteger()->default();
+            $table->string('link_images_2')->unsignedInteger()->default();
+            $table->string('link_images_3')->unsignedInteger()->default();
+            $table->string('link_images_4')->unsignedInteger()->default();
+            $table->string('link_images_5')->unsignedInteger()->default();
             $table->string('content_access')->unsignedInteger()->default(0);
             $table->boolean('organization_show')->unsignedInteger()->default(10);
             $table->boolean('published')->unsignedInteger()->default(0);

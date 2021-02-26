@@ -15,21 +15,21 @@ class CreateStudentsTable extends Migration
     {
         Schema::create('students', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->boolean('organization')->unsignedInteger()->default();
+            $table->boolean('organization')->unsignedInteger()->default(0);
             $table->char('inputsCertificate', 10);
             $table->string('name_1_ot', 100);
             $table->string('surname_1_fam', 100);
             $table->string('inputEmail')->unique();
-            $table->binary('childDateInput');
+            $table->binary('childDateInput')->unsignedInteger()->default(NULL);
             $table->boolean('gender')->unsignedInteger()->default(NULL);
-            $table->text('inputsSchool', 100);
-            $table->string('inputsClass');
-            $table->string('inputsKvantum');
-            $table->string('teacherName');
-            $table->string('groupTime');
-            $table->string('inputsNameLegalRepresentative');
-            $table->string('NameLegalRepresentativeTelephone');
-            $table->string('inputsComments', 400);
+            $table->text('inputsSchool', 100)->unsignedInteger()->default(NULL);
+            $table->string('inputsClass')->unsignedInteger()->default(NULL);
+            $table->string('inputsKvantum')->unsignedInteger()->default(NULL);
+            $table->string('teacherName')->unsignedInteger()->default(NULL);
+            $table->string('groupTime')->unsignedInteger()->default(NULL);
+            $table->string('inputsNameLegalRepresentative')->unsignedInteger()->default(NULL);
+            $table->string('NameLegalRepresentativeTelephone')->unsignedInteger()->default(NULL);
+            $table->string('inputsComments', 400)->unsignedInteger()->default(NULL);
             // Ранг, экспа, монеты
             $table->string('student_rang')->unsignedInteger()->default(0);
             $table->string('student_exp')->unsignedInteger()->default(0);
