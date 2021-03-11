@@ -20,7 +20,7 @@
                             <th>Ф.И.О</th>
                             <th>Направление:</th>
                             <th>День недели преподавания</th>
-                            <th>Время занятия</th>
+{{--                            <th>Время занятия</th>--}}
                             <th>Группа</th>
                             <th width="280px">Действие</th>
                             </tr>
@@ -29,8 +29,41 @@
                                 <td>{{ $timetable->topic }}</td>
                                 <td>{{ $timetable->teacher_full_name }}</td>
                                 <td>{{ $timetable->kvantum_name }}</td>
-                                <td>{{ $timetable->week_day }}</td>
-                                <td>{{ $timetable->week_time }}</td>
+                                <td>
+                                        @if($timetable->week_day_1 == '1')
+                                            Пн.
+                                        @elseif($timetable->week_day_1 == '0')
+                                        @endif
+                                        @if($timetable->week_day_2 == '1')
+                                            Вт.
+                                            @elseif($timetable->week_day_2 == '0')
+                                            @endif
+                                        @if($timetable->week_day_3 == '1')
+                                            Ср.
+                                            @elseif($timetable->week_day_3 == '0')
+
+                                            @endif
+                                        @if($timetable->week_day_4 == '1')
+                                            Чт.
+                                            @elseif($timetable->week_day_4 == '0')
+
+                                            @endif
+                                        @if($timetable->week_day_5 == '1')
+                                            Пт.
+                                            @elseif($timetable->week_day_5 == '0')
+
+                                            @endif
+                                        @if($timetable->week_day_6 == '1')
+                                            Сб.
+                                            @elseif($timetable->week_day_6 == '0')
+
+                                            @endif
+                                        @if($timetable->week_day_7 == '1')
+                                            Вс.
+                                            @elseif($timetable->week_day_7 == '0')
+                                            @endif
+                                </td>
+{{--                                <td>{{ $timetable->week_time }}</td>--}}
                                 <td>{{ $timetable->week_group_id }}</td>
                                 <td>
                                     <form action="{{ route('admin.timetables.destroy', $timetable->id) }}"

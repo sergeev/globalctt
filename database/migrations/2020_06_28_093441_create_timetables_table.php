@@ -25,23 +25,23 @@ class CreateTimetablesTable extends Migration
             $table->string('kvantum_name');
             // День недели преподавания
             // 0 - false | 1 - true
-            $table->string('week_day_1');
-            $table->string('week_day_2');
-            $table->string('week_day_3');
-            $table->string('week_day_4');
-            $table->string('week_day_5');
-            $table->string('week_day_6');
-            $table->string('week_day_7');
+            $table->string('week_day_1')->unsignedInteger()->nullable();
+            $table->string('week_day_2')->unsignedInteger()->nullable();
+            $table->string('week_day_3')->unsignedInteger()->nullable();
+            $table->string('week_day_4')->unsignedInteger()->nullable();
+            $table->string('week_day_5')->unsignedInteger()->nullable();
+            $table->string('week_day_6')->unsignedInteger()->nullable();
+            $table->string('week_day_7')->unsignedInteger()->nullable();
             // Время занятия
-            $table->string('week_time_day_1');
-            $table->string('week_time_day_2');
-            $table->string('week_time_day_3');
-            $table->string('week_time_day_4');
-            $table->string('week_time_day_5');
-            $table->string('week_time_day_6');
-            $table->string('week_time_day_7');
+            $table->string('week_time_day_1')->unsignedInteger()->nullable();
+            $table->string('week_time_day_2')->unsignedInteger()->nullable();
+            $table->string('week_time_day_3')->unsignedInteger()->nullable();
+            $table->string('week_time_day_4')->unsignedInteger()->nullable();
+            $table->string('week_time_day_5')->unsignedInteger()->nullable();
+            $table->string('week_time_day_6')->unsignedInteger()->nullable();
+            $table->string('week_time_day_7')->unsignedInteger()->nullable();
             // Группа
-            $table->string('week_group_id');
+            $table->string('week_group_id')->unsignedInteger()->nullable();
             $table->timestamps();
         });
     }
