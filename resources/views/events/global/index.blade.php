@@ -13,7 +13,7 @@
     <!-- =======================================================
     Name: Kvantorium42 Novokuznetsk
     Author: v.sergeev.m@gmail.com
-    Free work 
+    Free work
   ======================================================= -->
 </head>
 
@@ -26,11 +26,12 @@
         <header class="section-header">
             <h3><a href="{{ route('events.index') }}">{{ __('Все Новости') }}</a></h3>
         </header>
+        @foreach ($events as $event)
+            @if ($event->published == '1')
         <div class="row">
+
             <div class="container">
                 <div class="card-deck">
-                    @foreach ($events as $event)
-                        @if ($event->published == '1')
                             <div class="col-md-6 col-lg-6 wow bounceInUp" data-wow-duration="1.4s">
                                 <div class="box">
                                     <img class="img-fluid" src="{{ $event->link_images_1 }}" alt="">
@@ -40,16 +41,16 @@
                                     </div>
                                 </div>
                             </div>
-                        @endif
-                    @endforeach
                 </div>
             </div>
         </div>
+
     </div>
+    @endif
+    @endforeach
     <nav aria-label="Events navigation">
         <ul class="pagination justify-content-center">
             {!! $events->render() !!}
         </ul>
     </nav>
-
 </section>

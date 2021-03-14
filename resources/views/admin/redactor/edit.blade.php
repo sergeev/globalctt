@@ -8,9 +8,8 @@
             <div class="card">
                 <div class="card-header">Редактирование события {{ $event->title }}</div>
                 <div class="card-body">
-                    <form action="{{ route('events.events.update',$event->id) }}" method="POST">
+                    {!! Form::model($event, ['method' => 'PATCH','route' => ['events.events.update', $event->id]]) !!}
                         @csrf
-                        @method('PUT')
                         <div class="row">
                             <div class="col-xs-12 col-sm-12 col-md-12">
                                 <div class="form-group">
@@ -67,7 +66,7 @@
                                             <option value="{{ $option->id }}" {{ (collect(old('options'))->contains($option->id)) ? 'selected':'' }}>{{ $option->name }}</option>
                                         @endforeach
                                     </select> --}}
-                                    {{ Form::select('organization_show', ['0' => 'Меридиан', '1' => 'Кванториум', '2' => 'ИТКуб', '10' => 'Нет'], null, ['class' => 'form-control']) }}
+                                    {!! Form::select('organization_show', ['0' => 'Меридиан', '1' => 'Кванториум', '2' => 'ИТКуб', '10' => 'Нет'], null, ['class' => 'form-control']) !!}
                                     <div class="input-group-append">
                                         <label class="input-group-text"
                                             for="organization_show">Организация</label>
@@ -82,7 +81,7 @@
                                             <option value="{{ $option->id }}" {{ (collect(old('options'))->contains($option->id)) ? 'selected':'' }}>{{ $option->name }}</option>
                                         @endforeach
                                     </select> --}}
-                                    {{ Form::select('published', ['0' => 'Нет', '1' => 'Да'], null, ['class' => 'form-control']) }}
+                                    {!! Form::select('published', ['0' => 'Нет', '1' => 'Да'], null, ['class' => 'form-control']) !!}
                                     <div class="input-group-append">
                                         <label class="input-group-text"
                                             for="published">{{ trans('event.publish') }}</label>
@@ -92,7 +91,7 @@
 
                             <div class="col-xs-12 col-sm-12 col-md-12">
                                 <div class="input-group mb-3">
-                                    {{ Form::select('published_slider_status', ['0' => 'Нет', '1' => 'Да'], null, ['class' => 'form-control']) }}
+                                    {!! Form::select('published_slider_status', ['0' => 'Нет', '1' => 'Да'], null, ['class' => 'form-control']) !!}
                                     <div class="input-group-append">
                                         <label class="input-group-text"
                                             for="published_slider_status">{{ trans('event.slider') }}</label>
@@ -104,7 +103,7 @@
                                 <button type="submit" class="btn btn-primary">{{ trans('event.send') }}</button>
                             </div>
                         </div>
-                    </form>
+                    {!! Form::close() !!}
                 </div>
                 <div class="card-header">
                     @can('manage-events')
