@@ -16,7 +16,7 @@ class CreateTimetableSlotsTable extends Migration
         Schema::create('timetable_slots', function (Blueprint $table) {
             $table->id();
             $table->bigIncrements('slot_id')->nullable();
-            $table->string('slot_time_set')->unsignedInteger()->nullable();
+            $table->string('slot_time_set')->nullable();
             $table->timestamps();
         });
     }
