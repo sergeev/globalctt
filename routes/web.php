@@ -71,5 +71,21 @@ Route::namespace('Student')->group(function () {
 	Route::resource('/_join', 'JoinStudentController');
 });
 
+
+
+//Route::namespace('Statistics')->group(function (){
+//});
+//
+//
+//Route::group(array('namespace' => 'Statistics', 'middleware' => 'web'), function() {
+//
+//    Route::get('/statistics',['uses' =>'StatController@index'])->name('statistics');
+//    Route::post('/statistics',['uses' =>'StatController@forms'])->name('forms');
+//
+//    Route::get('enter',['uses' =>'EnterController@index'])->name('enter');
+//    Route::post('/enter',['uses' =>'EnterController@index'])->name('enter_forms');
+//
+//});
+
 //Route::get('/contact', [ContactUsFormController::class, 'createForm']);
 //Route::post('/contact', [ContactUsFormController::class, 'ContactUsForm'])->name('contact.store');

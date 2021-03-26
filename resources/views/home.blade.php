@@ -33,7 +33,7 @@
                         <p class="card-text">{{ __('Добавить студента') }}</p>
                         <a href="{{ route('students.students.index') }}" class="btn btn-primary">{{ __('Добавить студента') }}</a>
                     </div>
-                </div>   
+                </div>
                 </div>
                 @endcan
 
@@ -45,7 +45,7 @@
                         <p class="card-text">{{ __('Сформировать и отправить отчет о наполняемости детей') }}</p>
                         <a href="{{ route('teacher.reports.index') }}" class="btn btn-primary">{{ __('Создать отчет') }}</a>
                     </div>
-                </div>   
+                </div>
                 </div>
                 @endcan
             </div>

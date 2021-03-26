@@ -42,7 +42,6 @@
                                            class="btn btn-primary">Подробнее</a>
 
                                             {{ __('Просмотров: ') }} {{ $event->view_count }}
-
                                     </div>
                                 </div>
                             </div>

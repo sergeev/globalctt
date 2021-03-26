@@ -122,7 +122,11 @@ class EventController extends Controller
      */
     public function show(Event $event)
     {
-        $event->increment('view_count', $event->id);
+//        if(Cookie::get($post->id)!=''){
+//            Cookie::set('$post->id', '1', 60);
+//            $post->incrementReadCount();
+
+        $event->increment('view_count', + 1);
 
         $student_checked_ok = DB::table('students')
             ->selectRaw('count(*) as total')
@@ -134,7 +138,7 @@ class EventController extends Controller
             ->selectRaw("count(case when student_checked = '0' then 1 end) as id")
             ->first();
 
-        return view('admin.redactor.show', ['event' => $event], compact('event', 'student_checked_ok', 'student_checked_bad'));
+        return view('admin.redactor.show', compact('event', 'student_checked_ok', 'student_checked_bad', $event));
     }
 
     /**

@@ -54,6 +54,8 @@ class EventGlobalController extends Controller
     {
         // views link resource/events/global/show.blade.php
         //$event = Event::find($id);
+        $event->increment('view_count', + 1);
+
         return view('events.global.show', compact('event'));
     }
 }
