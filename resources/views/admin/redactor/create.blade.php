@@ -28,9 +28,17 @@
                             <div class="col-xs-12 col-sm-12 col-md-12">
                                 <div class="form-group">
                                     <strong data-toggle="tooltip" data-placement="right"
-                                        title="Ссылка на картинку вне сайта">Ссылка на картинку: [?]</strong><p>
+                                        title="Ссылка на картинку вне сайта">Ссылка на картинку: [?]</strong>
                                         <strong data-toggle="tooltip" data-placement="right">Пример: https://sun4-10.userapi.com/oZh9C3MMINcce-71h7kZOoX4ZdFwysPVQlCHhA/HxOM3b1WNQ0.jpg</strong>
-                                    <input type="text" name="link_images_1" class="form-control" placeholder="Ссылка на картинку вне сайта"></textarea>
+                                    <input type="text" name="link_images_1" class="form-control" placeholder="Ссылка на картинку вне сайта">
+                                </div>
+                            </div>
+
+                            <div class="col-xs-12 col-sm-12 col-md-12">
+                                <div class="form-group">
+                                    <strong data-toggle="tooltip" data-placement="right"
+                                            title="Ссылка на картинку вне сайта">content_access</strong>
+                                    <input type="text" name="content_access" class="form-control" placeholder="content_access">
                                 </div>
                             </div>
 
@@ -42,7 +50,6 @@
                                         placeholder="Привью на главной и слайдере"></textarea>
                                 </div>
                             </div>
-
 
                             <div class="col-xs-12 col-sm-12 col-md-12">
                                 <div class="form-group">

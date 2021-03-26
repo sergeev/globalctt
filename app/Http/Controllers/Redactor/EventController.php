@@ -79,7 +79,7 @@ class EventController extends Controller
         $rules = [
             'title' => 'required',
             'link_images_1' => 'required',
-            'content_main_page' => 'required|max:300',
+            'content_main_page' => 'required|max:500',
             'content' => 'required|max:5000',
             //'author' => 'required',
             //'published' => 'required',
@@ -89,7 +89,7 @@ class EventController extends Controller
         $messages = [
             'title.required' => 'Введите название события',
             'content_main_page.required' => 'Введите ссылку на изображение',
-            'content_main_page.max' => 'Вы ввели более 300 символов!',
+            'content_main_page.max' => 'Вы ввели более 500 символов!',
             'content.required' => 'Введите текст статьи',
             'content.max' => 'Введите менее 5000 символов!',
             //'published.required' => 'Вы не опублековали статью!',
@@ -122,6 +122,8 @@ class EventController extends Controller
      */
     public function show(Event $event)
     {
+        $event->increment('view_count', $event->id);
+
         $student_checked_ok = DB::table('students')
             ->selectRaw('count(*) as total')
             ->selectRaw("count(case when student_checked = '1' then 1 end) as id")
@@ -132,7 +134,7 @@ class EventController extends Controller
             ->selectRaw("count(case when student_checked = '0' then 1 end) as id")
             ->first();
 
-        return view('admin.redactor.show', compact('event', 'student_checked_ok', 'student_checked_bad'));
+        return view('admin.redactor.show', ['event' => $event], compact('event', 'student_checked_ok', 'student_checked_bad'));
     }
 
     /**

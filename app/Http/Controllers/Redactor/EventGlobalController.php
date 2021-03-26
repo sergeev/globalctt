@@ -40,7 +40,7 @@ class EventGlobalController extends Controller
                 'instagram_link' => 'https://www.instagram.com/kvantorium42_novokuznetsk',
                 // VK
                 'vk_link' => 'https://vk.com/kvantorium42_novokuznetsk',
-                'i', (request()->input('page', 1) - 1) * 5
+                'i', (request()->input('page', 1) - 1) * 3
             ]);
     }
 

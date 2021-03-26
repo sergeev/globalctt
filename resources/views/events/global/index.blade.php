@@ -32,12 +32,17 @@
 
             <div class="container">
                 <div class="card-deck">
-                            <div class="col-md-6 col-lg-6 wow bounceInUp" data-wow-duration="1.4s">
+                            <div class="col-md-12 col-lg-12 wow bounceInUp" data-wow-duration="1.4s">
                                 <div class="box">
                                     <img class="img-fluid" src="{{ $event->link_images_1 }}" alt="">
                                     <div class="card-body">
-                                        <h5 class="card-title"><a href="{{ route('events.show', $event->id) }}">{!! $event->title !!}</a></h5>
+                                        <h5 class="card-title">{!! $event->title !!}</h5>
                                         <p class="card-text">{!! Str::limit($event->content, 300) !!} </p>
+                                        <a href="{{ route('events.show', $event->id) }}"
+                                           class="btn btn-primary">Подробнее</a>
+
+                                            {{ __('Просмотров: ') }} {{ $event->view_count }}
+
                                     </div>
                                 </div>
                             </div>

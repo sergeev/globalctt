@@ -37,21 +37,22 @@
                 <div class="card-header">{{ trans('event.created_at') }} {{ $event->created_at }}
                     {{ trans('event.author') }}
                     {{ $event->author }}
+                    {{ __('Количество просмотров: ') }} {{$event->view_count }}
 
                     @include('events.global.commentsDisplay', ['comments' => $event->comments, 'event_id' => $event->id])
 
                     <hr />
-                    <h4>Add comment</h4>
-                    <form method="post" action="{{ route('comments.store'   ) }}">
-                        @csrf
-                        <div class="form-group">
-                            <textarea class="form-control" name="body"></textarea>
-                            <input type="hidden" name="event_id" value="{{ $event->id }}" />
-                        </div>
-                        <div class="form-group">
-                            <input type="submit" class="btn btn-success" value="Add Comment" />
-                        </div>
-                    </form>
+{{--                    <h4>Add comment</h4>--}}
+{{--                    <form method="post" action="{{ route('comments.store'   ) }}">--}}
+{{--                        @csrf--}}
+{{--                        <div class="form-group">--}}
+{{--                            <textarea class="form-control" name="body"></textarea>--}}
+{{--                            <input type="hidden" name="event_id" value="{{ $event->id }}" />--}}
+{{--                        </div>--}}
+{{--                        <div class="form-group">--}}
+{{--                            <input type="submit" class="btn btn-success" value="Add Comment" />--}}
+{{--                        </div>--}}
+{{--                    </form>--}}
                     <div class="pull-right">
                         <a class="btn btn-primary" href="{{ route('events.index') }}"> Назад</a>
                     </div>

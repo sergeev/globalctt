@@ -57,7 +57,7 @@
              &copy;<strong> Кванториум 42 Новокузнецк. </strong>
          </div>
          <div class="credits">
-             Дизайн Кванториум команды <a href="http://ctt-meridian.ru/">Меридиан</a> Все права защищены. 2020
+             Дизайн Кванториум команды <a href="http://ctt-meridian.ru/">Меридиан</a> Все права защищены. 2021
          </div>
          <div class="col text-center">
              <a href="https://play.google.com/store/apps/details?id=com.davidenko.kvantorium" target="_blank"><img

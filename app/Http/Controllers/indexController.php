@@ -81,7 +81,7 @@ class indexController extends Controller
 
         $teachers = Teacher::all();
 
-        $events = Event::latest()->paginate(6);
+        $events = Event::latest()->paginate(3);
         return view('kvant42.index', compact('events', 'timetables', 'totals', 'kvantums', 'promrobo', 'it_k', 'hitechs', 'energy_k', 'nano_k', 'vr_ar_k', 'chess_k', 'maths_k', 'englisch_k', 'resident_evil', 'MVP', 'teachers'))->with([
             'menu_color_' => '#385E9D',
             // Social Links
