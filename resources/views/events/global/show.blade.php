@@ -34,14 +34,14 @@
 {{--                    <h3>{{ $event->title }}</h3>--}}
 {{--                </div>--}}
                 <div class="card-body">
-                    <img class="card-img-top" src="{{ $event->link_images_1 }}" alt="" class="img-fluid">
+{{--                    <img class="card-img-top" src="{{ $event->link_images_1 }}" alt="" class="img-fluid">--}}
                     <br>
                     <br>
                     <h3>{{ $event->title }}</h3>
 
-                    {{ trans('event.author') }} : {{ $event->author }}
+{{--                    {{ trans('event.author') }} : {{ $event->author }}--}}
                     {{ trans('event.created_at') }} {{ $event->created_at }}
-                    {{ __('Количество просмотров: ') }} {{$event->view_count }}
+{{--                    {{ __('Количество просмотров: ') }} {{$event->view_count }}--}}
 
                     <hr />
                     {!! $event->content !!}
@@ -71,16 +71,20 @@
                         <a class="btn btn-primary" href="{{ route('events.index') }}"> Назад</a>
                     </div>
                 </div>
-                <script type="text/javascript">
-                    VK.init({apiId: 7803948, onlyWidgets: true});
-                </script>
 
-                <!-- Put this div tag to the place, where the Comments block will be -->
-                <div id="vk_comments"></div>
-                <script type="text/javascript">
-                    VK.Widgets.Comments("vk_comments", {limit: 10, attach: false, norealtime: 0, limit: 20, autoPublish: 0 });
-                </script>
+
             </div>
+            <br>
+            <h3><center>Комментарии:</center> </h3>
+            <script type="text/javascript">
+                VK.init({apiId: 7803948, onlyWidgets: true});
+            </script>
+
+            <!-- Put this div tag to the place, where the Comments block will be -->
+            <div id="vk_comments"></div>
+            <script type="text/javascript">
+                VK.Widgets.Comments("vk_comments", {limit: 10, attach: false, norealtime: 0, limit: 20, autoPublish: 0 });
+            </script>
         </div>
     </div>
 </div>

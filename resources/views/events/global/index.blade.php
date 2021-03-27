@@ -28,6 +28,7 @@
         </header>
         @foreach ($events as $event)
             @if ($event->published == '1')
+
         <div class="row">
 
             <div class="container">

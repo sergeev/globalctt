@@ -22,3 +22,6 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::resource('/students', 'Student\StudentController', [
   'except' => ['edit', 'show', 'create', 'store']
 ]);
+
+//Route::get('/site-search', [\App\Http\Controllers\SitewideSearchController::class. 'search']);
+Route::get('/site-search',['uses' =>'SitewideSearchController@search'])->name('search');

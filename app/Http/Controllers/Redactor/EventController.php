@@ -105,6 +105,7 @@ class EventController extends Controller
         $event->content = $request->get('content');
         $event->published = $request->get('published');
         $event->published_slider_status = $request->get('published_slider_status');
+        $event->content_access = $request->get('content_access');
         $event->author = $user;
         $event->save();
 
@@ -198,6 +199,7 @@ class EventController extends Controller
         $event->organization_show = $request->get('organization_show');
         $event->published = $request->get('published');
         $event->published_slider_status = $request->get('published_slider_status');
+        $event->content_access = $request->get('content_access');
 
         if ($event->save()) {
             $request->session()->flash('success', $event->title . ' успешно обновлен');

@@ -6,7 +6,7 @@
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card">
-                <div class="card-header">Редактирование события {{ $event->title }}</div>
+                <div class="card-header">Редактирование события: {{ $event->title }}</div>
                 <div class="card-body">
                     {!! Form::model($event, ['method' => 'PATCH','route' => ['events.events.update', $event->id]]) !!}
                         @csrf
@@ -95,6 +95,16 @@
                                     <div class="input-group-append">
                                         <label class="input-group-text"
                                             for="published_slider_status">{{ trans('event.slider') }}</label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-xs-12 col-sm-12 col-md-12">
+                                <div class="input-group mb-3">
+                                    {!! Form::select('content_access', ['all' => 'Все', 'admin' => 'Администратор', 'director' => 'Директор', 'manager' => 'Управляющий ', 'redactor' => 'Редактор', 'teacher' => 'Преподаватель', 'student' => 'Студент', 'user' => 'Пользователь'], null, ['class' => 'form-control']) !!}
+                                    <div class="input-group-append">
+                                        <label class="input-group-text"
+                                               for="published_slider_status">{{ trans('event.content_access') }}</label>
                                     </div>
                                 </div>
                             </div>
