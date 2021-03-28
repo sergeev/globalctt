@@ -33,12 +33,16 @@ Route::namespace('Admin')->group(function () {
 
 Auth::routes();
 
-//Route::get('/showtimes', 'ShowTimeController@index');
+Route::get('/showtimes', 'ShowTimeController@index');
 
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::namespace('Admin')->prefix('admin')->name('admin.')->middleware('can:manage-users')->group(function () {
 	Route::resource('/users', 'UserController', ['except' => ['show', 'create', 'store']]);
+});
+
+Route::namespace('Admin')->prefix('admin')->name('admin.')->middleware('can:manage-users')->group(function () {
+    Route::resource('/settings', 'SettingsController', ['except' => ['show', 'create', 'store']]);
 });
 
 Route::namespace('Admin')->prefix('admin')->name('admin.')->middleware('can:manage-teachers')->group(function () {
@@ -70,6 +74,25 @@ Route::namespace('Teacher')->prefix('teacher')->name('teacher.')->middleware('ca
 Route::namespace('Student')->group(function () {
 	Route::resource('/_join', 'JoinStudentController');
 });
+
+// Route::name('kvantum.')->group(function() {
+//
+//     Route::get('/it', 'KvantumEnterPage@it_page');
+//
+//     Route::get('/promrobo', 'EnterPage@promrobo_page');
+//
+//     Route::get('/hitech', 'EnterPage@hitech_page');
+//
+//     Route::get('/energy', 'EnterPage@energy_page');
+//
+//     Route::get('/nano',  'EnterPage@nano_page');
+//
+//     Route::get('/vr-ar', 'EnterPage@vr_ar_page');
+//
+//     Route::get('/chess', 'EnterPage@chess_page');
+//
+//     Route::get('/maths', 'EnterPage@maths_page');
+// });
 
 
 
