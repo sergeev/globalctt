@@ -63,13 +63,25 @@
                                 @can('manage-kvantums')
                                 @if ($student_checked_bad->id > 0)
                                     <a class="text-success" href="{{ route('students.students.index') }}">{{ __('Новых заявок ') }} {{ $student_checked_bad->id }}</a>
-                                    
+
                                 @else
                                     <a class="text-info" href="{{ route('students.students.index') }}">{{ __('Нет новых заявок') }}</a>
                                 @endif
                                 @endcan
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                    @can('manage-settings')
+                                        <a class="dropdown-item" href="{{ route('admin.settings.index') }}">
+                                            {{ __('Упр. Модулями сайта') }}
+                                        </a>
+                                    @endcan
+
+                                        @can('manage-clear-cache-all')
+                                            <a class="dropdown-item" href="./clear-cache-all">
+                                                {{ __('Очистить кеш сайта') }}
+                                            </a>
+                                        @endcan
+
                                     @can('manage-users')
                                         <a class="dropdown-item" href="{{ route('admin.users.index') }}">
                                             {{ __('Упр. пользователями') }}

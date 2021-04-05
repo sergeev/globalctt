@@ -8,6 +8,7 @@ use App\Event;
 use App\Timetable;
 use App\Kvantum;
 use App\Teacher;
+use App\Settings;
 use Illuminate\Support\Facades\DB;
 
 class indexController extends Controller
@@ -82,7 +83,10 @@ class indexController extends Controller
         $teachers = Teacher::all();
 
         $events = Event::latest()->paginate(3);
-        return view('kvant42.index', compact('events', 'timetables', 'totals', 'kvantums', 'promrobo', 'it_k', 'hitechs', 'energy_k', 'nano_k', 'vr_ar_k', 'chess_k', 'maths_k', 'englisch_k', 'resident_evil', 'MVP', 'teachers'))->with([
+
+        $style = 'kvant42.index';
+
+        return view($style, compact('events', 'timetables', 'totals', 'kvantums', 'promrobo', 'it_k', 'hitechs', 'energy_k', 'nano_k', 'vr_ar_k', 'chess_k', 'maths_k', 'englisch_k', 'resident_evil', 'MVP', 'teachers'))->with([
             'menu_color_' => '#385E9D',
             // Social Links
             'title_page' => 'Кванториум 42 - Новокузнецк',
@@ -104,6 +108,7 @@ class indexController extends Controller
 
     public function loader()
     {
-        return view('kvant42.loader');
+        $style = 'kvant42.index';
+        return view($style);
     }
 }

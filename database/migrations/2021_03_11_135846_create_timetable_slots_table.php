@@ -13,12 +13,12 @@ class CreateTimetableSlotsTable extends Migration
      */
     public function up()
     {
-        Schema::create('timetable_slots', function (Blueprint $table) {
-            $table->id();
-            $table->bigIncrements('slot_id')->nullable();
-            $table->string('slot_time_set')->nullable();
-            $table->timestamps();
-        });
+//        Schema::create('timetable_slots', function (Blueprint $table) {
+//            $table->id();
+//            $table->bigIncrements('slot_id')->nullable();
+//            $table->string('slot_time_set')->nullable();
+//            $table->timestamps();
+//        });
     }
 
     /**
@@ -28,6 +28,6 @@ class CreateTimetableSlotsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('timetable_slots');
+//        Schema::dropIfExists('timetable_slots');
     }
 }

@@ -6,7 +6,13 @@
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card">
-                <div class="card-header">Редактирование события: {{ $event->title }}</div>
+                <div class="card-header">Редактирование события: {{ $event->title }}
+                        @can('manage-events')
+                            <a href="{{ route('events.events.show', $event->id) }}"><button type="buttor"
+                                                                                            class="btn btn-primary float-right">{{ trans('event.back') }}</button>
+                            </a>
+                        @endcan
+                </div>
                 <div class="card-body">
                     {!! Form::model($event, ['method' => 'PATCH','route' => ['events.events.update', $event->id]]) !!}
                         @csrf
@@ -58,6 +64,22 @@
                                     {{ Form::select('author', $users, [], array('class' => 'form-control')) }}
                                 </div>
                             </div> --}}
+
+                            <div class="col-xs-12 col-sm-12 col-md-12">
+                                <div class="form-group">
+                                    <strong>Дата начала публикации:</strong>
+                                    {!! Form::date('published_date_start', null, array('placeholder' => 'Дата начала публикации','class' =>
+                                    'form-control')) !!}
+                                </div>
+                            </div>
+
+                            <div class="col-xs-12 col-sm-12 col-md-12">
+                                <div class="form-group">
+                                    <strong>Дата конца публикации:</strong>
+                                    {!! Form::date('published_date_end', null, array('placeholder' => 'Дата конца публикации','class' =>
+                                    'form-control')) !!}
+                                </div>
+                            </div>
 
                             <div class="col-xs-12 col-sm-12 col-md-12">
                                 <div class="input-group mb-3">
@@ -114,13 +136,6 @@
                             </div>
                         </div>
                     {!! Form::close() !!}
-                </div>
-                <div class="card-header">
-                    @can('manage-events')
-                    <a href="{{ route('events.events.show', $event->id) }}"><button type="buttor"
-                            class="btn btn-primary float-left">{{ trans('event.back') }}</button>
-                    </a>
-                    @endcan
                 </div>
             </div>
         </div>

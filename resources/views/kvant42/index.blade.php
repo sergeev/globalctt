@@ -19,14 +19,15 @@
 <body>
 
 @include('kvant42.header')
-
+{{--TODO - WTF? 3 br?! fix this! --}}
+<br><br><br>
 @include('kvant42.intro')
 
 <main id="main">
 
 @include('kvant42.about')
 
-@include('kvant42.showtimes')
+{{--@include('kvant42.showtimes')--}}
 
 @include('kvant42.services')
 
@@ -37,12 +38,13 @@
 @include('kvant42.portfolio')
 
 {{-- @include('kvant42.clients') --}}
+{{--    @include('kvant42.team')--}}
 
-@include('kvant42.team')
 
 @include('kvant42.contact')
 
 </main>
+</body>
 
 @include('kvant42.footer')
 

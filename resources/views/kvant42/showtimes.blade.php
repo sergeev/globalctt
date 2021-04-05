@@ -17,7 +17,8 @@
 
             <div id="timetableShowAll" class="collapse" aria-labelledby="headingOne" data-parent="#timetableShowAll">
                 <div class="card-body">
-                    @include('timetables.showtimes')
+{{--                    @include('timetables.showtimes')--}}
+                    <
                 </div>
             </div>
         </div>

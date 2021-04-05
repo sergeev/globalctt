@@ -15,7 +15,7 @@ class Event extends Model
     protected $dates = ['deleted_at'];
 
 	protected $fillable = [
-		'title', 'content_main_page', 'content', 'author' ,'slug', 'link_images_1', 'content_access', 'organization_show', 'published', 'published_slider_status', 'view_count'
+		'title', 'content_main_page', 'content', 'author' ,'slug', 'link_images_1', 'content_access', 'organization_show', 'published', 'published_slider_status', 'published_date_start', 'published_date_end',  'view_count'
 	];
 
 	public function toSearchableArray()

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Teacher;
 use App\User;
+use App\Settings;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -34,7 +35,8 @@ class SettingsController extends Controller
 
         $users = User::all();
         $teachers = Teacher::all();
+        $settings = Settings::all();
 
-        return view('admin.settings.index', compact('student_checked_ok', 'student_checked_bad', 'teachers'))->with('users', $users);
+        return view('admin.settings.index', compact('student_checked_ok', 'student_checked_bad', 'teachers', 'settings'))->with('users', $users);
     }
 }

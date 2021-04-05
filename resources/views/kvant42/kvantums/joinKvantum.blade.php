@@ -1,10 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Регистрация кванторианца</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
+
+@include('kvant42.loader')
+
+<!-- =======================================================
+    Name: Kvantorium42 Novokuznetsk
+    Author: v.sergeev.m@gmail.com
+    Dev love for CTT family
+  ======================================================= -->
+</head>
+
+<body>
+@include('kvant42.header')
+<main id="main">
+    {{--TODO - WTF? 4 br?! fix this! --}}
+    <br><br><br><br>
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card">
-                <div class="card-header">Create Student
-                    <a href="{{ route('home') }}"><button type="buttor"
-                            class="btn btn-primary float-right">Назад</button></a>
+                <div class="card-header">Регистрация кванторианца
+                        <a href="./"><button type = "buttor" class= "btn btn-primary float-right">Назад</button></a>
                 </div>
 
                 <div class="card-body">
@@ -132,4 +154,8 @@
         </div>
     </div>
 </div>
-</div>
+</main>
+</body>
+<br>
+@include('kvant42.footer')
+@include('kvant42.preloader')

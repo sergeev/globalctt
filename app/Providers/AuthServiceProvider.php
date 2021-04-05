@@ -28,6 +28,14 @@ class AuthServiceProvider extends ServiceProvider
         // Главный провайдер отвечающий за досуп ко всему!
 
         // Access for only admin & director
+        Gate::define('manage-settings', function($user){
+            return $user->hasAnyRoles(['admin', '']);
+        });
+
+        Gate::define('manage-clear-cache-all', function($user){
+            return $user->hasAnyRoles(['admin', '']);
+        });
+
         Gate::define('manage-users', function($user){
             return $user->hasAnyRoles(['admin', '']);
         });
@@ -43,7 +51,7 @@ class AuthServiceProvider extends ServiceProvider
         Gate::define('manage-kvantums-edit', function($user){
             return $user->hasAnyRoles(['admin', '']);
         });
-        
+
 
         Gate::define('manage-students', function($user){
             return $user->hasAnyRoles(['admin', 'manager']);

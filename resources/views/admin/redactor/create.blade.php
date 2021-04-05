@@ -101,6 +101,23 @@
                                     </div>
                                 </div>
                             </div> --}}
+
+                            <div class="col-xs-12 col-sm-12 col-md-12">
+                                <div class="form-group">
+                                    <strong>Дата начала публикации:</strong>
+                                    {!! Form::date('published_date_start', null, array('placeholder' => 'Дата начала публикации','class' =>
+                                    'form-control')) !!}
+                                </div>
+                            </div>
+
+                            <div class="col-xs-12 col-sm-12 col-md-12">
+                                <div class="form-group">
+                                    <strong>Дата конца публикации:</strong>
+                                    {!! Form::date('published_date_end', null, array('placeholder' => 'Дата конца публикации','class' =>
+                                    'form-control')) !!}
+                                </div>
+                            </div>
+
                             <div class="col-xs-12 col-sm-12 col-md-12">
                                 <div class="input-group mb-3">
                                     {{-- <select name="published[]" id="published" class="form-control" multiple>

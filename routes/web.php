@@ -75,6 +75,15 @@ Route::namespace('Student')->group(function () {
 	Route::resource('/_join', 'JoinStudentController');
 });
 
+// Support command
+Route::namespace('Admin')->prefix('admin')->name('admin.')->middleware('can:manage-clear-cache-all')->group(function () {
+    Route::get('/clear-cache-all', function () {
+        Artisan::call('cache:clear');
+
+        dd("Cache Clear All");
+    });
+});
+
 // Route::name('kvantum.')->group(function() {
 //
 //     Route::get('/it', 'KvantumEnterPage@it_page');

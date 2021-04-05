@@ -105,6 +105,8 @@ class EventController extends Controller
         $event->content = $request->get('content');
         $event->published = $request->get('published');
         $event->published_slider_status = $request->get('published_slider_status');
+        $event->published_date_start = $request->get('published_date_start');
+        $event->published_date_end = $request->get('published_date_end');
         $event->content_access = $request->get('content_access');
         $event->author = $user;
         $event->save();
@@ -199,6 +201,8 @@ class EventController extends Controller
         $event->organization_show = $request->get('organization_show');
         $event->published = $request->get('published');
         $event->published_slider_status = $request->get('published_slider_status');
+        $event->published_date_start = $request->get('published_date_start');
+        $event->published_date_end = $request->get('published_date_end');
         $event->content_access = $request->get('content_access');
 
         if ($event->save()) {

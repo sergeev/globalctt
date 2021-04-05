@@ -25,6 +25,8 @@ class CreateEventsTable extends Migration
             $table->boolean('organization_show')->unsignedInteger()->default(1);
             $table->boolean('published')->unsignedInteger()->default(0);
             $table->boolean('published_slider_status')->unsignedInteger()->default(0);
+            $table->date('published_date_start');
+            $table->date('published_date_end');
             $table->integer('view_count')->default(0);
             $table->timestamps();
             $table->softDeletes();
