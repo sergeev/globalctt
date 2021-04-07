@@ -76,12 +76,12 @@ class JoinStudentController extends Controller
         $this->validate($request, $rules, $messages);
 
         // Проверка на существующую запись в базе данных
-        if (Student::where('inputsCertificate', '==', Request::get('inputsCertificate'))->exists()) {
+        if (Student::where('inputsCertificate', '==', $request->get('inputsCertificate'))->exists()) {
             return redirect()->route('students.index')
                             ->with('success','Такой сертификат уже есть в базе данных!');
         }
 
-        if (Student::where('inputEmail', '==', Request::get('inputEmail'))->exists()) {
+        if (Student::where('inputEmail', '==', $request->get('inputEmail'))->exists()) {
             return redirect()->route('students.index')
                             ->with('success','Такая почта уже есть в базе данных!');
         }

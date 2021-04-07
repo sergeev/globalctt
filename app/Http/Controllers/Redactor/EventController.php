@@ -81,6 +81,7 @@ class EventController extends Controller
             'link_images_1' => 'required',
             'content_main_page' => 'required|max:500',
             'content' => 'required|max:5000',
+            'published_date_start' => 'required',
             //'author' => 'required',
             //'published' => 'required',
             //'published_slider_status' => 'required'
@@ -92,6 +93,7 @@ class EventController extends Controller
             'content_main_page.max' => 'Вы ввели более 500 символов!',
             'content.required' => 'Введите текст статьи',
             'content.max' => 'Введите менее 5000 символов!',
+            'published_date_start.required' => 'Введите дату публикации',
             //'published.required' => 'Вы не опублековали статью!',
             //'published_slider_status.required' => 'Вы не опублековали статью в слайдер!'
         ];

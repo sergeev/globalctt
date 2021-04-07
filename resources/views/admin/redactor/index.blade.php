@@ -31,6 +31,13 @@
                             Нет
                         @endif
                     ]
+                    Слайдер [
+                    @if ($event->published_slider_status == '0')
+                        Нет
+                    @elseif($event->published_slider_status == '1')
+                        Да
+                    @endif
+                    ]
                     {{ $event->title }}
                     @can('manage-events')
                     <a href="{{ route('events.events.show', $event->id) }}"><button type="buttor"

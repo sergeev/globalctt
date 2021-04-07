@@ -40,7 +40,7 @@
                     <h3>{{ $event->title }}</h3>
 
 {{--                    {{ trans('event.author') }} : {{ $event->author }}--}}
-                    {{ trans('event.created_at') }} {{ $event->created_at }}
+                    {{ trans('event.created_at') }} {{ $event->published_date_start }}
 {{--                    {{ __('Количество просмотров: ') }} {{$event->view_count }}--}}
 
                     <hr />

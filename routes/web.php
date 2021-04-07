@@ -71,9 +71,9 @@ Route::namespace('Teacher')->prefix('teacher')->name('teacher.')->middleware('ca
 	Route::resource('/reports', 'TeacherReportController');
 });
 
-Route::namespace('Student')->group(function () {
-	Route::resource('/_join', 'JoinStudentController');
-});
+//Route::namespace('Student')->group(function () {
+//	Route::resource('/_join', 'JoinStudentController');
+//});
 
 // Support command
 Route::namespace('Admin')->prefix('admin')->name('admin.')->middleware('can:manage-clear-cache-all')->group(function () {
