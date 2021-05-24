@@ -28,6 +28,7 @@
         </header>
         @foreach ($events as $event)
             @if ($event->published == '1')
+
         <div class="row">
 
             <div class="container">
@@ -42,7 +43,6 @@
                                            class="btn btn-primary">Подробнее</a>
 
                                             {{ __('Просмотров: ') }} {{ $event->view_count }}
-
                                     </div>
                                 </div>
                             </div>

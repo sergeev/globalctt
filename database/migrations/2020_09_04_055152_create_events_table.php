@@ -22,9 +22,11 @@ class CreateEventsTable extends Migration
             $table->string('slug', 100)->unsignedInteger()->default();
             $table->text('link_images_1')->nullable();
             $table->text('content_access')->nullable();
-            $table->boolean('organization_show')->unsignedInteger()->default(10);
+            $table->boolean('organization_show')->unsignedInteger()->default(1);
             $table->boolean('published')->unsignedInteger()->default(0);
             $table->boolean('published_slider_status')->unsignedInteger()->default(0);
+            $table->date('published_date_start');
+            $table->date('published_date_end');
             $table->integer('view_count')->default(0);
             $table->timestamps();
             $table->softDeletes();

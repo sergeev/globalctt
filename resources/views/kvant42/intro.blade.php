@@ -7,7 +7,7 @@
               @foreach ($events as $key => $event)
                   @if ($event->organization_show == '1')
                       @if ($event->published_slider_status == '1')
-                          <div class="carousel-item {{ $loop->first ? 'active' : '' }}">
+                          <div class="carousel-item {{$loop->iteration == 2 ? 'active' : ''}}">
 
                               <div class="container">
 
@@ -42,10 +42,4 @@
           </a>
       </div>
 
-  </section><!-- #intro -->
-  <!-- <div class="home-scrolldown">
-            <a href="#about" class="scroll-icon smoothscroll">
-                <span>Прокрутите вниз</span>
-                <i class="icon-arrow-right" aria-hidden="true"></i>
-            </a>
-        </div> -->
+  </section>

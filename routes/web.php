@@ -33,12 +33,16 @@ Route::namespace('Admin')->group(function () {
 
 Auth::routes();
 
-//Route::get('/showtimes', 'ShowTimeController@index');
+Route::get('/showtimes', 'ShowTimeController@index');
 
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::namespace('Admin')->prefix('admin')->name('admin.')->middleware('can:manage-users')->group(function () {
 	Route::resource('/users', 'UserController', ['except' => ['show', 'create', 'store']]);
+});
+
+Route::namespace('Admin')->prefix('admin')->name('admin.')->middleware('can:manage-users')->group(function () {
+    Route::resource('/settings', 'SettingsController', ['except' => ['show', 'create', 'store']]);
 });
 
 Route::namespace('Admin')->prefix('admin')->name('admin.')->middleware('can:manage-teachers')->group(function () {
@@ -67,9 +71,53 @@ Route::namespace('Teacher')->prefix('teacher')->name('teacher.')->middleware('ca
 	Route::resource('/reports', 'TeacherReportController');
 });
 
-Route::namespace('Student')->group(function () {
-	Route::resource('/_join', 'JoinStudentController');
+//Route::namespace('Student')->group(function () {
+//	Route::resource('/_join', 'JoinStudentController');
+//});
+
+// Support command
+Route::namespace('Admin')->prefix('admin')->name('admin.')->middleware('can:manage-clear-cache-all')->group(function () {
+    Route::get('/clear-cache-all', function () {
+        Artisan::call('cache:clear');
+
+        dd("Cache Clear All");
+    });
 });
+
+// Route::name('kvantum.')->group(function() {
+//
+//     Route::get('/it', 'KvantumEnterPage@it_page');
+//
+//     Route::get('/promrobo', 'EnterPage@promrobo_page');
+//
+//     Route::get('/hitech', 'EnterPage@hitech_page');
+//
+//     Route::get('/energy', 'EnterPage@energy_page');
+//
+//     Route::get('/nano',  'EnterPage@nano_page');
+//
+//     Route::get('/vr-ar', 'EnterPage@vr_ar_page');
+//
+//     Route::get('/chess', 'EnterPage@chess_page');
+//
+//     Route::get('/maths', 'EnterPage@maths_page');
+// });
+
+
+
+//Route::namespace('Statistics')->group(function (){
+//});
+//
+//
+//Route::group(array('namespace' => 'Statistics', 'middleware' => 'web'), function() {
+//
+//    Route::get('/statistics',['uses' =>'StatController@index'])->name('statistics');
+//    Route::post('/statistics',['uses' =>'StatController@forms'])->name('forms');
+//
+//    Route::get('enter',['uses' =>'EnterController@index'])->name('enter');
+//    Route::post('/enter',['uses' =>'EnterController@index'])->name('enter_forms');
+//
+//});
 
 //Route::get('/contact', [ContactUsFormController::class, 'createForm']);
 //Route::post('/contact', [ContactUsFormController::class, 'ContactUsForm'])->name('contact.store');

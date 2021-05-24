@@ -139,7 +139,7 @@
                                         <th colspan="7">Дни / время проведения занятий</th>
                                     </tr>
                                     <tr>
-                                        <td class="first">Понедельник</td>
+                                        <td class="first" style="width: 40%;">Понедельник</td>
                                         <td class="first">Вторник</td>
                                         <td class="first">Среда</td>
                                         <td class="first">Четверг</td>
@@ -243,7 +243,6 @@
                     </div>
                 </div>
             </div>
-        </div>
 
         {{-- Promrobo show --}}
         <div id="timetableShowPromrobo" class="collapse" aria-labelledby="headingTwo"

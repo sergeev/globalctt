@@ -63,8 +63,8 @@
                     @foreach ($kvantums as $key => $kvantum)
                         @if ($kvantum->kvantum_id == '4')
                             @if ($kvantum->kvantum_status == '1')
-                                <button type="button" class="btn btn-success" data-toggle="modal" data-target=""
-                                    data-whatever="@getbootstrap">Записаться</button>
+{{--                                <button type="button" class="btn btn-success" data-toggle="modal" data-target=""--}}
+{{--                                    data-whatever="@getbootstrap">Записаться</button>--}}
                             @elseif($kvantum->kvantum_status == '0')
                                 <button type="button" class="btn btn-secondary" disabled>Квантум закрыт для
                                     зачисления</button>

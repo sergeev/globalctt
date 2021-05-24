@@ -6,7 +6,13 @@
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card">
-                <div class="card-header">Редактирование события {{ $event->title }}</div>
+                <div class="card-header">Редактирование события: {{ $event->title }}
+                        @can('manage-events')
+                            <a href="{{ route('events.events.show', $event->id) }}"><button type="buttor"
+                                                                                            class="btn btn-primary float-right">{{ trans('event.back') }}</button>
+                            </a>
+                        @endcan
+                </div>
                 <div class="card-body">
                     {!! Form::model($event, ['method' => 'PATCH','route' => ['events.events.update', $event->id]]) !!}
                         @csrf
@@ -60,6 +66,22 @@
                             </div> --}}
 
                             <div class="col-xs-12 col-sm-12 col-md-12">
+                                <div class="form-group">
+                                    <strong>Дата начала публикации:</strong>
+                                    {!! Form::date('published_date_start', null, array('placeholder' => 'Дата начала публикации','class' =>
+                                    'form-control')) !!}
+                                </div>
+                            </div>
+
+                            <div class="col-xs-12 col-sm-12 col-md-12">
+                                <div class="form-group">
+                                    <strong>Дата конца публикации:</strong>
+                                    {!! Form::date('published_date_end', null, array('placeholder' => 'Дата конца публикации','class' =>
+                                    'form-control')) !!}
+                                </div>
+                            </div>
+
+                            <div class="col-xs-12 col-sm-12 col-md-12">
                                 <div class="input-group mb-3">
                                     {{-- <select name="published[]" id="published" class="form-control" multiple>
                                         @foreach($event->includes->get('published') as $option)
@@ -99,18 +121,21 @@
                                 </div>
                             </div>
 
+                            <div class="col-xs-12 col-sm-12 col-md-12">
+                                <div class="input-group mb-3">
+                                    {!! Form::select('content_access', ['all' => 'Все', 'admin' => 'Администратор', 'director' => 'Директор', 'manager' => 'Управляющий ', 'redactor' => 'Редактор', 'teacher' => 'Преподаватель', 'student' => 'Студент', 'user' => 'Пользователь'], null, ['class' => 'form-control']) !!}
+                                    <div class="input-group-append">
+                                        <label class="input-group-text"
+                                               for="published_slider_status">{{ trans('event.content_access') }}</label>
+                                    </div>
+                                </div>
+                            </div>
+
                             <div class="col-xs-12 col-sm-12 col-md-12 text-center">
                                 <button type="submit" class="btn btn-primary">{{ trans('event.send') }}</button>
                             </div>
                         </div>
                     {!! Form::close() !!}
-                </div>
-                <div class="card-header">
-                    @can('manage-events')
-                    <a href="{{ route('events.events.show', $event->id) }}"><button type="buttor"
-                            class="btn btn-primary float-left">{{ trans('event.back') }}</button>
-                    </a>
-                    @endcan
                 </div>
             </div>
         </div>

@@ -14,6 +14,7 @@
             </div>
         </div>
         <div class="col-md-12">
+            <br>
             @foreach($events as $event)
             <div class="card">
                 <div class="card-header">
@@ -30,16 +31,25 @@
                             Нет
                         @endif
                     ]
+                    Слайдер [
+                    @if ($event->published_slider_status == '0')
+                        Нет
+                    @elseif($event->published_slider_status == '1')
+                        Да
+                    @endif
+                    ]
                     {{ $event->title }}
                     @can('manage-events')
                     <a href="{{ route('events.events.show', $event->id) }}"><button type="buttor"
                             class="btn btn-primary float-right">{{ trans('event.show') }}</button></a>
-                    {{-- <a href="{{ action('EventController@eventPublished', $event->id )}}">Published</a> --}}
+{{--                     <a href="{{ action('EventController@eventPublished', $event->id )}}">Published</a>--}}
                     @endcan
                 </div>
 
             </div>
+                <br>
             @endforeach
+
         </div>
     </div>
     {!! $events->render() !!}

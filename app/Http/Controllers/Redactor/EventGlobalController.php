@@ -20,7 +20,8 @@ class EventGlobalController extends Controller
     public function index()
     {
         //$events = Event::where('id',$id)->first();
-        $events = Event::latest()->paginate(4);
+        // Количество вывода новостей на одной странице
+        $events = Event::latest()->paginate(10);
         $events_all = Event::all();
 
         return view('events.global.index', compact('events', 'events_all'))
@@ -54,6 +55,8 @@ class EventGlobalController extends Controller
     {
         // views link resource/events/global/show.blade.php
         //$event = Event::find($id);
+        $event->increment('view_count', + 1);
+
         return view('events.global.show', compact('event'));
     }
 }

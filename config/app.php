@@ -15,6 +15,8 @@ return [
 
     'name' => env('APP_NAME', 'Laravel'),
 
+    'style' => env('STYLE_NAME', 'kvant42new'),
+
     /*
     |--------------------------------------------------------------------------
     | Application Environment
